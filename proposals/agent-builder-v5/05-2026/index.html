@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agent Builder v5 · Start Here</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* ------------------------------------------------------------------
+           Chief of Staff — Internal House Style
+           Typography: Inter, in the spirit of Dieter Rams.
+           "Good design is as little design as possible." — Principle 10.
+           ------------------------------------------------------------------ */
+
+        :root {
+            --ink:       #0a0a0a;
+            --ink-soft:  #2a2a2a;
+            --mid:       #5a5a5a;
+            --muted:     #8a8a8a;
+            --faint:     #b5b5b5;
+            --rule:      #e6e6e6;
+            --rule-soft: #f0f0f0;
+            --paper:     #ffffff;
+            --wash:      #f6f6f4;
+            --accent:    #d8481f; /* Braun red, used sparingly */
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; font-size: 16px; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+            font-feature-settings: "ss01", "cv11";
+            line-height: 1.55;
+            color: var(--ink);
+            background: var(--paper);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
+        }
+
+        header.sig-line { height: 1px; background: var(--ink); }
+
+        /* ---------- Navigation ---------- */
+
+        nav {
+            border-bottom: 1px solid var(--rule);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: saturate(180%) blur(8px);
+            background: rgba(255,255,255,0.92);
+        }
+
+        .nav-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.125rem 2.5rem;
+            max-width: 1440px;
+            margin: 0 auto;
+        }
+
+        .nav-logo {
+            font-size: 0.8125rem;
+            font-weight: 600;
+            letter-spacing: -0.005em;
+            color: var(--ink);
+            display: flex;
+            align-items: center;
+            gap: 0.625rem;
+        }
+
+        .nav-logo::before {
+            content: "";
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            background: var(--accent);
+            border-radius: 50%;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.75rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--muted);
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: -0.003em;
+            transition: color 160ms ease;
+        }
+
+        .nav-links a:hover { color: var(--ink); }
+
+        /* ---------- Hero ---------- */
+
+        .hero {
+            padding: 6.5rem 2.5rem 5rem 2.5rem;
+            border-bottom: 1px solid var(--rule);
+            max-width: 1440px;
+            margin: 0 auto;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 140px minmax(0, 1fr);
+            gap: 3rem;
+            max-width: 1120px;
+        }
+
+        .hero-label {
+            font-size: 0.6875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            color: var(--accent);
+            padding-top: 1.375rem;
+        }
+
+        .hero-label span {
+            display: block;
+            color: var(--muted);
+            font-weight: 500;
+            margin-top: 0.5rem;
+        }
+
+        .hero h1 {
+            font-family: 'Inter', sans-serif;
+            font-size: clamp(2.25rem, 4.6vw, 3.625rem);
+            font-weight: 600;
+            line-height: 1.02;
+            letter-spacing: -0.038em;
+            color: var(--ink);
+            margin-bottom: 1.75rem;
+            max-width: 900px;
+        }
+
+        .hero p {
+            font-size: 1.0625rem;
+            font-weight: 400;
+            color: var(--mid);
+            line-height: 1.55;
+            max-width: 640px;
+            letter-spacing: -0.006em;
+        }
+
+        /* ---------- Sections ---------- */
+
+        main { counter-reset: section; }
+
+        section {
+            padding: 5rem 2.5rem;
+            border-bottom: 1px solid var(--rule);
+            max-width: 1440px;
+            margin: 0 auto;
+            counter-increment: section;
+        }
+
+        section:last-of-type { border-bottom: none; }
+
+        .section-container {
+            max-width: 1120px;
+        }
+
+        section h2 {
+            font-family: 'Inter', sans-serif;
+            font-size: clamp(1.625rem, 2.6vw, 2rem);
+            font-weight: 600;
+            line-height: 1.08;
+            letter-spacing: -0.028em;
+            color: var(--ink);
+            margin-bottom: 1.5rem;
+        }
+
+        section h2::before {
+            content: counter(section, decimal-leading-zero);
+            display: block;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.6875rem;
+            font-weight: 600;
+            letter-spacing: 0.14em;
+            color: var(--accent);
+            margin-bottom: 1.125rem;
+        }
+
+        .section-container > h2 + p,
+        .section-container > p {
+            font-size: 1.0625rem;
+            color: var(--mid);
+            max-width: 720px;
+            margin-bottom: 1.75rem;
+            line-height: 1.55;
+            letter-spacing: -0.005em;
+        }
+
+        section h3 {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.1875rem;
+            font-weight: 600;
+            line-height: 1.2;
+            letter-spacing: -0.018em;
+            color: var(--ink);
+            margin: 3rem 0 0.875rem 0;
+        }
+
+        section h3:first-child,
+        .section-container > h3:first-of-type { margin-top: 1.5rem; }
+
+        h4 {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.6875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--muted);
+            margin: 1.75rem 0 0.625rem 0;
+        }
+
+        /* ---------- Cards ---------- */
+
+        .rule-group, .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 0 2.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .rule-group-title {
+            grid-column: 1 / -1;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.6875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--muted);
+            margin-bottom: 0.75rem;
+        }
+
+        .rule-card {
+            border-top: 1px solid var(--ink);
+            padding: 1.125rem 0 1.5rem 0;
+        }
+
+        .rule-number {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.6875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--muted);
+            margin-bottom: 0.5rem;
+        }
+
+        .rule-card h5 {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9375rem;
+            font-weight: 600;
+            line-height: 1.35;
+            letter-spacing: -0.012em;
+            color: var(--ink);
+            margin-bottom: 0.5rem;
+        }
+
+        .rule-card p {
+            color: var(--mid);
+            font-size: 0.875rem;
+            line-height: 1.6;
+            letter-spacing: -0.003em;
+        }
+
+        /* ---------- Flow diagram ---------- */
+
+        .flow {
+            display: flex;
+            border-top: 1px solid var(--ink);
+            border-bottom: 1px solid var(--ink);
+            margin: 1.5rem 0 2.5rem;
+        }
+
+        .flow-step {
+            flex: 1 1 0;
+            min-width: 0;
+            padding: 1.25rem 1.5rem 1.375rem 1.25rem;
+            border-right: 1px solid var(--rule);
+            position: relative;
+        }
+
+        .flow-step:last-child {
+            border-right: none;
+        }
+
+        .flow-step:not(:last-child)::after {
+            content: "→";
+            position: absolute;
+            top: 50%;
+            right: -0.55em;
+            transform: translateY(-50%);
+            width: 1.1em;
+            height: 1.1em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent);
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 0.875rem;
+            line-height: 1;
+            background: var(--paper);
+            z-index: 2;
+        }
+
+        .flow-number {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.6875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--muted);
+            margin-bottom: 0.5rem;
+        }
+
+        .flow-title {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9375rem;
+            font-weight: 600;
+            line-height: 1.35;
+            letter-spacing: -0.012em;
+            color: var(--ink);
+            margin-bottom: 0.375rem;
+        }
+
+        .flow-step p {
+            color: var(--mid);
+            font-size: 0.8125rem;
+            line-height: 1.5;
+            letter-spacing: -0.003em;
+            margin-bottom: 0;
+        }
+
+        /* ---------- Tables ---------- */
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.25rem 0 2.5rem;
+            font-size: 0.8125rem;
+        }
+
+        .data-table th {
+            text-align: left;
+            padding: 0.75rem 1rem 0.75rem 0;
+            border-top: 1px solid var(--ink);
+            border-bottom: 1px solid var(--ink);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.6875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--ink);
+        }
+
+        .data-table td {
+            padding: 0.875rem 1rem 0.875rem 0;
+            border-bottom: 1px solid var(--rule);
+            color: var(--mid);
+            line-height: 1.55;
+            vertical-align: top;
+            letter-spacing: -0.003em;
+        }
+
+        .data-table td:last-child,
+        .data-table th:last-child { padding-right: 0; }
+
+        .data-table td strong { color: var(--ink); font-weight: 600; }
+
+        .data-table tr:last-child td { border-bottom: 1px solid var(--ink); }
+
+        /* ---------- Body ---------- */
+
+        p, li {
+            color: var(--mid);
+            line-height: 1.6;
+            font-size: 0.9375rem;
+            letter-spacing: -0.004em;
+        }
+        p { margin-bottom: 0.875rem; }
+        ul, ol { margin-left: 1.25rem; margin-bottom: 1rem; }
+        li { margin-bottom: 0.375rem; }
+        strong { color: var(--ink); font-weight: 600; }
+
+        a {
+            color: var(--ink);
+            text-decoration: none;
+            border-bottom: 1px solid var(--faint);
+            transition: border-color 160ms ease;
+        }
+
+        a:hover { border-bottom-color: var(--accent); }
+
+        code {
+            font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+            font-size: 0.8125rem;
+            color: var(--ink);
+            background: var(--wash);
+            padding: 0.125rem 0.375rem;
+            border-radius: 2px;
+        }
+
+        pre {
+            background: var(--wash);
+            border: 1px solid var(--rule);
+            padding: 1.25rem;
+            margin: 1rem 0 2rem;
+            overflow-x: auto;
+            font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+            font-size: 0.75rem;
+            color: var(--ink);
+            line-height: 1.6;
+        }
+
+        /* ---------- House-style-only helpers (swatches, type samples, do/don't) ---------- */
+
+        .swatch-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 1.5rem 1.25rem;
+            margin: 1.25rem 0 2.5rem;
+        }
+
+        .swatch-chip {
+            height: 64px;
+            border: 1px solid var(--rule);
+            margin-bottom: 0.625rem;
+        }
+
+        .swatch-name {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.6875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--ink);
+        }
+
+        .swatch-hex {
+            font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+            font-size: 0.6875rem;
+            color: var(--muted);
+            display: block;
+            margin-top: 0.25rem;
+            text-transform: none;
+            letter-spacing: 0;
+        }
+
+        .type-sample {
+            margin: 0.75rem 0 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--rule);
+        }
+        .type-sample:last-child { border-bottom: none; }
+
+        .type-label {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.6875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--muted);
+            margin-bottom: 0.625rem;
+        }
+
+        .do-dont {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+            margin: 1.25rem 0 2.5rem;
+        }
+
+        .do-dont .col {
+            border-top: 1px solid var(--ink);
+            padding-top: 1rem;
+        }
+
+        .do-dont h4 { margin-top: 0; }
+
+        /* ---------- Footer ---------- */
+
+        footer {
+            padding: 4rem 2.5rem;
+            max-width: 1440px;
+            margin: 0 auto;
+            color: var(--muted);
+            font-size: 0.75rem;
+            letter-spacing: -0.003em;
+            border-top: 1px solid var(--rule);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        footer::before {
+            content: "";
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            background: var(--accent);
+            border-radius: 50%;
+        }
+
+        /* ---------- Responsive ---------- */
+
+        @media (max-width: 900px) {
+            .hero { padding: 3.5rem 1.5rem 2.5rem 1.5rem; }
+            section { padding: 3rem 1.5rem; }
+            .hero-content { grid-template-columns: 1fr; gap: 1rem; }
+            .hero-label { padding-top: 0; }
+            .hero h1 { font-size: 2rem; }
+            section h2 { font-size: 1.5rem; }
+            .nav-links { display: none; }
+            .nav-container { padding: 1rem 1.5rem; }
+            .rule-group, .card-grid, .do-dont { grid-template-columns: 1fr; }
+            .flow { flex-direction: column; }
+            .flow-step { border-right: none; border-bottom: 1px solid var(--rule); }
+            .flow-step:last-child { border-bottom: none; }
+            .flow-step:not(:last-child)::after {
+                content: "↓";
+                top: auto;
+                bottom: -0.55em;
+                right: auto;
+                left: 1.25rem;
+                transform: none;
+            }
+            footer { flex-direction: column; align-items: flex-start; }
+        }
+    </style>
+</head>
+<body>
+    <header class="sig-line"></header>
+
+    <nav>
+        <div class="nav-container">
+            <div class="nav-logo">Agent Builder v5 / Start Here</div>
+            <ul class="nav-links">
+                <li><a href="#manifest">Manifest</a></li>
+                <li><a href="#training">Agent Training</a></li>
+                <li><a href="#human">Human Training</a></li>
+                <li><a href="#files">Files</a></li>
+                <li><a href="#changes">Changes</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <div class="hero">
+            <div class="hero-content">
+                <div class="hero-label">
+                    Operations
+                    <span>Meta-agent · Five-file package</span>
+                </div>
+                <div>
+                    <h1>Agent Builder v5.</h1>
+                    <p>The meta-agent that builds all other agents. Takes a description of repeatable work and produces a complete five-file agent package ready to deploy. Output is a folder, not a file. <strong>v5 introduces a hard fork in Phase 1:</strong> before any mapping or generation, the builder asks the human whether to use a human-provided golden example (Mode A) or a builder-drafted one (Mode B). No default — the build waits.</p>
+                </div>
+            </div>
+        </div>
+
+        <section id="manifest">
+            <div class="section-container">
+                <h2>Part A — Agent Manifest</h2>
+                <p>A complete agent folder containing five files. The folder is self-contained — any Claude session can read the START-HERE and run the agent without additional context.</p>
+
+                <h3>What it produces</h3>
+
+                <div class="rule-group">
+                    <div class="rule-card">
+                        <div class="rule-number">File 01</div>
+                        <h5>01-start-here.html</h5>
+                        <p>Three-part entry point: manifest (what it produces, what it needs, how long), agent training (step-by-step process), and human training (your two jobs).</p>
+                    </div>
+
+                    <div class="rule-card">
+                        <div class="rule-number">File 02</div>
+                        <h5>02-golden-example/</h5>
+                        <p>A completed, high-quality deliverable showing exactly what &ldquo;done&rdquo; looks like. The specification by example. Uses the deliverable&rsquo;s own design system, not the internal house style.</p>
+                    </div>
+
+                    <div class="rule-card">
+                        <div class="rule-number">File 03</div>
+                        <h5>03-process.html</h5>
+                        <p>Machine-readable execution steps. Every decision rule, branch, and output specification the agent follows.</p>
+                    </div>
+
+                    <div class="rule-card">
+                        <div class="rule-number">File 04</div>
+                        <h5>04-context.html</h5>
+                        <p>Input manifest listing all required, recommended, and optional data. Domain knowledge tables and reference material.</p>
+                    </div>
+
+                    <div class="rule-card">
+                        <div class="rule-number">File 05</div>
+                        <h5>05-quality.html</h5>
+                        <p>QC gates with weighted scoring. Blockers, majors, and minors. Pass criteria the agent checks before delivering.</p>
+                    </div>
+                </div>
+
+                <h3>What it needs</h3>
+
+                <div class="rule-group">
+                    <div class="rule-card">
+                        <div class="rule-number">Required</div>
+                        <h5>Description of the repeatable work</h5>
+                        <p>What does this agent do? What&rsquo;s the trigger? What does the finished deliverable look like? This can be a conversation, a document, or a working example.</p>
+                    </div>
+
+                    <div class="rule-card">
+                        <div class="rule-number">Required · Hard fork</div>
+                        <h5>Decision: golden example mode</h5>
+                        <p>Before the builder starts mapping, you choose how the golden example gets made. <strong>Mode A — you bring it.</strong> A real, completed instance of the deliverable. The builder uses it as the spec. <strong>Mode B — the builder drafts it.</strong> From your description and clarifying answers, the builder writes the example and you validate before the rest of the package is built. There is no default; the builder asks and waits.</p>
+                    </div>
+
+                    <div class="rule-card">
+                        <div class="rule-number">Recommended</div>
+                        <h5>Input sources</h5>
+                        <p>Where does the data come from? Files, APIs, transcripts, spreadsheets? Knowing the inputs shapes the context file.</p>
+                    </div>
+
+                    <div class="rule-card">
+                        <div class="rule-number">Optional</div>
+                        <h5>Quality criteria</h5>
+                        <p>What makes a good output vs a bad one? If not provided, the builder infers quality gates from the golden example.</p>
+                    </div>
+                </div>
+
+                <h3>Estimated time</h3>
+                <table class="data-table">
+                    <thead>
+                        <tr><th>Phase</th><th>Duration</th><th>What happens</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><strong>Gather inputs</strong></td><td>10 min</td><td>Human assembles source material, examples, and target folder</td></tr>
+                        <tr><td><strong>Generate package</strong></td><td>15 min</td><td>Agent writes all five files and runs self-QC</td></tr>
+                        <tr><td><strong>Review &amp; iterate</strong></td><td>10 min</td><td>Human reviews, flags fixes, agent patches</td></tr>
+                    </tbody>
+                </table>
+
+                <h3>How to run</h3>
+                <ol>
+                    <li>Tell Claude: &ldquo;Build an agent for [description of repeatable work].&rdquo;</li>
+                    <li>Claude reads this START-HERE to understand what the builder does.</li>
+                    <li>Claude reads the <code>02-golden-example/</code> folder first — this is the target, the shape of &ldquo;done.&rdquo;</li>
+                    <li>Claude reads <code>03-process.html</code> for execution steps.</li>
+                    <li>Claude reads <code>04-context.html</code> for input requirements and domain knowledge.</li>
+                    <li>Claude reads <code>05-quality.html</code> for the QC gates it will check against.</li>
+                    <li><strong>Claude asks the golden example mode question (Step 02b) and waits for your answer.</strong></li>
+                    <li>Claude asks any remaining clarifying questions, then generates all five files in the order set by the chosen mode.</li>
+                    <li>You review, iterate, and deploy the folder to the appropriate <code>Agents/</code> subfolder.</li>
+                </ol>
+            </div>
+        </section>
+
+        <section id="training">
+            <div class="section-container">
+                <h2>Part B — Agent Training</h2>
+                <p>This is how you (Claude) build an agent. Follow these steps in order. The detailed logic lives in <code>03-process.html</code> — this section is the overview.</p>
+
+                <div class="flow">
+                    <div class="flow-step">
+                        <div class="flow-number">Step 01</div>
+                        <div class="flow-title">Study the golden example</div>
+                        <p>Read the <code>02-golden-example/</code> folder first.</p>
+                    </div>
+                    <div class="flow-step">
+                        <div class="flow-number">Step 02</div>
+                        <div class="flow-title">Understand the work</div>
+                        <p>Identify the repeatable unit, trigger, and definition of done.</p>
+                    </div>
+                    <div class="flow-step">
+                        <div class="flow-number">Step 03</div>
+                        <div class="flow-title">Map to five primitives</div>
+                        <p>Process, context, golden example, quality, START-HERE.</p>
+                    </div>
+                    <div class="flow-step">
+                        <div class="flow-number">Step 04</div>
+                        <div class="flow-title">Clarify and generate</div>
+                        <p>Ask before guessing, then write all five files.</p>
+                    </div>
+                    <div class="flow-step">
+                        <div class="flow-number">Step 05</div>
+                        <div class="flow-title">Self-QC</div>
+                        <p>Run blockers from <code>05-quality.html</code> before handing off.</p>
+                    </div>
+                </div>
+
+                <div class="rule-group">
+                    <div class="rule-card">
+                        <div class="rule-number">Step 01</div>
+                        <h5>Study the golden example</h5>
+                        <p>Read the <code>02-golden-example/</code> folder first. This is a complete, deployed agent — five files that show exactly what &ldquo;done&rdquo; looks like. Internalize the structure, the tone, the level of detail. Everything you build aims at this target.</p>
+                    </div>
+                    <div class="rule-card">
+                        <div class="rule-number">Step 02</div>
+                        <h5>Understand the work</h5>
+                        <p>Read whatever the human provides — description, example output, source repo, transcript. Your job is to identify: what is the repeatable unit of work? What triggers it? What does &ldquo;done&rdquo; look like?</p>
+                    </div>
+                    <div class="rule-card">
+                        <div class="rule-number">Step 02b · Hard fork</div>
+                        <h5>Ask the golden example mode question</h5>
+                        <p>Before mapping or generating anything, ask the human: <em>&ldquo;Are you bringing me the golden example, or am I building it?&rdquo;</em> Present both modes with neutral trade-offs. Wait for an answer. Do not assume a default. Record the chosen mode in your reply (&ldquo;Proceeding in Mode A&rdquo; / &ldquo;Proceeding in Mode B&rdquo;) before continuing. See <code>03-process.html</code> Step 02b for full wording.</p>
+                    </div>
+                    <div class="rule-card">
+                        <div class="rule-number">Step 03</div>
+                        <h5>Identify the five primitives</h5>
+                        <p>Map what you learned onto the five files. Every agent has them, even if the source material uses different names: <strong>golden example</strong> (what done looks like), <strong>process</strong> (the steps to do the work), <strong>context</strong> (the inputs and reference data), <strong>quality</strong> (how you know it&rsquo;s good), and <strong>START-HERE</strong> (the entry point).</p>
+                    </div>
+                    <div class="rule-card">
+                        <div class="rule-number">Step 04</div>
+                        <h5>Ask clarifying questions</h5>
+                        <p>If anything is ambiguous or missing — agent name, trigger phrase, folder location, what &ldquo;good enough&rdquo; means for v1 — ask the human before generating. Don&rsquo;t guess on structural decisions.</p>
+                    </div>
+                    <div class="rule-card">
+                        <div class="rule-number">Step 05</div>
+                        <h5>Generate the five files</h5>
+                        <p>Write each internal file against the canonical <code>0. Chief of Staff/house-style.html</code>. Copy its <code>&lt;style&gt;</code> block verbatim — do not paraphrase. The golden example is the one exception: it uses the deliverable&rsquo;s own design system, not the house style.</p>
+                    </div>
+                    <div class="rule-card">
+                        <div class="rule-number">Step 06</div>
+                        <h5>Self-QC before handoff</h5>
+                        <p>Run the quality gates from <code>05-quality.html</code>. Every blocker must pass. No more than two majors remaining.</p>
+                    </div>
+                </div>
+
+                <h3>Three-run graduation</h3>
+                <p>Every agent graduates in three iterations:</p>
+                <ol>
+                    <li><strong>Run 01:</strong> Built from golden example. Agent raises its hand for missing context.</li>
+                    <li><strong>Run 02:</strong> Answers get hardwired in. Agent now knows where to find inputs.</li>
+                    <li><strong>Run 03:</strong> Ready for a schedule. Agent runs autonomously.</li>
+                </ol>
+            </div>
+        </section>
+
+        <section id="human">
+            <div class="section-container">
+                <h2>Part C — Human Training</h2>
+                <p>Your job is to review and iterate. The agent does the work.</p>
+
+                <div class="rule-group">
+                    <div class="rule-card">
+                        <div class="rule-number">Job 01</div>
+                        <h5>Provide source material</h5>
+                        <p>Give the agent a description, a repo, or a transcript. The more you give it, the better the output.</p>
+                    </div>
+                    <div class="rule-card">
+                        <div class="rule-number">Job 02</div>
+                        <h5>Choose the golden example mode</h5>
+                        <p>The builder will ask before mapping: are you bringing the golden example, or is the builder drafting it? <strong>Mode A</strong> makes the build faster and Run 01 sharper, but only works if you have a real, completed instance of the deliverable on hand. <strong>Mode B</strong> works even when you don&rsquo;t — the builder drafts and you validate before the rest of the package is built. Pick whichever fits the inputs you actually have.</p>
+                    </div>
+                    <div class="rule-card">
+                        <div class="rule-number">Job 03</div>
+                        <h5>Review and iterate</h5>
+                        <p>Look at the five files the agent produces. If something&rsquo;s wrong, say so. The agent fixes it. Most packages are 80%+ correct on first pass.</p>
+                    </div>
+                </div>
+
+                <h3>How the system gets better over time</h3>
+                <p>Every time you build an agent and deploy it, the system gets better. Past agents become patterns the builder recognizes. Context files accumulate. The agent builder literally gets better at building agents the more agents exist in the system.</p>
+
+                <h3>When to build an agent</h3>
+                <p>If you&rsquo;ve done the same type of work three or more times, it&rsquo;s an agent. If someone asks you &ldquo;how do you do X?&rdquo; and the answer takes more than two sentences, it&rsquo;s an agent. If you catch yourself saying &ldquo;just like we did for Y,&rdquo; it&rsquo;s an agent.</p>
+            </div>
+        </section>
+
+        <section id="files">
+            <div class="section-container">
+                <h2>Files in This Package</h2>
+                <p>Read in this order. The golden example comes first so you know what you&rsquo;re building toward.</p>
+
+                <table class="data-table">
+                    <thead>
+                        <tr><th>Order</th><th>File</th><th>Purpose</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><strong>01</strong></td><td><code>01-start-here.html</code></td><td>This file. Manifest, agent training, human training. Read first to orient.</td></tr>
+                        <tr><td><strong>02</strong></td><td><code>02-golden-example/</code></td><td>A complete deployed agent (the presentation agent) showing what the builder should produce. Your target.</td></tr>
+                        <tr><td><strong>03</strong></td><td><code>03-process.html</code></td><td>Machine-readable build steps. The detailed logic Claude follows when generating an agent package.</td></tr>
+                        <tr><td><strong>04</strong></td><td><code>04-context.html</code></td><td>Input manifest and domain knowledge for the agent builder itself.</td></tr>
+                        <tr><td><strong>05</strong></td><td><code>05-quality.html</code></td><td>QC gates for evaluating a completed agent package. Five gates, weighted scoring.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="changes">
+            <div class="section-container">
+                <h2>Changes from v4</h2>
+                <p>v5 makes one structural change to the build flow. Output shape (the five-file package) is unchanged — agents produced by v5 are interoperable with everything built under v4.</p>
+
+                <div class="rule-group">
+                    <div class="rule-card">
+                        <div class="rule-number">Change 01</div>
+                        <h5>Hard fork on golden example mode (Step 02b)</h5>
+                        <p>Before any mapping or generation, the builder must ask the human: <em>are you bringing the golden example, or am I building it?</em> The fork is now <strong>Required · Hard fork</strong> in <code>04-context.html</code> and a dedicated step in Phase 1 of <code>03-process.html</code>. There is no default; the build does not proceed to Phase 2 until the human has chosen.</p>
+                    </div>
+                    <div class="rule-card">
+                        <div class="rule-number">Change 02</div>
+                        <h5>Mode A vs. Mode B execution paths in Step 06</h5>
+                        <p>Step 06 (&ldquo;Produce the golden example first&rdquo;) now branches explicitly on the chosen mode rather than inferring from source material. Mode B (builder-drafted) requires the human to validate the example before the rest of the package is written.</p>
+                    </div>
+                    <div class="rule-card">
+                        <div class="rule-number">Change 03</div>
+                        <h5>QC checks the fork was asked</h5>
+                        <p><code>05-quality.html</code> Gate 1 includes a Blocker that verifies the build asked the mode question and recorded the human&rsquo;s answer in the session log. A package whose build skipped the fork is not shippable.</p>
+                    </div>
+                    <div class="rule-card">
+                        <div class="rule-number">Why</div>
+                        <h5>Buried defaults produce weaker agents</h5>
+                        <p>v4 had the right doctrine (&ldquo;if no example provided, builder drafts and asks human to validate&rdquo;) but it lived inside Step 06 and the Recommended tier. The human could sleepwalk past it and silently land in Mode B. Surfacing the choice up-front makes the trade-off visible and produces a sharper Run 01.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div>Agent Builder v5 · Operations</div>
+        <div>May 2026</div>
+    </footer>
+
+</body>
+</html>
