@@ -236,24 +236,55 @@
       margin-bottom: clamp(28px, 4vw, 42px);
     }
     .section-heading p { color: var(--ink-soft); font-size: 18px; line-height: 1.66; padding-top: 34px; }
+    .section-heading.compact { margin-top: clamp(42px, 6vw, 64px); }
     .problem { background: var(--paper); }
-    .results, .services { background: var(--white); }
-    .problem-grid, .result-grid, .service-grid {
+    .results { background: var(--white); }
+    .problem-checklist {
+      border-bottom: 1px solid var(--line);
+      border-top: 1px solid var(--line);
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .problem-checklist li {
+      color: var(--ink-soft);
+      display: grid;
+      gap: 12px;
+      grid-template-columns: 20px minmax(0, 1fr);
+      padding: 17px 0;
+    }
+    .problem-checklist li + li { border-top: 1px solid var(--line); }
+    .problem-checklist li::before {
+      border: 2px solid var(--accent);
+      content: "";
+      height: 10px;
+      margin-top: .55em;
+      width: 10px;
+    }
+    .problem-checklist strong {
+      color: var(--ink);
+      display: block;
+      font-size: 18px;
+      line-height: 1.35;
+      margin-bottom: 3px;
+    }
+    .problem-checklist span { display: block; font-size: 15px; line-height: 1.55; }
+    .result-grid, .service-grid {
       display: grid;
       gap: 1px;
       background: var(--line);
       border: 1px solid var(--line);
     }
-    .problem-grid, .result-grid { grid-template-columns: repeat(3, 1fr); }
+    .result-grid { grid-template-columns: repeat(3, 1fr); }
     .service-grid { grid-template-columns: repeat(4, 1fr); }
-    .problem-card, .result-card, .service-card {
+    .result-card, .service-card {
       background: var(--white);
       padding: clamp(24px, 3vw, 32px);
     }
-    .problem-card, .service-card { min-height: 190px; }
+    .service-card { min-height: 190px; }
     .result-card { min-height: 158px; }
     .result-card h3 { margin: 0 0 10px; }
-    .problem-card p, .result-card p, .service-card p { font-size: 15px; line-height: 1.62; }
+    .result-card p, .service-card p { font-size: 15px; line-height: 1.62; }
     .areas { background: var(--white); }
     .area-list {
       display: grid;
@@ -323,7 +354,7 @@
     @media (max-width: 960px) {
       .hero-inner, .section-heading, .about-grid { grid-template-columns: 1fr; }
       .section-heading p { padding-top: 0; }
-      .problem-grid, .result-grid, .service-grid { grid-template-columns: 1fr; }
+      .result-grid, .service-grid { grid-template-columns: 1fr; }
     }
     @media (max-width: 620px) {
       body { font-size: 17px; }
@@ -353,8 +384,7 @@
         <span>Bullard<br>Business Execution</span>
       </a>
       <ul class="nav-links">
-        <li><a href="#problem">The Problem</a></li>
-        <li><a href="#services">Services</a></li>
+        <li><a href="#problem">Problem + Help</a></li>
         <li><a href="#results">Results</a></li>
         <li><a href="#experience">Experience</a></li>
         <li><a class="button accent" href="#diagnosis">Diagnosis Call</a></li>
@@ -366,8 +396,7 @@
     </div>
     <div class="mobile-menu" id="mobile-menu" hidden>
       <div class="mobile-menu-inner">
-        <a href="#problem">The Problem</a>
-        <a href="#services">Services</a>
+        <a href="#problem">Problem + Help</a>
         <a href="#results">Results</a>
         <a href="#experience">Experience</a>
         <a class="button accent" href="#diagnosis">Diagnosis Call</a>
@@ -383,7 +412,7 @@
         <p class="hero-lead">When priorities are clear but results still stall, the problem is usually not effort — it is execution. We help leadership teams create the clarity, accountability, and follow-through needed to move the business forward.</p>
         <div class="hero-actions">
           <a class="button accent" href="https://bbe.ninjapipe.app/book/bbe/edc">Book a Diagnosis Call</a>
-          <a class="button ghost" href="#problem">See The Problem</a>
+          <a class="button ghost" href="#problem">See How We Help</a>
         </div>
       </div>
       <aside class="hero-brief reveal" aria-label="Execution Brief signup">
@@ -405,29 +434,22 @@
             <h2 id="problem-title">Performance slips when ownership is unclear.</h2>
           </div>
         </div>
-        <div class="problem-grid" aria-label="Common execution problems">
-          <article class="problem-card reveal">
-            <h3>Priorities stall</h3>
-            <p>Work leaves meetings without enough ownership, authority, or next-step clarity.</p>
-          </article>
-          <article class="problem-card reveal">
-            <h3>Leaders carry too much</h3>
-            <p>Executives keep thinking, deciding, reminding, and following up for the team.</p>
-          </article>
-          <article class="problem-card reveal">
-            <h3>Follow-through drifts</h3>
-            <p>Handoffs, decisions, and reporting depend on memory, meetings, and workarounds.</p>
-          </article>
-        </div>
-      </div>
-    </section>
+        <ul class="problem-checklist reveal" aria-label="Common execution problems">
+          <li>
+            <span><strong>Priorities stall.</strong>Work leaves meetings without enough ownership, authority, or next-step clarity.</span>
+          </li>
+          <li>
+            <span><strong>Leaders carry too much.</strong>Executives keep thinking, deciding, reminding, and following up for the team.</span>
+          </li>
+          <li>
+            <span><strong>Follow-through drifts.</strong>Handoffs, decisions, and reporting depend on memory, meetings, and workarounds.</span>
+          </li>
+        </ul>
 
-    <section class="services section-pad" id="services" aria-labelledby="services-title">
-      <div class="shell">
-        <div class="section-heading reveal">
+        <div class="section-heading compact reveal">
           <div>
-            <span class="eyebrow">Services</span>
-            <h2 id="services-title">How we help.</h2>
+            <span class="eyebrow">How We Help</span>
+            <h2 id="services-title">Build the structure that keeps work moving.</h2>
           </div>
         </div>
         <div class="service-grid" aria-label="Services provided by Bullard Business Execution">
@@ -541,8 +563,7 @@
         <span>Bullard Business Execution</span>
       </span>
       <div class="footer-links" aria-label="Footer navigation">
-        <a href="#problem">The Problem</a>
-        <a href="#services">Services</a>
+        <a href="#problem">Problem + Help</a>
         <a href="#results">Results</a>
         <a href="#experience">Experience</a>
         <a href="#diagnosis">Diagnosis Call</a>
