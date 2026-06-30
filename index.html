@@ -188,7 +188,7 @@
     }
     .hero .eyebrow { color: #d5e0e5; }
     .hero-inner {
-      align-items: end;
+      align-items: center;
       display: grid;
       gap: clamp(32px, 6vw, 76px);
       grid-template-columns: minmax(0, 1fr) minmax(260px, .42fr);
@@ -225,6 +225,18 @@
       letter-spacing: .14em;
       margin-bottom: 8px;
       text-transform: uppercase;
+    }
+    .brief-form {
+      background: var(--white);
+      border: 1px solid rgba(52, 83, 100, .18);
+      height: 380px;
+      overflow: hidden;
+    }
+    .brief-form iframe {
+      border: 0;
+      display: block;
+      height: 100%;
+      width: 100%;
     }
 
     section { border-bottom: 1px solid var(--line); }
@@ -425,7 +437,9 @@
         <h2>Short notes on what makes work move.</h2>
         <strong>Begins July 10</strong>
         <p>A regular note on execution, accountability, leadership behavior, and organizational habits.</p>
-        <a class="button accent" href="#diagnosis">Sign Up</a>
+        <div class="brief-form">
+          <iframe title="Execution Brief signup form" src="https://form.jotform.com/261679188283068" loading="lazy" scrolling="yes"></iframe>
+        </div>
       </aside>
     </div>
   </header>
