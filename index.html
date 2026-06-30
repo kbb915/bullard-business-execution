@@ -239,52 +239,49 @@
     .section-heading.compact { margin-top: clamp(42px, 6vw, 64px); }
     .problem { background: var(--paper); }
     .results { background: var(--white); }
-    .problem-checklist {
+    .problem-checklist, .result-checklist {
       border-bottom: 1px solid var(--line);
       border-top: 1px solid var(--line);
       list-style: none;
       margin: 0;
       padding: 0;
     }
-    .problem-checklist li {
+    .problem-checklist li, .result-checklist li {
       color: var(--ink-soft);
       display: grid;
       gap: 12px;
       grid-template-columns: 20px minmax(0, 1fr);
       padding: 17px 0;
     }
-    .problem-checklist li + li { border-top: 1px solid var(--line); }
-    .problem-checklist li::before {
+    .problem-checklist li + li, .result-checklist li + li { border-top: 1px solid var(--line); }
+    .problem-checklist li::before, .result-checklist li::before {
       border: 2px solid var(--accent);
       content: "";
       height: 10px;
       margin-top: .55em;
       width: 10px;
     }
-    .problem-checklist strong {
+    .problem-checklist strong, .result-checklist strong {
       color: var(--ink);
       display: block;
       font-size: 18px;
       line-height: 1.35;
       margin-bottom: 3px;
     }
-    .problem-checklist span { display: block; font-size: 15px; line-height: 1.55; }
-    .result-grid, .service-grid {
+    .problem-checklist span, .result-checklist span { display: block; font-size: 15px; line-height: 1.55; }
+    .service-grid {
       display: grid;
       gap: 1px;
       background: var(--line);
       border: 1px solid var(--line);
+      grid-template-columns: repeat(4, 1fr);
     }
-    .result-grid { grid-template-columns: repeat(3, 1fr); }
-    .service-grid { grid-template-columns: repeat(4, 1fr); }
-    .result-card, .service-card {
+    .service-card {
       background: var(--white);
+      min-height: 190px;
       padding: clamp(24px, 3vw, 32px);
     }
-    .service-card { min-height: 190px; }
-    .result-card { min-height: 158px; }
-    .result-card h3 { margin: 0 0 10px; }
-    .result-card p, .service-card p { font-size: 15px; line-height: 1.62; }
+    .service-card p { font-size: 15px; line-height: 1.62; }
     .areas { background: var(--white); }
     .area-list {
       display: grid;
@@ -354,7 +351,7 @@
     @media (max-width: 960px) {
       .hero-inner, .section-heading, .about-grid { grid-template-columns: 1fr; }
       .section-heading p { padding-top: 0; }
-      .result-grid, .service-grid { grid-template-columns: 1fr; }
+      .service-grid { grid-template-columns: 1fr; }
     }
     @media (max-width: 620px) {
       body { font-size: 17px; }
@@ -481,32 +478,26 @@
             <h2 id="results-title">What changes when execution works.</h2>
           </div>
         </div>
-        <div class="result-grid" aria-label="Results from working with Bullard Business Execution">
-          <article class="result-card reveal">
-            <h3>Priorities leave meetings with owners.</h3>
-            <p>People know who owns the work, what authority they have, and what happens next.</p>
-          </article>
-          <article class="result-card reveal">
-            <h3>Managers move with clearer authority.</h3>
-            <p>Managers can act without waiting for every answer to come from the senior team.</p>
-          </article>
-          <article class="result-card reveal">
-            <h3>Decisions happen at the right level.</h3>
-            <p>Escalation becomes intentional instead of the default path for moving work forward.</p>
-          </article>
-          <article class="result-card reveal">
-            <h3>Senior leaders spend less time chasing follow-up.</h3>
-            <p>Leaders gain confidence in their people and have more capacity for their own work.</p>
-          </article>
-          <article class="result-card reveal">
-            <h3>Handoffs rely on ownership, not relationships.</h3>
-            <p>Work moves through clear expectations instead of informal workarounds.</p>
-          </article>
-          <article class="result-card reveal">
-            <h3>Growth moves with more consistent execution.</h3>
-            <p>Cleaner execution gives financial growth a stronger operating foundation.</p>
-          </article>
-        </div>
+        <ul class="result-checklist reveal" aria-label="Results from working with Bullard Business Execution">
+          <li>
+            <span><strong>Priorities leave meetings with owners.</strong>People know who owns the work, what authority they have, and what happens next.</span>
+          </li>
+          <li>
+            <span><strong>Managers move with clearer authority.</strong>Managers can act without waiting for every answer to come from the senior team.</span>
+          </li>
+          <li>
+            <span><strong>Decisions happen at the right level.</strong>Escalation becomes intentional instead of the default path for moving work forward.</span>
+          </li>
+          <li>
+            <span><strong>Senior leaders spend less time chasing follow-up.</strong>Leaders gain confidence in their people and have more capacity for their own work.</span>
+          </li>
+          <li>
+            <span><strong>Handoffs rely on ownership, not relationships.</strong>Work moves through clear expectations instead of informal workarounds.</span>
+          </li>
+          <li>
+            <span><strong>Growth moves with more consistent execution.</strong>Cleaner execution gives financial growth a stronger operating foundation.</span>
+          </li>
+        </ul>
       </div>
     </section>
 
