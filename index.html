@@ -210,20 +210,22 @@
     }
     .section-heading p { color: var(--ink-soft); font-size: 18px; line-height: 1.66; padding-top: 34px; }
     .problem { background: var(--paper); }
-    .services { background: var(--white); }
-    .problem-grid, .service-grid {
+    .results, .services { background: var(--white); }
+    .problem-grid, .result-grid, .service-grid {
       display: grid;
       gap: 1px;
       background: var(--line);
       border: 1px solid var(--line);
     }
-    .problem-grid { grid-template-columns: repeat(3, 1fr); }
+    .problem-grid, .result-grid { grid-template-columns: repeat(3, 1fr); }
     .service-grid { grid-template-columns: repeat(4, 1fr); }
-    .problem-card, .service-card {
+    .problem-card, .result-card, .service-card {
       background: var(--white);
-      min-height: 190px;
       padding: clamp(24px, 3vw, 32px);
     }
+    .problem-card, .service-card { min-height: 190px; }
+    .result-card { min-height: 132px; }
+    .result-card h3 { margin: 0; }
     .problem-card p, .service-card p { font-size: 15px; line-height: 1.62; }
     .brief {
       background: radial-gradient(circle at 88% 8%, rgba(93, 127, 145, .24), transparent 30%), linear-gradient(135deg, #0f2233, #1b3a52 58%, #0b1d2d);
@@ -319,7 +321,7 @@
     @media (max-width: 960px) {
       .section-heading, .about-grid { grid-template-columns: 1fr; }
       .section-heading p { padding-top: 0; }
-      .problem-grid, .service-grid { grid-template-columns: 1fr; }
+      .problem-grid, .result-grid, .service-grid { grid-template-columns: 1fr; }
       .brief-box { grid-template-columns: 1fr; }
     }
     @media (max-width: 620px) {
@@ -351,6 +353,7 @@
       </a>
       <ul class="nav-links">
         <li><a href="#problem">The Problem</a></li>
+        <li><a href="#results">Results</a></li>
         <li><a href="#services">Services</a></li>
         <li><a href="#brief">Execution Brief</a></li>
         <li><a href="#experience">Experience</a></li>
@@ -364,6 +367,7 @@
     <div class="mobile-menu" id="mobile-menu" hidden>
       <div class="mobile-menu-inner">
         <a href="#problem">The Problem</a>
+        <a href="#results">Results</a>
         <a href="#services">Services</a>
         <a href="#brief">Execution Brief</a>
         <a href="#experience">Experience</a>
@@ -407,6 +411,37 @@
           <article class="problem-card reveal">
             <h3>Follow-through drifts</h3>
             <p>Handoffs, decisions, and reporting depend on memory, meetings, and workarounds.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="results section-pad" id="results" aria-labelledby="results-title">
+      <div class="shell">
+        <div class="section-heading reveal">
+          <div>
+            <span class="eyebrow">Results</span>
+            <h2 id="results-title">What changes when execution works.</h2>
+          </div>
+        </div>
+        <div class="result-grid" aria-label="Results from working with Bullard Business Execution">
+          <article class="result-card reveal">
+            <h3>Priorities leave meetings with owners.</h3>
+          </article>
+          <article class="result-card reveal">
+            <h3>Managers move with clearer authority.</h3>
+          </article>
+          <article class="result-card reveal">
+            <h3>Decisions happen at the right level.</h3>
+          </article>
+          <article class="result-card reveal">
+            <h3>Senior leaders spend less time chasing follow-up.</h3>
+          </article>
+          <article class="result-card reveal">
+            <h3>Handoffs rely on ownership, not relationships.</h3>
+          </article>
+          <article class="result-card reveal">
+            <h3>Growth moves with more consistent execution.</h3>
           </article>
         </div>
       </div>
@@ -510,6 +545,7 @@
       </span>
       <div class="footer-links" aria-label="Footer navigation">
         <a href="#problem">The Problem</a>
+        <a href="#results">Results</a>
         <a href="#services">Services</a>
         <a href="#brief">Execution Brief</a>
         <a href="#experience">Experience</a>
