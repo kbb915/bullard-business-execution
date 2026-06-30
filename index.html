@@ -188,6 +188,10 @@
     }
     .hero .eyebrow { color: #d5e0e5; }
     .hero-inner {
+      align-items: end;
+      display: grid;
+      gap: clamp(32px, 6vw, 76px);
+      grid-template-columns: minmax(0, 1fr) minmax(260px, .42fr);
       padding-top: clamp(66px, 8vw, 112px);
       padding-bottom: clamp(54px, 7vw, 86px);
     }
@@ -199,6 +203,26 @@
       max-width: 760px;
     }
     .hero-actions { display: flex; flex-wrap: wrap; gap: 13px; margin-top: 34px; }
+    .hero-brief {
+      background: rgba(255, 255, 255, .08);
+      border: 1px solid rgba(255, 255, 255, .28);
+      padding: clamp(24px, 3vw, 32px);
+    }
+    .hero-brief .eyebrow { margin-bottom: 12px; }
+    .hero-brief h2 {
+      font-size: clamp(28px, 3vw, 38px);
+      letter-spacing: -.04em;
+      margin-bottom: 14px;
+    }
+    .hero-brief p { color: #eef3f5; font-size: 16px; line-height: 1.6; margin-bottom: 22px; }
+    .hero-brief strong {
+      color: var(--white);
+      display: block;
+      font-size: 12px;
+      letter-spacing: .14em;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+    }
 
     section { border-bottom: 1px solid var(--line); }
     .section-pad { padding-top: clamp(58px, 7vw, 86px); padding-bottom: clamp(58px, 7vw, 86px); }
@@ -227,31 +251,6 @@
     .result-card { min-height: 158px; }
     .result-card h3 { margin: 0 0 10px; }
     .problem-card p, .result-card p, .service-card p { font-size: 15px; line-height: 1.62; }
-    .brief {
-      background: radial-gradient(circle at 88% 8%, rgba(93, 127, 145, .24), transparent 30%), linear-gradient(135deg, #0f2233, #1b3a52 58%, #0b1d2d);
-      color: var(--white);
-    }
-    .brief .eyebrow { color: #b7c8d2; }
-    .brief h2 { max-width: 760px; }
-    .brief p { color: #d8dce0; font-size: 18px; line-height: 1.7; max-width: 780px; }
-    .brief-box {
-      align-items: center;
-      border: 1px solid rgba(255, 255, 255, .2);
-      display: grid;
-      gap: 24px;
-      grid-template-columns: minmax(0, 1fr) auto;
-      margin-top: 34px;
-      padding: clamp(24px, 4vw, 36px);
-      background: rgba(255, 255, 255, .035);
-    }
-    .brief-box strong {
-      color: var(--white);
-      display: block;
-      font-size: 13px;
-      letter-spacing: .16em;
-      margin-bottom: 8px;
-      text-transform: uppercase;
-    }
     .areas { background: var(--white); }
     .area-list {
       display: grid;
@@ -319,10 +318,9 @@
       .mobile-menu.is-open { display: block; }
     }
     @media (max-width: 960px) {
-      .section-heading, .about-grid { grid-template-columns: 1fr; }
+      .hero-inner, .section-heading, .about-grid { grid-template-columns: 1fr; }
       .section-heading p { padding-top: 0; }
       .problem-grid, .result-grid, .service-grid { grid-template-columns: 1fr; }
-      .brief-box { grid-template-columns: 1fr; }
     }
     @media (max-width: 620px) {
       body { font-size: 17px; }
@@ -332,7 +330,7 @@
       .menu-toggle { font-size: 0; gap: 0; padding: 0 13px; }
       h1 { font-size: clamp(38px, 11vw, 50px); }
       h2 { font-size: clamp(34px, 10vw, 46px); }
-      .hero-lead, .section-heading p, .brief p, .about-copy p, .diagnosis p { font-size: 18px; }
+      .hero-lead, .section-heading p, .about-copy p, .diagnosis p { font-size: 18px; }
       .button { width: 100%; }
       .area-list { grid-template-columns: 1fr; }
       .footer-inner { flex-direction: column; }
@@ -353,9 +351,8 @@
       </a>
       <ul class="nav-links">
         <li><a href="#problem">The Problem</a></li>
-        <li><a href="#results">Results</a></li>
         <li><a href="#services">Services</a></li>
-        <li><a href="#brief">Execution Brief</a></li>
+        <li><a href="#results">Results</a></li>
         <li><a href="#experience">Experience</a></li>
         <li><a class="button accent" href="#diagnosis">Diagnosis Call</a></li>
       </ul>
@@ -367,9 +364,8 @@
     <div class="mobile-menu" id="mobile-menu" hidden>
       <div class="mobile-menu-inner">
         <a href="#problem">The Problem</a>
-        <a href="#results">Results</a>
         <a href="#services">Services</a>
-        <a href="#brief">Execution Brief</a>
+        <a href="#results">Results</a>
         <a href="#experience">Experience</a>
         <a class="button accent" href="#diagnosis">Diagnosis Call</a>
       </div>
@@ -387,6 +383,13 @@
           <a class="button ghost" href="#problem">See The Problem</a>
         </div>
       </div>
+      <aside class="hero-brief reveal" aria-label="Execution Brief signup">
+        <span class="eyebrow">The Execution Brief</span>
+        <h2>Short notes on what makes work move.</h2>
+        <strong>Begins July 10</strong>
+        <p>A regular note on execution, accountability, leadership behavior, and organizational habits.</p>
+        <a class="button accent" href="#diagnosis">Sign Up</a>
+      </aside>
     </div>
   </header>
 
@@ -411,6 +414,35 @@
           <article class="problem-card reveal">
             <h3>Follow-through drifts</h3>
             <p>Handoffs, decisions, and reporting depend on memory, meetings, and workarounds.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="services section-pad" id="services" aria-labelledby="services-title">
+      <div class="shell">
+        <div class="section-heading reveal">
+          <div>
+            <span class="eyebrow">Services</span>
+            <h2 id="services-title">How we help.</h2>
+          </div>
+        </div>
+        <div class="service-grid" aria-label="Services provided by Bullard Business Execution">
+          <article class="service-card reveal">
+            <h3>Execution Support</h3>
+            <p>We help leaders turn priorities into visible action. That includes clearer ownership, better follow-up, and practical systems that help the right work move forward.</p>
+          </article>
+          <article class="service-card reveal">
+            <h3>Accountability Systems</h3>
+            <p>We build simple accountability structures that make expectations clearer and reduce drift. That may include scorecards, meeting rhythms, reporting cadence, task ownership, and leadership visibility.</p>
+          </article>
+          <article class="service-card reveal">
+            <h3>Operational Clarity</h3>
+            <p>We help reduce confusion across the day-to-day flow of work. When handoffs, communication, and reporting become cleaner, the business becomes easier to lead.</p>
+          </article>
+          <article class="service-card reveal">
+            <h3>Leadership Capacity</h3>
+            <p>By improving structure and follow-through, we create more space for better decisions, stronger leadership, and healthier growth.</p>
           </article>
         </div>
       </div>
@@ -449,50 +481,6 @@
             <h3>Growth moves with more consistent execution.</h3>
             <p>The business has a cleaner way to turn priorities into repeated progress.</p>
           </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="services section-pad" id="services" aria-labelledby="services-title">
-      <div class="shell">
-        <div class="section-heading reveal">
-          <div>
-            <span class="eyebrow">Services</span>
-            <h2 id="services-title">How we help.</h2>
-          </div>
-        </div>
-        <div class="service-grid" aria-label="Services provided by Bullard Business Execution">
-          <article class="service-card reveal">
-            <h3>Execution Support</h3>
-            <p>We help leaders turn priorities into visible action. That includes clearer ownership, better follow-up, and practical systems that help the right work move forward.</p>
-          </article>
-          <article class="service-card reveal">
-            <h3>Accountability Systems</h3>
-            <p>We build simple accountability structures that make expectations clearer and reduce drift. That may include scorecards, meeting rhythms, reporting cadence, task ownership, and leadership visibility.</p>
-          </article>
-          <article class="service-card reveal">
-            <h3>Operational Clarity</h3>
-            <p>We help reduce confusion across the day-to-day flow of work. When handoffs, communication, and reporting become cleaner, the business becomes easier to lead.</p>
-          </article>
-          <article class="service-card reveal">
-            <h3>Leadership Capacity</h3>
-            <p>By improving structure and follow-through, we create more space for better decisions, stronger leadership, and healthier growth.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="brief section-pad" id="brief" aria-labelledby="brief-title">
-      <div class="shell reveal">
-        <span class="eyebrow">The Execution Brief</span>
-        <h2 id="brief-title">Short notes on what makes work move.</h2>
-        <p>A regular note on execution, accountability, leadership behavior, and organizational habits.</p>
-        <div class="brief-box">
-          <div>
-            <strong>Begins July 10</strong>
-            <p>Built for owners, executives, and leadership teams.</p>
-          </div>
-          <a class="button accent" href="#diagnosis">Ask About The Brief</a>
         </div>
       </div>
     </section>
@@ -551,9 +539,8 @@
       </span>
       <div class="footer-links" aria-label="Footer navigation">
         <a href="#problem">The Problem</a>
-        <a href="#results">Results</a>
         <a href="#services">Services</a>
-        <a href="#brief">Execution Brief</a>
+        <a href="#results">Results</a>
         <a href="#experience">Experience</a>
         <a href="#diagnosis">Diagnosis Call</a>
         <a href="privacy.html">Privacy</a>
