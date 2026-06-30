@@ -254,12 +254,20 @@
       padding: 17px 0;
     }
     .problem-checklist li + li, .result-checklist li + li { border-top: 1px solid var(--line); }
-    .problem-checklist li::before, .result-checklist li::before {
+    .problem-checklist li::before {
       border: 2px solid var(--accent);
       content: "";
       height: 10px;
       margin-top: .55em;
       width: 10px;
+    }
+    .result-checklist li::before {
+      color: var(--accent);
+      content: "\2192";
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 1;
+      margin-top: .25em;
     }
     .problem-checklist strong, .result-checklist strong {
       color: var(--ink);
@@ -474,7 +482,7 @@
         <div class="section-heading reveal">
           <div>
             <span class="eyebrow">Results</span>
-            <h2 id="results-title">What changes when execution works.</h2>
+            <h2 id="results-title">What moves when execution works:</h2>
           </div>
         </div>
         <ul class="result-checklist reveal" aria-label="Results from working with Bullard Business Execution">
@@ -482,7 +490,7 @@
             <span><strong>Priorities leave meetings with owners.</strong>People know who owns the work, what authority they have, and what happens next.</span>
           </li>
           <li>
-            <span><strong>Managers move with clearer authority.</strong>Managers can act without waiting for every answer to come from the senior team.</span>
+            <span><strong>Managers operate with clear authority.</strong>Managers can act without waiting for every answer to come from the senior team.</span>
           </li>
           <li>
             <span><strong>Decisions happen at the right level.</strong>Escalation becomes intentional instead of the default path for moving work forward.</span>
