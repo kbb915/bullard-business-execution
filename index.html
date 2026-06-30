@@ -282,7 +282,6 @@
       padding: clamp(24px, 3vw, 32px);
     }
     .service-card p { font-size: 15px; line-height: 1.62; }
-    .areas { background: var(--white); }
     .area-list {
       display: grid;
       gap: 14px;
@@ -302,7 +301,7 @@
     }
     .about-cta { background: var(--paper); }
     .about-grid {
-      align-items: center;
+      align-items: start;
       display: grid;
       gap: clamp(30px, 6vw, 72px);
       grid-template-columns: minmax(220px, .42fr) minmax(0, .9fr);
@@ -501,29 +500,7 @@
       </div>
     </section>
 
-    <section class="areas section-pad" id="experience" aria-labelledby="experience-title">
-      <div class="shell">
-        <div class="section-heading reveal">
-          <div>
-            <span class="eyebrow">Experience</span>
-            <h2 id="experience-title">Kevin has worked across practical, complex operating environments.</h2>
-          </div>
-        </div>
-        <div class="area-list reveal" aria-label="Sectors and environments Kevin has worked in">
-          <span>Manufacturing</span>
-          <span>Retail</span>
-          <span>Municipal Government</span>
-          <span>Education</span>
-          <span>Nonprofit</span>
-          <span>Service Organizations</span>
-          <span>Real Estate</span>
-          <span>Leadership Development</span>
-          <span>Executive Coaching</span>
-        </div>
-      </div>
-    </section>
-
-    <section class="about-cta section-pad" aria-labelledby="about-title">
+    <section class="about-cta section-pad" id="experience" aria-labelledby="about-title">
       <div class="shell about-grid">
         <figure class="about-photo reveal">
           <img src="assets/kbb-headshot.png" alt="Kevin Bullard, founder of Bullard Business Execution.">
@@ -533,6 +510,17 @@
           <h2 id="about-title">I help leaders make execution simpler, clearer, and easier to sustain.</h2>
           <p>Kevin brings 20+ years of experience as a transformational management consultant, chief leadership officer, business owner, and executive advisor.</p>
           <p>He has led leadership development and execution work inside complex organizations, including a 2,400-employee municipality and large public-company environments.</p>
+          <div class="area-list" aria-label="Sectors and environments Kevin has worked in">
+            <span>Manufacturing</span>
+            <span>Retail</span>
+            <span>Municipal Government</span>
+            <span>Education</span>
+            <span>Nonprofit</span>
+            <span>Service Organizations</span>
+            <span>Real Estate</span>
+            <span>Leadership Development</span>
+            <span>Executive Coaching</span>
+          </div>
         </div>
       </div>
     </section>
