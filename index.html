@@ -43,10 +43,10 @@
     .button.ghost { background: transparent; border-color: rgba(21, 27, 32, .22); color: var(--ink); }
     .button.ghost:hover { background: var(--white); border-color: var(--blue); }
     .nav { background: rgba(19, 25, 30, .96); border-bottom: 1px solid rgba(255, 255, 255, .14); color: var(--white); position: sticky; top: 0; z-index: 20; backdrop-filter: blur(14px); }
-    .nav-inner { align-items: center; display: flex; gap: 24px; height: 76px; justify-content: space-between; }
+    .nav-inner { align-items: center; display: flex; gap: 22px; height: 76px; justify-content: space-between; }
     .brand { align-items: center; display: inline-flex; gap: 13px; font-size: 13px; font-weight: 800; letter-spacing: .12em; line-height: 1.25; text-transform: uppercase; white-space: nowrap; }
     .brand-logo { background: var(--white); display: block; height: 40px; object-fit: contain; padding: 5px 7px; width: 112px; box-shadow: 0 0 0 1px rgba(255, 255, 255, .16); }
-    .nav-links { align-items: center; display: flex; gap: clamp(16px, 2.4vw, 28px); list-style: none; margin: 0; padding: 0; color: #e6e1d8; font-size: 14px; }
+    .nav-links { align-items: center; display: flex; gap: clamp(14px, 2vw, 24px); list-style: none; margin: 0; padding: 0; color: #e6e1d8; font-size: 14px; }
     .nav-links a:not(.button):hover { color: #ffffff; }
     .menu-toggle { align-items: center; background: rgba(255, 255, 255, .08); border: 1px solid rgba(255, 255, 255, .22); color: var(--white); cursor: pointer; display: none; font: inherit; font-size: 12px; font-weight: 800; gap: 10px; letter-spacing: .12em; min-height: 44px; padding: 0 14px; text-transform: uppercase; }
     .menu-icon { display: inline-grid; gap: 4px; width: 18px; }
@@ -75,6 +75,10 @@
     .fix-card { background: var(--white); min-height: 228px; padding: clamp(24px, 3vw, 34px); }
     .fix-card span { color: var(--blue); display: block; font-size: 12px; font-weight: 800; letter-spacing: .18em; margin-bottom: 28px; text-transform: uppercase; }
     .fix-card p { font-size: 15px; line-height: 1.62; }
+    .services { background: var(--paper); }
+    .service-grid { display: grid; gap: 1px; grid-template-columns: repeat(4, 1fr); background: var(--line); border: 1px solid var(--line); }
+    .service-card { background: var(--white); min-height: 210px; padding: clamp(24px, 3vw, 32px); }
+    .service-card p { font-size: 15px; line-height: 1.62; }
     .brief { background: var(--night); color: var(--white); }
     .brief .eyebrow { color: #a9bdc8; }
     .brief h2 { max-width: 760px; }
@@ -108,13 +112,15 @@
     .footer-rights { flex-basis: 100%; margin: 0; color: #aaa59c; }
     .js .reveal { opacity: 0; transform: translateY(14px); transition: opacity .48s ease, transform .48s ease; }
     .js .reveal.visible { opacity: 1; transform: none; }
-    @media (max-width: 960px) {
+    @media (max-width: 1100px) {
       .nav-links { display: none; }
       .menu-toggle { display: inline-flex; }
       .mobile-menu.is-open { display: block; }
+    }
+    @media (max-width: 960px) {
       .hero-inner, .section-heading, .about-grid { grid-template-columns: 1fr; }
       .section-heading p { padding-top: 0; }
-      .fix-grid { grid-template-columns: 1fr; }
+      .fix-grid, .service-grid { grid-template-columns: 1fr; }
       .brief-box { grid-template-columns: 1fr; }
       .experience-strip { grid-template-columns: repeat(2, 1fr); }
       .experience-strip div:nth-child(2) { border-right: 0; }
@@ -152,6 +158,7 @@
       </a>
       <ul class="nav-links">
         <li><a href="#fix">What I Fix</a></li>
+        <li><a href="#services">Services</a></li>
         <li><a href="#brief">Execution Brief</a></li>
         <li><a href="#areas">Experience</a></li>
         <li><a class="button accent" href="#diagnosis">Diagnosis Call</a></li>
@@ -164,6 +171,7 @@
     <div class="mobile-menu" id="mobile-menu" hidden>
       <div class="mobile-menu-inner">
         <a href="#fix">What I Fix</a>
+        <a href="#services">Services</a>
         <a href="#brief">Execution Brief</a>
         <a href="#areas">Experience</a>
         <a class="button accent" href="#diagnosis">Diagnosis Call</a>
@@ -229,6 +237,36 @@
             <span>06</span>
             <h3>The business needs a simpler way to execute</h3>
             <p>I help leaders diagnose the drag, clarify what must change, and practice better rhythms in the work that already matters.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="services section-pad" id="services" aria-labelledby="services-title">
+      <div class="shell">
+        <div class="section-heading reveal">
+          <div>
+            <span class="eyebrow">Services</span>
+            <h2 id="services-title">Practical support for leaders and teams.</h2>
+          </div>
+          <p>Engagements are shaped around the execution problem in front of you: individual leadership growth, team alignment, operating rhythm, or a specific priority that is not moving.</p>
+        </div>
+        <div class="service-grid" aria-label="Services provided by Bullard Business Execution">
+          <article class="service-card reveal">
+            <h3>Executive Coaching</h3>
+            <p>One-on-one support for leaders who need to sharpen judgment, increase influence, delegate more effectively, and lead with clearer ownership.</p>
+          </article>
+          <article class="service-card reveal">
+            <h3>Consulting</h3>
+            <p>Focused work with owners and leadership teams to diagnose execution drag, clarify decision rights, and improve accountability around real priorities.</p>
+          </article>
+          <article class="service-card reveal">
+            <h3>Workshop Facilitation</h3>
+            <p>Structured working sessions that help teams align on the problem, make decisions, clarify handoffs, and leave with practical next steps.</p>
+          </article>
+          <article class="service-card reveal">
+            <h3>Leadership Team Alignment</h3>
+            <p>Support for teams that need clearer roles, cleaner expectations, and a better rhythm for decisions, communication, and follow-through.</p>
           </article>
         </div>
       </div>
@@ -327,6 +365,7 @@
       </span>
       <div class="footer-links" aria-label="Footer navigation">
         <a href="#fix">What I Fix</a>
+        <a href="#services">Services</a>
         <a href="#brief">Execution Brief</a>
         <a href="#areas">Experience</a>
         <a href="#diagnosis">Diagnosis Call</a>
@@ -368,7 +407,7 @@
       });
       mobileMenu.querySelectorAll("a").forEach((link) => link.addEventListener("click", closeMenu));
       window.addEventListener("resize", () => {
-        if (window.matchMedia("(min-width: 961px)").matches) closeMenu();
+        if (window.matchMedia("(min-width: 1101px)").matches) closeMenu();
       });
     }
   </script>
