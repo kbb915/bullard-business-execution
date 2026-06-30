@@ -3,27 +3,25 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Bullard Business Execution helps organizations grow by improving execution, accountability, leadership capacity, and operational performance.">
-  <title>Bullard Business Execution | Organizational Performance &amp; Execution</title>
+  <meta name="description" content="Bullard Business Execution helps leaders fix execution drag, clarify ownership, and improve follow-through.">
+  <title>Bullard Business Execution | Fix Execution Drag</title>
   <script>document.documentElement.classList.add("js");</script>
   <style>
     :root {
-      --ink: #161c21;
-      --ink-soft: #34404a;
-      --muted: #64707a;
+      --ink: #151b20;
+      --ink-soft: #394650;
+      --muted: #65727c;
       --paper: #f7f5f0;
       --white: #fffefa;
-      --line: #dad6cd;
-      --line-dark: rgba(245, 242, 234, .17);
+      --line: #d9d4ca;
       --night: #13191e;
-      --night-soft: #20282e;
-      --brass: #345364;
-      --brass-light: #9aadb9;
-      --diagnosis: #c94f32;
-      --diagnosis-dark: #a43c27;
-      --wash: #ece8de;
-      --max: 1200px;
+      --blue: #345364;
+      --blue-soft: #dbe5e9;
+      --accent: #c94f32;
+      --accent-dark: #a43c27;
+      --max: 1120px;
     }
+
     *, *::before, *::after { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body {
@@ -38,51 +36,82 @@
       position: fixed;
       inset: 0;
       pointer-events: none;
-      background-image: radial-gradient(rgba(22, 28, 33, .035) .7px, transparent .7px);
+      background-image: radial-gradient(rgba(21, 27, 32, .035) .7px, transparent .7px);
       background-size: 5px 5px;
-      opacity: .44;
+      opacity: .36;
       z-index: 10;
     }
     a { color: inherit; text-decoration: none; }
     a:focus-visible, button:focus-visible {
-      outline: 2px solid var(--brass-light);
+      outline: 2px solid var(--blue);
       outline-offset: 4px;
     }
-    p { margin: 0 0 18px; color: var(--muted); }
     h1, h2, h3, p { text-wrap: pretty; }
     h1, h2 {
       font-family: "Iowan Old Style", "Palatino Linotype", Georgia, serif;
       font-weight: 400;
-      letter-spacing: -.055em;
-      line-height: 1.04;
+      letter-spacing: -.045em;
+      line-height: 1.05;
       margin: 0;
     }
-    h2 { font-size: clamp(40px, 5.1vw, 62px); }
+    h1 { font-size: clamp(52px, 7vw, 88px); max-width: 850px; }
+    h2 { font-size: clamp(34px, 4.5vw, 56px); }
     h3 {
       font-size: 20px;
-      font-weight: 550;
-      line-height: 1.32;
-      letter-spacing: -.025em;
-      margin: 0 0 12px;
+      font-weight: 650;
+      letter-spacing: -.02em;
+      line-height: 1.28;
+      margin: 0 0 9px;
     }
+    p { color: var(--muted); margin: 0; }
     .shell {
       max-width: var(--max);
       margin: 0 auto;
-      padding-left: clamp(22px, 4.4vw, 48px);
-      padding-right: clamp(22px, 4.4vw, 48px);
+      padding-left: clamp(22px, 4vw, 46px);
+      padding-right: clamp(22px, 4vw, 46px);
     }
     .eyebrow {
-      color: var(--brass);
+      color: var(--blue);
       display: block;
       font-size: 11px;
-      font-weight: 700;
-      letter-spacing: .22em;
-      margin-bottom: 18px;
+      font-weight: 800;
+      letter-spacing: .2em;
+      margin-bottom: 16px;
       text-transform: uppercase;
     }
-    .dark .eyebrow { color: var(--brass-light); }
+    .button {
+      align-items: center;
+      background: var(--night);
+      border: 1px solid var(--night);
+      color: var(--white);
+      display: inline-flex;
+      font-size: 13px;
+      font-weight: 700;
+      gap: 14px;
+      justify-content: center;
+      letter-spacing: .08em;
+      min-height: 52px;
+      padding: 0 22px;
+      text-transform: uppercase;
+      transition: background .2s ease, border-color .2s ease;
+    }
+    .button::after { content: "\2192"; font-size: 17px; font-weight: 400; }
+    .button:hover { background: var(--blue); border-color: var(--blue); }
+    .button.accent {
+      background: var(--accent);
+      border-color: var(--accent);
+      box-shadow: 0 12px 26px rgba(201, 79, 50, .2);
+    }
+    .button.accent:hover { background: var(--accent-dark); border-color: var(--accent-dark); }
+    .button.ghost {
+      background: transparent;
+      border-color: rgba(21, 27, 32, .22);
+      color: var(--ink);
+    }
+    .button.ghost:hover { background: var(--white); border-color: var(--blue); }
+
     .nav {
-      background: rgba(247, 245, 240, .94);
+      background: rgba(247, 245, 240, .95);
       border-bottom: 1px solid var(--line);
       position: sticky;
       top: 0;
@@ -92,887 +121,312 @@
     .nav-inner {
       align-items: center;
       display: flex;
-      gap: 34px;
-      height: 78px;
+      gap: 24px;
+      height: 76px;
       justify-content: space-between;
     }
     .brand {
       align-items: center;
       display: inline-flex;
-      gap: 14px;
+      gap: 13px;
       font-size: 13px;
-      font-weight: 700;
-      letter-spacing: .14em;
-      line-height: 1.35;
+      font-weight: 800;
+      letter-spacing: .12em;
+      line-height: 1.25;
       text-transform: uppercase;
       white-space: nowrap;
     }
     .brand-logo {
       background: var(--white);
       display: block;
-      height: 42px;
+      height: 40px;
       object-fit: contain;
-      object-position: center;
       padding: 5px 7px;
-      width: 116px;
-      box-shadow: 0 0 0 1px rgba(22, 28, 33, .16);
+      width: 112px;
+      box-shadow: 0 0 0 1px rgba(21, 27, 32, .14);
     }
     .nav-links {
       align-items: center;
       display: flex;
-      gap: clamp(16px, 2.5vw, 30px);
+      gap: clamp(16px, 2.4vw, 28px);
       list-style: none;
       margin: 0;
       padding: 0;
       color: var(--ink-soft);
       font-size: 14px;
     }
-    .nav-links a:not(.button):hover { color: var(--brass); }
+    .nav-links a:not(.button):hover { color: var(--blue); }
     .menu-toggle {
       align-items: center;
       background: var(--white);
-      border: 1px solid rgba(22, 28, 33, .22);
+      border: 1px solid rgba(21, 27, 32, .22);
       color: var(--ink);
       cursor: pointer;
       display: none;
       font: inherit;
       font-size: 12px;
-      font-weight: 700;
+      font-weight: 800;
       gap: 10px;
       letter-spacing: .12em;
       min-height: 44px;
       padding: 0 14px;
       text-transform: uppercase;
     }
-    .menu-icon {
-      display: inline-grid;
-      gap: 4px;
-      width: 18px;
-    }
-    .menu-icon span {
-      background: currentColor;
-      display: block;
-      height: 2px;
-      transition: transform .2s ease, opacity .2s ease;
-      width: 100%;
-    }
-    .menu-toggle[aria-expanded="true"] .menu-icon span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
-    .menu-toggle[aria-expanded="true"] .menu-icon span:nth-child(2) { opacity: 0; }
-    .menu-toggle[aria-expanded="true"] .menu-icon span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+    .menu-icon { display: inline-grid; gap: 4px; width: 18px; }
+    .menu-icon span { background: currentColor; display: block; height: 2px; width: 100%; }
     .mobile-menu {
       background: rgba(255, 254, 250, .98);
       border-top: 1px solid var(--line);
-      box-shadow: 0 22px 42px rgba(22, 28, 33, .16);
+      box-shadow: 0 20px 38px rgba(21, 27, 32, .13);
       display: none;
     }
     .mobile-menu[hidden] { display: none; }
-    .mobile-menu-inner {
-      display: grid;
-      gap: 1px;
-      padding-bottom: 20px;
-      padding-top: 12px;
-    }
+    .mobile-menu-inner { display: grid; gap: 1px; padding: 12px clamp(22px, 4vw, 46px) 20px; }
     .mobile-menu a {
-      border-bottom: 1px solid rgba(22, 28, 33, .09);
+      border-bottom: 1px solid rgba(21, 27, 32, .09);
       color: var(--ink-soft);
       display: flex;
-      font-size: 15px;
       justify-content: space-between;
       padding: 15px 0;
     }
-    .mobile-menu a:not(.button)::after {
-      color: var(--brass);
-      content: "\2192";
-    }
-    .mobile-menu .button {
-      margin-top: 14px;
-      width: 100%;
-    }
-    .button {
-      align-items: center;
-      background: var(--night);
-      border: 1px solid var(--night);
-      color: var(--white);
-      display: inline-flex;
-      font-size: 13px;
-      font-weight: 600;
-      gap: 18px;
-      justify-content: center;
-      letter-spacing: .08em;
-      min-height: 51px;
-      padding: 0 23px;
-      text-transform: uppercase;
-      transition: background .22s ease, border-color .22s ease, color .22s ease;
-    }
-    .button::after { content: "\2192"; font-size: 18px; font-weight: 400; }
-    .button:hover { background: var(--brass); border-color: var(--brass); }
-    .button.diagnosis {
-      background: var(--diagnosis);
-      border-color: var(--diagnosis);
-      color: var(--white);
-      box-shadow: 0 12px 26px rgba(201, 79, 50, .24);
-    }
-    .button.diagnosis:hover {
-      background: var(--diagnosis-dark);
-      border-color: var(--diagnosis-dark);
-    }
-    .button.light {
-      background: var(--white);
-      border-color: var(--white);
-      color: var(--night);
-    }
-    .button.light:hover {
-      background: var(--brass-light);
-      border-color: var(--brass-light);
-    }
-    .button.ghost {
-      background: transparent;
-      border-color: rgba(255, 255, 255, .42);
-    }
-    .button.ghost:hover { background: rgba(255, 255, 255, .1); border-color: var(--white); }
+    .mobile-menu a:not(.button)::after { color: var(--blue); content: "\2192"; }
+    .mobile-menu .button { margin-top: 14px; width: 100%; }
+
     .hero {
-      background: var(--night);
-      color: var(--white);
-      overflow: hidden;
+      background: linear-gradient(180deg, var(--white), var(--paper));
+      border-bottom: 1px solid var(--line);
     }
-    .hero-grid {
+    .hero-inner {
       display: grid;
-      grid-template-columns: minmax(430px, 1.08fr) minmax(360px, .92fr);
-      max-width: 1440px;
-      margin: 0 auto;
-      min-height: calc(100vh - 78px);
-    }
-    .hero-content {
-      align-self: center;
-      max-width: 760px;
-      padding: clamp(64px, 8vw, 104px) clamp(26px, 6vw, 82px);
-    }
-    h1 {
-      font-size: clamp(54px, 6.2vw, 84px);
-      max-width: 720px;
-      margin-bottom: 27px;
+      gap: clamp(34px, 7vw, 84px);
+      grid-template-columns: minmax(0, 1.1fr) minmax(280px, .58fr);
+      padding-top: clamp(66px, 8vw, 112px);
+      padding-bottom: clamp(54px, 7vw, 86px);
     }
     .hero-lead {
-      color: #d1cfc8;
-      font-size: clamp(17px, 1.5vw, 19px);
-      line-height: 1.72;
-      max-width: 602px;
-      margin-bottom: 38px;
-    }
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 13px;
-      margin-bottom: clamp(46px, 6vw, 66px);
-    }
-    .thesis {
-      border-left: 1px solid var(--brass);
-      color: #ece8df;
-      font-family: "Iowan Old Style", Georgia, serif;
-      font-weight: 400;
-      font-size: clamp(21px, 2.2vw, 27px);
-      letter-spacing: -.03em;
-      line-height: 1.35;
-      margin: 0;
-      max-width: 555px;
-      padding-left: 22px;
-    }
-    .hero-visual {
-      min-height: 620px;
-      position: relative;
-    }
-    .hero-visual img {
-      display: block;
-      height: 100%;
-      filter: saturate(.75) contrast(.95);
-      opacity: .62;
-      object-fit: cover;
-      object-position: center 96%;
-      width: 100%;
-    }
-    .hero-visual::after {
-      background: linear-gradient(90deg, var(--night), transparent 18%, transparent 72%, rgba(19, 25, 30, .22));
-      content: "";
-      inset: 0;
-      position: absolute;
-    }
-    .hero-caption {
-      background: rgba(19, 25, 30, .74);
-      border-top: 1px solid var(--line-dark);
-      bottom: 0;
-      color: #d6d1c6;
-      font-size: 12px;
-      left: 0;
-      letter-spacing: .09em;
-      padding: 19px clamp(20px, 4vw, 34px);
-      position: absolute;
-      right: 0;
-      text-transform: uppercase;
-      z-index: 1;
-    }
-    .brief-signup {
-      background: var(--paper);
-      border-bottom: 1px solid var(--line);
-      padding: clamp(28px, 4vw, 46px) 0;
-    }
-    .brief-card {
-      align-items: center;
-      background: var(--white);
-      border: 1px solid var(--line);
-      display: grid;
-      gap: clamp(22px, 4vw, 46px);
-      grid-template-columns: minmax(0, 1.5fr) minmax(230px, .5fr);
-      padding: clamp(24px, 4vw, 38px);
-    }
-    .brief-card h2 {
-      color: var(--ink);
-      font-size: clamp(31px, 3.8vw, 46px);
-      margin-bottom: 14px;
-    }
-    .brief-card p {
       color: var(--ink-soft);
-      font-size: clamp(16px, 1.5vw, 18px);
-      line-height: 1.66;
-      margin-bottom: 12px;
-      max-width: 840px;
-    }
-    .brief-card p:last-child { margin-bottom: 0; }
-    .brief-action {
-      align-items: flex-start;
-      border-left: 1px solid var(--line);
-      display: grid;
-      gap: 13px;
-      justify-items: start;
-      padding-left: clamp(22px, 4vw, 34px);
-    }
-    .brief-action small {
-      color: var(--muted);
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: .14em;
-      line-height: 1.55;
-      text-transform: uppercase;
-    }
-    .recognition {
-      background: var(--white);
-      border-bottom: 1px solid var(--line);
-    }
-    .recognition-grid {
-      display: grid;
-      grid-template-columns: .88fr 1.12fr;
-      gap: clamp(40px, 8vw, 106px);
-      padding-top: clamp(34px, 4.5vw, 54px);
-      padding-bottom: clamp(62px, 7vw, 86px);
-    }
-    .recognition h2 { font-size: clamp(37px, 4.5vw, 54px); }
-    .lead {
-      color: var(--ink-soft);
-      font-size: clamp(18px, 2vw, 21px);
+      font-size: clamp(18px, 2vw, 22px);
       line-height: 1.62;
-      margin-bottom: 31px;
+      margin-top: 26px;
+      max-width: 760px;
     }
-    .signals {
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 13px; margin-top: 34px; }
+    .hero-card {
+      align-self: end;
+      background: var(--night);
+      color: var(--white);
+      padding: clamp(26px, 4vw, 38px);
+    }
+    .hero-card p { color: #d8d5cc; font-size: 18px; line-height: 1.56; }
+    .hero-card strong {
+      color: var(--white);
+      display: block;
+      font-family: "Iowan Old Style", Georgia, serif;
+      font-size: clamp(25px, 3vw, 34px);
+      font-weight: 400;
+      letter-spacing: -.035em;
+      line-height: 1.15;
+      margin-bottom: 15px;
+    }
+
+    section { border-bottom: 1px solid var(--line); }
+    .section-pad { padding-top: clamp(66px, 8vw, 96px); padding-bottom: clamp(66px, 8vw, 96px); }
+    .section-heading {
+      display: grid;
+      gap: clamp(22px, 5vw, 60px);
+      grid-template-columns: minmax(0, .9fr) minmax(280px, .65fr);
+      margin-bottom: clamp(32px, 5vw, 54px);
+    }
+    .section-heading p { color: var(--ink-soft); font-size: 18px; line-height: 1.66; padding-top: 34px; }
+
+    .fix-grid {
+      display: grid;
+      gap: 1px;
+      grid-template-columns: repeat(3, 1fr);
+      background: var(--line);
+      border: 1px solid var(--line);
+    }
+    .fix-card {
+      background: var(--white);
+      min-height: 228px;
+      padding: clamp(24px, 3vw, 34px);
+    }
+    .fix-card span {
+      color: var(--blue);
+      display: block;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .18em;
+      margin-bottom: 28px;
+      text-transform: uppercase;
+    }
+    .fix-card p { font-size: 15px; line-height: 1.62; }
+
+    .brief {
+      background: var(--night);
+      color: var(--white);
+    }
+    .brief .eyebrow { color: #a9bdc8; }
+    .brief h2 { max-width: 760px; }
+    .brief p { color: #d5d3cb; font-size: 18px; line-height: 1.7; max-width: 780px; }
+    .brief-box {
+      align-items: center;
+      border: 1px solid rgba(255, 255, 255, .18);
+      display: grid;
+      gap: 24px;
+      grid-template-columns: minmax(0, 1fr) auto;
+      margin-top: 34px;
+      padding: clamp(24px, 4vw, 36px);
+    }
+    .brief-box strong {
+      color: var(--white);
+      display: block;
+      font-size: 13px;
+      letter-spacing: .16em;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+    }
+
+    .areas { background: var(--white); }
+    .area-list {
+      display: grid;
+      gap: 14px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      margin-top: 30px;
+    }
+    .area-list span {
+      border: 1px solid rgba(52, 83, 100, .18);
+      color: var(--ink-soft);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      line-height: 1.35;
+      padding: 12px 10px;
+      text-align: center;
+      text-transform: uppercase;
+    }
+    .experience-strip {
       border-top: 1px solid var(--line);
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      gap: 1px;
+      grid-template-columns: repeat(4, 1fr);
+      margin-top: 44px;
     }
-    .signal {
-      border-bottom: 1px solid var(--line);
-      color: var(--ink-soft);
-      font-size: 15px;
-      line-height: 1.45;
-      padding: 18px 18px 18px 0;
+    .experience-strip div {
+      border-right: 1px solid var(--line);
+      padding: 22px 18px 0 0;
     }
-    .signal:nth-child(odd) { border-right: 1px solid var(--line); margin-right: 18px; }
-    .about {
+    .experience-strip div:last-child { border-right: 0; }
+    .experience-strip strong {
+      display: block;
+      font-family: "Iowan Old Style", Georgia, serif;
+      font-size: 25px;
+      font-weight: 400;
+      letter-spacing: -.035em;
+      line-height: 1.16;
+      margin-bottom: 8px;
+    }
+    .experience-strip p { font-size: 14px; line-height: 1.5; }
+
+    .about-cta {
       background: var(--paper);
-      border-bottom: 1px solid var(--line);
     }
     .about-grid {
       align-items: center;
       display: grid;
-      gap: clamp(34px, 7vw, 84px);
-      grid-template-columns: .78fr 1.22fr;
-      padding-top: clamp(72px, 8vw, 104px);
-      padding-bottom: clamp(72px, 8vw, 104px);
+      gap: clamp(30px, 6vw, 72px);
+      grid-template-columns: minmax(220px, .42fr) minmax(0, .9fr);
     }
     .about-photo {
       background: var(--white);
       border: 1px solid var(--line);
       margin: 0;
-      padding: clamp(12px, 2vw, 18px);
+      padding: 12px;
     }
-    .about-photo img {
-      display: block;
-      height: auto;
-      width: 100%;
-    }
-    .about-copy h2 {
-      margin-bottom: 25px;
-      max-width: 720px;
-    }
-    .about-copy .lead {
-      margin-bottom: 23px;
-      max-width: 720px;
-    }
-    section.block {
-      padding-top: clamp(72px, 9vw, 112px);
-      padding-bottom: clamp(72px, 9vw, 112px);
-    }
-    .dark {
+    .about-photo img { display: block; width: 100%; height: auto; }
+    .about-copy p { color: var(--ink-soft); font-size: 18px; line-height: 1.68; margin-top: 18px; }
+
+    .diagnosis {
       background: var(--night);
       color: var(--white);
-    }
-    .section-heading {
-      display: grid;
-      gap: 42px;
-      grid-template-columns: minmax(320px, .86fr) minmax(300px, .62fr);
-      justify-content: space-between;
-      margin-bottom: clamp(43px, 6vw, 62px);
-    }
-    .section-heading p {
-      font-size: 18px;
-      line-height: 1.68;
-      padding-top: 42px;
-    }
-    .dark .section-heading p { color: #bfc2c0; }
-    .chain {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-    }
-    .chain-step {
-      border: 1px solid var(--line-dark);
-      margin-left: -1px;
-      min-height: 206px;
-      padding: clamp(25px, 3vw, 32px);
-      position: relative;
-    }
-    .chain-step:not(:last-child)::after {
-      background: var(--night);
-      color: var(--brass-light);
-      content: "\2192";
-      font-size: 21px;
-      padding: 4px 10px;
-      position: absolute;
-      right: -20px;
-      top: 32px;
-      z-index: 2;
-    }
-    .chain-step small {
-      color: var(--brass-light);
-      display: block;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: .2em;
-      margin-bottom: 25px;
-    }
-    .chain-step p {
-      color: #d3d1ca;
-      font-size: 15px;
-      line-height: 1.55;
-      margin: 0;
-    }
-    .chain-step strong {
-      color: var(--white);
-      display: block;
-      font-size: 20px;
-      font-weight: 500;
-      letter-spacing: -.03em;
-      margin-bottom: 9px;
-    }
-    .contrast {
-      background: var(--wash);
-    }
-    .split {
-      display: grid;
-      gap: clamp(28px, 5vw, 54px);
-      grid-template-columns: repeat(2, 1fr);
-      margin-top: 52px;
-    }
-    #miss.block {
-      padding-top: clamp(48px, 6vw, 78px);
-      padding-bottom: clamp(56px, 7vw, 88px);
-    }
-    #miss .section-heading {
-      align-items: end;
-      gap: clamp(22px, 4vw, 44px);
-      margin-bottom: 30px;
-    }
-    #miss .section-heading p {
-      max-width: 480px;
-      padding-top: 0;
-    }
-    .source-map {
-      border: 1px solid var(--line);
-      display: grid;
-      grid-template-columns: 1fr minmax(46px, 64px) 1fr;
-      margin-top: 0;
-    }
-    .source-col {
-      padding: clamp(24px, 4vw, 36px);
-    }
-    .source-col:first-child { border-right: 1px solid var(--line); }
-    .source-col:last-child { border-left: 1px solid var(--line); }
-    .source-col h3 {
-      color: var(--brass);
-      font-size: 12px;
-      letter-spacing: .18em;
-      margin-bottom: 22px;
-      text-transform: uppercase;
-    }
-    .source-node {
-      align-items: center;
-      border-bottom: 1px solid var(--line);
-      color: var(--ink-soft);
-      display: flex;
-      font-size: 17px;
-      gap: 13px;
-      min-height: 58px;
-    }
-    .source-node:last-child { border-bottom: 0; }
-    .source-dot {
-      background: var(--brass);
-      border-radius: 999px;
-      display: inline-block;
-      flex: 0 0 10px;
-      height: 10px;
-      width: 10px;
-    }
-    .source-arrow {
-      align-items: center;
-      background: rgba(52, 83, 100, .08);
-      color: var(--brass);
-      display: flex;
-      font-size: 30px;
-      font-weight: 700;
-      justify-content: center;
-    }
-    .miss-photo {
-      background: var(--white);
-      border: 1px solid var(--line);
-      margin: 42px 0 0;
-      position: relative;
-    }
-    .miss-photo img {
-      aspect-ratio: 16 / 7;
-      display: block;
-      filter: saturate(.82) contrast(.98);
-      height: auto;
-      object-fit: cover;
-      object-position: center;
-      width: 100%;
-    }
-    .miss-photo figcaption {
-      background: rgba(255, 254, 250, .92);
-      bottom: 0;
-      color: var(--ink-soft);
-      font-size: 15px;
-      left: 0;
-      line-height: 1.55;
-      max-width: 620px;
-      padding: 18px 22px;
-      position: absolute;
-    }
-    .panel {
-      background: var(--white);
-      border: 1px solid var(--line);
-      padding: clamp(28px, 4vw, 41px);
-    }
-    .panel.emphasis {
-      border-top: 3px solid var(--brass);
-    }
-    .panel-label {
-      color: var(--brass);
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: .2em;
-      margin-bottom: 24px;
-      text-transform: uppercase;
-    }
-    .plain-list {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-    }
-    .plain-list li {
-      border-bottom: 1px solid var(--line);
-      color: var(--ink-soft);
-      padding: 13px 0;
-    }
-    .plain-list li:first-child { padding-top: 0; }
-    .plain-list li:last-child { border: 0; padding-bottom: 0; }
-    .panel.emphasis li { color: var(--ink); font-weight: 500; }
-    .analogy {
-      border-left: 2px solid var(--brass);
-      color: var(--ink);
-      font-family: "Iowan Old Style", "Palatino Linotype", Georgia, serif;
-      font-size: clamp(23px, 2.6vw, 30px);
-      letter-spacing: -.035em;
-      line-height: 1.38;
-      margin: clamp(38px, 5vw, 52px) 0 0;
-      max-width: 984px;
-      padding: 4px 0 4px clamp(22px, 3vw, 31px);
-    }
-    .services-grid {
-      display: grid;
-      gap: 18px;
-      grid-template-columns: repeat(3, 1fr);
-    }
-    .service {
-      background: var(--white);
-      border: 1px solid var(--line);
-      margin: 0;
-      min-height: 0;
-      padding: clamp(25px, 4vw, 36px);
-    }
-    .service:last-child { margin-right: 0; }
-    .service .number {
-      color: var(--brass);
-      display: block;
-      font-size: 12px;
-      letter-spacing: .18em;
-      margin-bottom: 34px;
-    }
-    .service p { font-size: 15px; line-height: 1.6; margin: 0; }
-    .ai-question {
-      margin-top: 18px;
-    }
-    .ai-question h3 {
-      font-family: "Iowan Old Style", "Palatino Linotype", Georgia, serif;
-      font-size: clamp(28px, 3.2vw, 40px);
-      font-weight: 400;
-      letter-spacing: -.04em;
-      line-height: 1.12;
-      margin-bottom: 14px;
-    }
-    .ai-question p {
-      max-width: 900px;
-    }
-    .outcomes {
-      background: var(--white);
-    }
-    .outcome-layout {
-      align-items: start;
-      display: grid;
-      gap: clamp(38px, 7vw, 92px);
-      grid-template-columns: .88fr 1.12fr;
-    }
-    .outcome-bars {
-      border-left: 1px solid var(--line);
-      display: grid;
-      gap: 18px;
-      padding-left: clamp(24px, 4vw, 42px);
-    }
-    .outcome-bar {
-      display: grid;
-      gap: 8px;
-    }
-    .outcome-bar strong {
-      color: var(--ink);
-      font-size: 17px;
-      font-weight: 650;
-    }
-    .outcome-bar span {
-      background: var(--brass);
-      display: block;
-      height: 14px;
-      width: var(--value);
-    }
-    .experience-environments {
-      border-top: 1px solid var(--line);
-      margin-top: 52px;
-      padding-top: 25px;
-    }
-    .experience-environments h3 {
-      color: var(--ink);
-      font-size: clamp(24px, 2.5vw, 32px);
-      margin-bottom: 12px;
-    }
-    .experience-environments p {
-      color: var(--ink-soft);
-      font-size: 16px;
-      line-height: 1.66;
-      margin-bottom: 20px;
-      max-width: 820px;
-    }
-    .environment-list {
-      display: grid;
-      gap: 14px 18px;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-    .environment-list span {
-      border: 1px solid rgba(52, 83, 100, .18);
-      color: var(--muted);
-      font-size: 13px;
-      letter-spacing: .08em;
-      line-height: 1.35;
-      padding: 9px 10px;
-      text-align: center;
-      text-transform: uppercase;
-      white-space: nowrap;
-    }
-    .testimonials {
-      background: var(--wash);
-    }
-    .testimonial-grid {
-      display: grid;
-      gap: 18px;
-      grid-template-columns: repeat(3, 1fr);
-      margin-top: 42px;
-    }
-    .testimonial-grid.endorsements {
-      grid-template-columns: repeat(4, 1fr);
-      margin-top: 30px;
-    }
-    .testimonial {
-      background: var(--white);
-      border: 1px solid var(--line);
-      padding: clamp(26px, 3vw, 34px);
-    }
-    .testimonial blockquote {
-      color: var(--ink);
-      font-family: "Iowan Old Style", "Palatino Linotype", Georgia, serif;
-      font-size: clamp(21px, 2vw, 25px);
-      letter-spacing: -.035em;
-      line-height: 1.34;
-      margin: 0 0 22px;
-    }
-    .testimonial cite {
-      color: var(--muted);
-      display: block;
-      font-size: 13px;
-      font-style: normal;
-      line-height: 1.5;
-    }
-    .testimonial-note {
-      color: var(--muted);
-      font-size: 13px;
-      margin-top: 22px;
-      max-width: 760px;
-    }
-    .proof-list {
-      margin-top: 4px;
-    }
-    .method {
-      background: var(--night-soft);
-    }
-    .method-layout {
-      display: grid;
-      gap: clamp(46px, 8vw, 102px);
-      grid-template-columns: .85fr 1.15fr;
-    }
-    .method h2 { margin-bottom: 25px; }
-    .method-intro {
-      color: #bfc4c4;
-      font-size: 18px;
-      line-height: 1.7;
-    }
-    .multiplier {
-      border-top: 1px solid var(--line-dark);
-      margin-top: 36px;
-      padding-top: 25px;
-    }
-    .multiplier strong {
-      color: var(--brass-light);
-      display: block;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: .2em;
-      margin-bottom: 13px;
-      text-transform: uppercase;
-    }
-    .multiplier p {
-      color: #d1d2cc;
-      font-size: 16px;
-      line-height: 1.68;
-      margin: 0;
-    }
-    .method-steps { counter-reset: method; }
-    .method-step {
-      border-top: 1px solid var(--line-dark);
-      display: grid;
-      gap: 25px;
-      grid-template-columns: 54px 1fr;
-      padding: 25px 0;
-    }
-    .method-step::before {
-      color: var(--brass-light);
-      content: "0" counter(method);
-      counter-increment: method;
-      font-size: 12px;
-      letter-spacing: .2em;
-      padding-top: 6px;
-    }
-    .method-step h3 { color: var(--white); margin-bottom: 7px; }
-    .method-step p { color: #bec2c1; font-size: 15px; margin: 0; }
-    .conversation {
-      background: var(--paper);
       text-align: center;
     }
-    .conversation .shell { max-width: 900px; }
-    .conversation h2 {
-      font-size: clamp(47px, 6vw, 74px);
-      margin: 0 auto 25px;
-    }
-    .conversation .lead {
-      margin: 0 auto 18px;
+    .diagnosis .shell { max-width: 880px; }
+    .diagnosis .eyebrow { color: #a9bdc8; }
+    .diagnosis p {
+      color: #d5d3cb;
+      font-size: 19px;
+      line-height: 1.65;
+      margin: 22px auto 30px;
       max-width: 700px;
     }
-    .conversation-list {
+    .call-list {
+      display: grid;
+      gap: 1px;
+      grid-template-columns: repeat(2, 1fr);
       margin: 0 auto 32px;
-      max-width: 780px;
+      max-width: 760px;
       text-align: left;
     }
-    .conversation-list .signal {
-      background: rgba(255, 254, 250, .58);
-      padding-left: 14px;
+    .call-list div {
+      border-bottom: 1px solid rgba(255, 255, 255, .18);
+      color: #eeeae2;
+      padding: 14px 16px;
     }
-    .conversation-cta {
-      margin-top: 25px;
-    }
-    .contact-embed {
-      background: var(--white);
-      border: 1px solid var(--line);
-      margin: 34px auto 0;
-      max-width: 720px;
-      padding: clamp(22px, 4vw, 34px);
-      text-align: left;
-    }
-    .contact-embed h3 {
-      margin-bottom: 0;
-    }
-    .contact-embed p {
-      font-size: 15px;
-      line-height: 1.6;
-      margin: 8px 0 18px;
-    }
-    .contact-embed iframe {
-      border: none;
-      border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      display: block;
-      min-height: 600px;
-      width: 100%;
-    }
+    .call-list div:nth-child(odd) { border-right: 1px solid rgba(255, 255, 255, .18); }
+
     footer {
-      background: var(--night);
-      color: #bab8b1;
+      background: #0e1317;
+      color: #c9c4bb;
       font-size: 13px;
-      padding: 40px 0;
+      padding: 36px 0;
     }
     .footer-inner {
       align-items: flex-start;
       display: flex;
-      gap: 22px 34px;
+      flex-wrap: wrap;
+      gap: 20px 30px;
       justify-content: space-between;
-      flex-wrap: wrap;
     }
-    .footer-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px 22px;
-      justify-content: flex-end;
-      max-width: 650px;
-    }
-    .footer-links a:hover { color: var(--brass-light); }
-    .footer-contact {
-      border-top: 1px solid var(--line-dark);
-      color: #d8d4ca;
-      display: flex;
-      flex-basis: 100%;
-      flex-wrap: wrap;
-      gap: 12px 22px;
-      font-size: 13px;
-      margin-top: 10px;
-      padding-top: 18px;
-    }
-    .footer-contact a:hover { color: var(--brass-light); }
-    .footer-rights {
-      color: #bab8b1;
-      flex-basis: 100%;
-      font-size: 12px;
-      letter-spacing: .04em;
-      margin: 10px 0 0;
-    }
-    .footer-source {
-      color: #8f948f;
-      flex-basis: 100%;
-      font-size: 11px;
-      line-height: 1.55;
-      margin: 8px 0 0;
-      max-width: 820px;
-    }
+    .footer-links { display: flex; flex-wrap: wrap; gap: 12px 22px; justify-content: flex-end; }
+    .footer-links a:hover { color: #a9bdc8; }
+    .footer-rights { flex-basis: 100%; margin: 0; color: #aaa59c; }
+
     .js .reveal {
       opacity: 0;
-      transform: translateY(16px);
-      transition: opacity .58s ease, transform .58s ease;
+      transform: translateY(14px);
+      transition: opacity .48s ease, transform .48s ease;
     }
-    .js .reveal.visible {
-      opacity: 1;
-      transform: none;
-    }
-    @media (max-width: 1050px) {
+    .js .reveal.visible { opacity: 1; transform: none; }
+
+    @media (max-width: 960px) {
       .nav-links { display: none; }
       .menu-toggle { display: inline-flex; }
       .mobile-menu.is-open { display: block; }
-      .hero-grid { grid-template-columns: 1fr; min-height: auto; }
-      .hero-content { max-width: 850px; }
-      .hero-visual { height: clamp(420px, 74vw, 660px); min-height: 0; }
-      .hero-visual::after { background: linear-gradient(180deg, var(--night), transparent 18%); }
-      .brief-card { grid-template-columns: 1fr; }
-      .brief-action {
-        border-left: 0;
-        border-top: 1px solid var(--line);
-        padding-left: 0;
-        padding-top: 22px;
-      }
-      .services-grid { grid-template-columns: 1fr; }
-      .testimonial-grid { grid-template-columns: 1fr; }
-      .testimonial-grid.endorsements { grid-template-columns: repeat(2, 1fr); }
-      .service:nth-child(even) { border-right: 0; margin-right: 0; }
-    }
-    @media (max-width: 820px) {
-      .recognition-grid, .about-grid, .section-heading, .outcome-layout, .method-layout, .split { grid-template-columns: 1fr; }
-      .source-map { grid-template-columns: 1fr; }
-      .source-col:first-child { border-bottom: 1px solid var(--line); border-right: 0; }
-      .source-col:last-child { border-left: 0; border-top: 1px solid var(--line); }
-      .source-arrow { min-height: 56px; transform: rotate(90deg); }
-      .miss-photo img { aspect-ratio: 4 / 3; }
-      .miss-photo figcaption { position: static; max-width: none; }
-      .outcome-bars { border-left: 0; border-top: 1px solid var(--line); padding-left: 0; padding-top: 28px; }
-      .section-heading { gap: 20px; }
+      .hero-inner, .section-heading, .about-grid { grid-template-columns: 1fr; }
       .section-heading p { padding-top: 0; }
-      .chain { grid-template-columns: 1fr; }
-      .chain-step { margin: -1px 0 0; min-height: auto; }
-      .chain-step:not(:last-child)::after { bottom: -18px; left: 28px; right: auto; top: auto; transform: rotate(90deg); }
+      .fix-grid { grid-template-columns: 1fr; }
+      .brief-box { grid-template-columns: 1fr; }
+      .experience-strip { grid-template-columns: repeat(2, 1fr); }
+      .experience-strip div:nth-child(2) { border-right: 0; }
+      .experience-strip div:nth-child(n+3) { border-top: 1px solid var(--line); }
     }
-    @media (max-width: 610px) {
-      body { font-size: 17px; line-height: 1.68; }
+    @media (max-width: 620px) {
+      body { font-size: 17px; }
       .nav-inner { height: 70px; }
-      .brand { font-size: 12px; letter-spacing: .1em; }
+      .brand { font-size: 12px; letter-spacing: .09em; }
       .brand-logo { height: 36px; width: 104px; }
       .menu-toggle { font-size: 0; gap: 0; padding: 0 13px; }
-      .menu-toggle .menu-icon { width: 20px; }
-      .mobile-menu a { font-size: 17px; padding: 17px 0; }
-      .button { font-size: 14px; min-height: 54px; padding-left: 21px; padding-right: 21px; }
-      .eyebrow { font-size: 12px; letter-spacing: .16em; line-height: 1.45; }
-      .hero-content { padding-top: 55px; padding-bottom: 58px; }
-      h1 { font-size: clamp(45px, 14vw, 57px); }
-      h2 { font-size: clamp(38px, 11vw, 48px); }
-      h3 { font-size: 22px; }
-      p, .service p, .outcome p, .method-step p, .multiplier p { font-size: 17px; line-height: 1.68; }
-      .hero-lead, .lead { font-size: 18px; line-height: 1.7; }
-      .hero-caption, .service .number, .method-step::before, .testimonial cite, .testimonial-note, footer { font-size: 15px; }
-      .signal, .chain-step p, .environment-list { font-size: 17px; line-height: 1.65; }
-      .signals, .services-grid { grid-template-columns: 1fr; }
-      .signal:nth-child(odd), .service { border-right: 0; margin-right: 0; }
-      .service { min-height: 0; }
-      .environment-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .testimonial-grid.endorsements { grid-template-columns: 1fr; }
-      .footer-inner { align-items: flex-start; flex-direction: column; }
-      .footer-links { flex-direction: column; gap: 13px; }
-      .footer-contact { flex-direction: column; gap: 9px; }
-      .footer-rights { margin-top: 4px; }
+      h1 { font-size: clamp(45px, 14vw, 58px); }
+      h2 { font-size: clamp(36px, 11vw, 48px); }
+      .hero-lead, .section-heading p, .brief p, .about-copy p, .diagnosis p { font-size: 18px; }
+      .button { width: 100%; }
+      .area-list, .call-list, .experience-strip { grid-template-columns: 1fr; }
+      .call-list div:nth-child(odd), .experience-strip div { border-right: 0; }
+      .experience-strip div { border-top: 1px solid var(--line); }
+      .experience-strip div:first-child { border-top: 0; }
+      .footer-inner { flex-direction: column; }
+      .footer-links { flex-direction: column; gap: 12px; }
     }
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation: none !important; scroll-behavior: auto !important; transition: none !important; }
@@ -988,11 +442,10 @@
         <span>Bullard<br>Business Execution</span>
       </a>
       <ul class="nav-links">
-        <li><a href="#recognize">Execution Problem</a></li>
-        <li><a href="#fit">Right Fit</a></li>
-        <li><a href="#help">What I Do</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a class="button diagnosis" href="#conversation">Diagnosis Call</a></li>
+        <li><a href="#fix">What I Fix</a></li>
+        <li><a href="#brief">Execution Brief</a></li>
+        <li><a href="#areas">Areas</a></li>
+        <li><a class="button accent" href="#diagnosis">Diagnosis Call</a></li>
       </ul>
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu">
         <span class="menu-icon" aria-hidden="true"><span></span><span></span><span></span></span>
@@ -1000,197 +453,159 @@
       </button>
     </div>
     <div class="mobile-menu" id="mobile-menu" hidden>
-      <div class="shell mobile-menu-inner">
-        <a href="#recognize">Execution Problem</a>
-        <a href="#fit">Right Fit</a>
-        <a href="#help">What I Do</a>
-        <a href="#about">About</a>
-        <a class="button diagnosis" href="#conversation">Diagnosis Call</a>
+      <div class="mobile-menu-inner">
+        <a href="#fix">What I Fix</a>
+        <a href="#brief">Execution Brief</a>
+        <a href="#areas">Areas</a>
+        <a class="button accent" href="#diagnosis">Diagnosis Call</a>
       </div>
     </div>
   </nav>
 
-  <header class="hero dark" id="top">
-    <div class="hero-grid">
-      <div class="hero-content reveal">
-        <span class="eyebrow">Organizational Performance &amp; Execution</span>
-        <h1>Get the organization pulling in the same direction.</h1>
-        <p class="hero-lead">Bullard Business Execution helps leaders and their teams create clearer ownership, decision authority, accountability, and operating habits that turn priorities into progress.</p>
+  <header class="hero" id="top">
+    <div class="shell hero-inner">
+      <div class="reveal">
+        <span class="eyebrow">Bullard Business Execution</span>
+        <h1>Fix the execution drag slowing the business down.</h1>
+        <p class="hero-lead">I help leaders clarify ownership, authority, accountability, and operating habits so priorities move without constant senior-team push.</p>
         <div class="hero-actions">
-          <a class="button light" href="#conversation">Diagnosis Call</a>
-          <a class="button ghost" href="#recognize">Execution Problem</a>
+          <a class="button accent" href="https://bbe.ninjapipe.app/book/bbe/edc">Book a Diagnosis Call</a>
+          <a class="button ghost" href="#fix">See What I Fix</a>
         </div>
-        <p class="thesis">The outcome: faster decisions, stronger follow-through, better use of leadership capacity, and less work stuck between meetings.</p>
       </div>
-      <figure class="hero-visual reveal">
-        <img src="https://images.unsplash.com/photo-1492366254240-43affaefc3e3?auto=format&amp;fit=crop&amp;w=1600&amp;q=80" alt="A rowing team moving together across the water.">
-        <figcaption class="hero-caption">Execution gets solved in the work, not around it</figcaption>
-      </figure>
+      <aside class="hero-card reveal" aria-label="Core outcome">
+        <strong>Clearer ownership. Faster decisions. Stronger follow-through.</strong>
+        <p>Less work stuck between meetings. Less escalation. More capacity for leaders to lead.</p>
+      </aside>
     </div>
   </header>
 
   <main>
-    <section class="brief-signup" id="brief" aria-labelledby="brief-title">
-      <div class="shell">
-        <div class="brief-card reveal">
-          <div>
-            <span class="eyebrow">The Execution Brief</span>
-            <h2 id="brief-title">Regular notes on what makes work move.</h2>
-            <p>Get text updates on execution, accountability, and the leadership and organizational patterns that shape performance.</p>
-          </div>
-          <div class="brief-action">
-            <a class="button diagnosis" href="#conversation">Join The Brief</a>
-            <small>Begins July 10</small>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="recognition" id="recognize">
-      <div class="shell recognition-grid">
-        <div class="reveal">
-          <span class="eyebrow">Execution Problem</span>
-          <h2>Ambition is clear. Execution is where the organization falls behind.</h2>
-        </div>
-        <div class="reveal">
-          <p class="lead">CEOs are confident in the strategy, but fewer than half believe their organizations can adapt and execute at the speed the market now requires.* The bottleneck is not just effort. It is how work moves.</p>
-          <div class="signals" aria-label="Leadership and organizational recognition points">
-            <div class="signal">Strategy is clear, but routines do not make it real</div>
-            <div class="signal">Decision rights slow down the business</div>
-            <div class="signal">Accountability is diffuse across handoffs</div>
-            <div class="signal">AI pilots and productivity tools do not fix the operating system</div>
-          </div>
-          <p class="testimonial-note">A recent report by Saenz, O&rsquo;Keeffe, Allen, and Kishore names routines, capabilities, behaviors, and governance as execution bottlenecks.* In practical terms, that is where priorities stall after meetings, decisions escalate, managers wait for direction, and senior leaders keep becoming the last line of defense.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="block contrast" id="fit" aria-labelledby="fit-title">
-      <div class="shell">
-        <span class="eyebrow reveal">Right Fit</span>
-        <h2 id="fit-title" class="reveal">Built for leaders who are carrying too much of the thinking and follow-through their teams should own.</h2>
-        <div class="split">
-          <article class="panel reveal">
-            <div class="panel-label">Useful When</div>
-            <ul class="plain-list">
-              <li>Leadership teams need clearer ownership and authority</li>
-              <li>Growth is limited by inconsistent execution</li>
-              <li>Decisions, handoffs, and follow-through slow movement</li>
-            </ul>
-          </article>
-          <article class="panel emphasis reveal">
-            <div class="panel-label">How Work Starts</div>
-            <ul class="plain-list">
-              <li>Diagnose where priorities slow down</li>
-              <li>Align ownership, authority, and standards</li>
-              <li>Practice the new rhythms inside real work</li>
-            </ul>
-          </article>
-        </div>
-        <blockquote class="analogy reveal">What changes: priorities move with less senior-team push, managers know what they own, decisions stop bouncing upward, and the business has more room for profitable growth.
-        </blockquote>
-      </div>
-    </section>
-
-    <section class="block" id="help" aria-labelledby="help-title">
+    <section class="section-pad" id="fix" aria-labelledby="fix-title">
       <div class="shell">
         <div class="section-heading reveal">
           <div>
-            <span class="eyebrow">What I Do</span>
-            <h2 id="help-title">I help leaders make execution easier to see, own, and sustain.</h2>
+            <span class="eyebrow">What I Fix</span>
+            <h2 id="fix-title">Execution breaks when ownership, authority, and follow-through are unclear.</h2>
           </div>
-          <p>I work inside the leadership and operating patterns that determine whether priorities move: ownership, authority, accountability, decision rights, handoffs, cadence, and manager follow-through.</p>
-          <p>The work is practical. We diagnose where execution slows, clarify what must change, and practice the new rhythms inside the real work the business already needs to move.</p>
+          <p>Most leaders do not need a more complicated website, framework, or binder. They need the work to move: cleaner decisions, clearer handoffs, stronger managers, and fewer moments where senior leaders have to rescue the process.</p>
         </div>
-        <div class="services-grid" aria-label="Service areas grouped by execution need">
-          <article class="service reveal">
-            <span class="number">01</span>
-            <h3>Move Priorities Faster</h3>
-            <p>Clarify ownership, decision rights, cadence, handoffs, and follow-through so important work does not stall after meetings.</p>
+        <div class="fix-grid" aria-label="Execution issues Bullard Business Execution helps fix">
+          <article class="fix-card reveal">
+            <span>01</span>
+            <h3>Priorities stall after meetings</h3>
+            <p>The team agrees in the room, but ownership, authority, and next actions are not clear enough to create movement.</p>
           </article>
-          <article class="service reveal">
-            <span class="number">02</span>
-            <h3>Free Leadership Capacity</h3>
-            <p>Reduce avoidable escalation, rework, and dependency on senior leaders by improving the behaviors and routines that shape execution.</p>
+          <article class="fix-card reveal">
+            <span>02</span>
+            <h3>Leaders carry too much</h3>
+            <p>Executives and owners do too much thinking, deciding, reminding, and following up for the people closest to the work.</p>
           </article>
-          <article class="service reveal">
-            <span class="number">03</span>
-            <h3>Strengthen Manager Follow-Through</h3>
-            <p>Build the delegation, standards, coaching, and accountability practices managers need to carry execution consistently.</p>
+          <article class="fix-card reveal">
+            <span>03</span>
+            <h3>Growth exposes weak habits</h3>
+            <p>What worked at one size starts to strain under more people, more complexity, and higher expectations.</p>
+          </article>
+          <article class="fix-card reveal">
+            <span>04</span>
+            <h3>Managers need a stronger rhythm</h3>
+            <p>Delegation, coaching, standards, and accountability need to become more consistent inside real work.</p>
+          </article>
+          <article class="fix-card reveal">
+            <span>05</span>
+            <h3>AI is speeding up the wrong system</h3>
+            <p>AI can accelerate work, but it cannot fix unclear ownership, poor decisions, or weak operating habits. It amplifies what is already present.</p>
+          </article>
+          <article class="fix-card reveal">
+            <span>06</span>
+            <h3>The business needs a simpler way to execute</h3>
+            <p>I help leaders diagnose the drag, clarify what must change, and practice better rhythms in the work that already matters.</p>
           </article>
         </div>
-        <article class="panel ai-question reveal">
-          <div class="panel-label">Executive Question</div>
-          <h3>Can&rsquo;t AI do this work?</h3>
-          <p>AI can help leaders analyze work, summarize issues, draft communication, and accelerate workflows. But it will not decide who owns what, where authority belongs, which behaviors are rewarded, or how managers follow through. AI speeds up the system it is given. My work helps leaders strengthen that system so what gets accelerated is clearer, more accountable, and more useful.</p>
-        </article>
       </div>
     </section>
 
-    <section class="block testimonials" id="proof" aria-labelledby="proof-title">
+    <section class="brief section-pad" id="brief" aria-labelledby="brief-title">
+      <div class="shell reveal">
+        <span class="eyebrow">The Execution Brief</span>
+        <h2 id="brief-title">Short notes on what makes work move.</h2>
+        <p>The Execution Brief is a regular note on execution, accountability, leadership behavior, and the organizational habits that shape performance.</p>
+        <div class="brief-box">
+          <div>
+            <strong>Begins July 10</strong>
+            <p>Built for owners, executives, and leadership teams who want practical thinking they can use immediately.</p>
+          </div>
+          <a class="button accent" href="#diagnosis">Ask About The Brief</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="areas section-pad" id="areas" aria-labelledby="areas-title">
       <div class="shell">
         <div class="section-heading reveal">
           <div>
-            <span class="eyebrow">Proof</span>
-            <h2 id="proof-title">Experience across complex organizations.</h2>
+            <span class="eyebrow">Areas I&rsquo;ve Worked In</span>
+            <h2 id="areas-title">Experience across practical, complex operating environments.</h2>
           </div>
-          <p>Kevin&rsquo;s work has supported leaders and teams across manufacturing, retail, municipal government, education, nonprofit, and service organizations. Some engagements were delivered through prior or partner organizations.</p>
+          <p>My work has supported leaders and teams across business, public-sector, nonprofit, education, and service environments. Some work was delivered through prior or partner organizations.</p>
         </div>
-        <div class="environment-list proof-list reveal" aria-label="Sectors Kevin has worked across">
+        <div class="area-list reveal" aria-label="Sectors and environments Kevin has worked in">
           <span>Manufacturing</span>
           <span>Retail</span>
           <span>Municipal Government</span>
           <span>Education</span>
           <span>Nonprofit</span>
           <span>Service Organizations</span>
+          <span>Real Estate</span>
+          <span>Leadership Development</span>
+          <span>Executive Coaching</span>
         </div>
-        <div class="testimonial-grid endorsements" aria-label="Relevant experience proof points">
-          <article class="testimonial reveal">
-            <blockquote>2,400-employee municipal organization</blockquote>
-            <cite>Leadership development and organizational execution work</cite>
-          </article>
-          <article class="testimonial reveal">
-            <blockquote>Enterprise leadership programs</blockquote>
-            <cite>Built for managers, executives, and leadership teams</cite>
-          </article>
-          <article class="testimonial reveal">
-            <blockquote>Cross-sector execution work</blockquote>
-            <cite>Government, education, nonprofit, service, and business environments</cite>
-          </article>
-          <article class="testimonial reveal">
-            <blockquote>Board and executive leadership</blockquote>
-            <cite>Practical perspective on accountability, ownership, and follow-through</cite>
-          </article>
+        <div class="experience-strip reveal" aria-label="Relevant experience proof points">
+          <div>
+            <strong>20+ years</strong>
+            <p>Consulting, leadership development, executive advising, and operational leadership.</p>
+          </div>
+          <div>
+            <strong>2,400 employees</strong>
+            <p>Experience inside a large municipal organization with complex execution needs.</p>
+          </div>
+          <div>
+            <strong>Leaders and teams</strong>
+            <p>Work with owners, executives, managers, and leadership groups.</p>
+          </div>
+          <div>
+            <strong>Real work</strong>
+            <p>Diagnosis, alignment, practice, and follow-through inside the business priorities already underway.</p>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="block conversation" id="conversation" aria-labelledby="conversation-title">
-      <div class="shell reveal">
-        <span class="eyebrow">Executive Conversation</span>
-        <h2 id="conversation-title">Book an execution diagnosis call.</h2>
-        <p class="lead">On the call, we&rsquo;ll clarify:</p>
-        <div class="signals conversation-list" aria-label="What the diagnosis call clarifies">
-          <div class="signal">Where execution is slowing down</div>
-          <div class="signal">What the slowdown may be costing the business</div>
-          <div class="signal">Whether there is a practical case for working together</div>
-          <div class="signal">What needs to change first</div>
-        </div>
-        <a class="button diagnosis conversation-cta" href="https://bbe.ninjapipe.app/book/bbe/edc">Diagnosis Call</a>
-      </div>
-    </section>
-
-    <section class="about" id="about" aria-labelledby="about-title">
+    <section class="about-cta section-pad" aria-labelledby="about-title">
       <div class="shell about-grid">
         <figure class="about-photo reveal">
           <img src="assets/kbb-headshot.png" alt="Kevin Bullard, founder of Bullard Business Execution.">
         </figure>
         <div class="about-copy reveal">
           <span class="eyebrow">About Kevin Bullard</span>
-          <h2 id="about-title">I help leaders grow the business by improving execution.</h2>
-          <p class="lead">I work where leadership behavior, organizational behavior, operations, and performance meet.</p>
-          <p>Kevin brings 20+ years of experience as a transformational management consultant, chief leadership officer, business owner, and executive advisor. He has led leadership development and execution work inside complex organizations, including a 2,400-employee municipality and large public-company environments.</p>
+          <h2 id="about-title">I work where leadership behavior, organizational behavior, operations, and performance meet.</h2>
+          <p>Bullard Business Execution exists to help leaders make execution simpler, more visible, and more owned by the people closest to the work.</p>
         </div>
+      </div>
+    </section>
+
+    <section class="diagnosis section-pad" id="diagnosis" aria-labelledby="diagnosis-title">
+      <div class="shell reveal">
+        <span class="eyebrow">Diagnosis Call</span>
+        <h2 id="diagnosis-title">Let&rsquo;s find where execution is getting stuck.</h2>
+        <p>In a diagnosis call, we will look at where work slows down, what it may be costing the business, and whether there is a practical case for working together.</p>
+        <div class="call-list" aria-label="What the diagnosis call clarifies">
+          <div>Where execution is slowing down</div>
+          <div>What the slowdown may be costing</div>
+          <div>What needs to change first</div>
+          <div>Whether working together makes sense</div>
+        </div>
+        <a class="button accent" href="https://bbe.ninjapipe.app/book/bbe/edc">Book a Diagnosis Call</a>
       </div>
     </section>
   </main>
@@ -1202,21 +617,17 @@
         <span>Bullard Business Execution</span>
       </span>
       <div class="footer-links" aria-label="Footer navigation">
-        <a href="#recognize">Execution Problem</a>
-        <a href="#fit">Right Fit</a>
-        <a href="#help">What I Do</a>
-        <a href="#conversation">Conversation</a>
-        <a href="#about">About</a>
+        <a href="#fix">What I Fix</a>
+        <a href="#brief">Execution Brief</a>
+        <a href="#areas">Areas</a>
+        <a href="#diagnosis">Diagnosis Call</a>
         <a href="privacy.html">Privacy</a>
         <a href="terms.html">Terms</a>
       </div>
-      <div class="footer-contact" aria-label="Business contact information">
-        <a href="https://www.linkedin.com/in/kevinbullard">LinkedIn</a>
-      </div>
-      <p class="footer-source">* Source: Saenz, H., O&rsquo;Keeffe, C., Allen, J., &amp; Kishore, S. (2026, June 10). <a href="https://www.bain.com/insights/the-2026-ceo-agenda-where-ambition-outpaces-execution"><em>The 2026 CEO agenda: Where ambition outpaces execution.</em></a> Bain &amp; Company.</p>
       <p class="footer-rights">&copy;2026 All Rights Reserved. Bullard Business Execution.</p>
     </div>
   </footer>
+
   <script>
     const revealItems = document.querySelectorAll(".reveal");
     if ("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
@@ -1254,7 +665,7 @@
       });
 
       window.addEventListener("resize", () => {
-        if (window.matchMedia("(min-width: 1051px)").matches) closeMenu();
+        if (window.matchMedia("(min-width: 961px)").matches) closeMenu();
       });
     }
   </script>
