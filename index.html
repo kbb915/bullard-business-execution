@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Bullard Business Execution helps leaders fix execution drag, clarify ownership, and improve follow-through.">
-  <title>Bullard Business Execution | Fix Execution Drag</title>
+  <meta name="description" content="Bullard Business Execution helps leadership teams translate strategy into execution through clearer visibility, ownership, accountability, and follow-through.">
+  <title>Bullard Business Execution | Strategy Into Execution</title>
   <script>document.documentElement.classList.add("js");</script>
   <style>
     :root {
@@ -14,105 +14,336 @@
       --paper: #f7f5f0;
       --white: #fffefa;
       --line: #d9d4ca;
-      --night: #112638;
-      --night-soft: #20384a;
-      --blue: #42677a;
-      --steel: #1b3a52;
+      --navy: #112638;
+      --steel: #315f76;
+      --steel-dark: #1b3a52;
+      --steel-card: #4c7084;
       --accent: #c94f32;
       --accent-dark: #a43c27;
       --max: 1120px;
     }
     *, *::before, *::after { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
-    body { margin: 0; background: var(--paper); color: var(--ink); font-family: "Avenir Next", "Segoe UI", Arial, sans-serif; line-height: 1.6; }
-    body::before { content: ""; position: fixed; inset: 0; pointer-events: none; background-image: radial-gradient(rgba(21, 27, 32, .035) .7px, transparent .7px); background-size: 5px 5px; opacity: .36; z-index: 10; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: "Avenir Next", "Segoe UI", Arial, sans-serif;
+      line-height: 1.6;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image: radial-gradient(rgba(21, 27, 32, .035) .7px, transparent .7px);
+      background-size: 5px 5px;
+      opacity: .32;
+      z-index: 10;
+    }
     a { color: inherit; text-decoration: none; }
     a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
     h1, h2, h3, p { text-wrap: pretty; }
-    h1, h2 { font-family: "Iowan Old Style", "Palatino Linotype", Georgia, serif; font-weight: 400; letter-spacing: -.045em; line-height: 1.05; margin: 0; }
-    h1 { font-size: clamp(44px, 5.4vw, 66px); max-width: 790px; }
-    h2 { font-size: clamp(34px, 4.5vw, 56px); }
-    h3 { font-size: 20px; font-weight: 650; letter-spacing: -.02em; line-height: 1.28; margin: 0 0 9px; }
+    h1, h2 {
+      font-family: "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+      font-weight: 400;
+      letter-spacing: -.045em;
+      line-height: 1.05;
+      margin: 0;
+    }
+    h1 { font-size: clamp(42px, 5vw, 64px); max-width: 840px; }
+    h2 { font-size: clamp(34px, 4.3vw, 54px); }
+    h3 {
+      font-size: 20px;
+      font-weight: 650;
+      letter-spacing: -.02em;
+      line-height: 1.28;
+      margin: 0 0 9px;
+    }
     p { color: var(--muted); margin: 0; }
-    .shell { max-width: var(--max); margin: 0 auto; padding-left: clamp(22px, 4vw, 46px); padding-right: clamp(22px, 4vw, 46px); }
-    .eyebrow { color: var(--blue); display: block; font-size: 11px; font-weight: 800; letter-spacing: .2em; margin-bottom: 16px; text-transform: uppercase; }
-    .button { align-items: center; background: var(--night); border: 1px solid var(--night); color: var(--white); display: inline-flex; font-size: 13px; font-weight: 700; gap: 14px; justify-content: center; letter-spacing: .08em; min-height: 52px; padding: 0 22px; text-transform: uppercase; transition: background .2s ease, border-color .2s ease; }
+    .shell {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding-left: clamp(22px, 4vw, 46px);
+      padding-right: clamp(22px, 4vw, 46px);
+    }
+    .eyebrow {
+      color: var(--steel);
+      display: block;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .2em;
+      margin-bottom: 16px;
+      text-transform: uppercase;
+    }
+    .button {
+      align-items: center;
+      background: var(--navy);
+      border: 1px solid var(--navy);
+      color: var(--white);
+      display: inline-flex;
+      font-size: 13px;
+      font-weight: 700;
+      gap: 14px;
+      justify-content: center;
+      letter-spacing: .08em;
+      min-height: 52px;
+      padding: 0 22px;
+      text-transform: uppercase;
+      transition: background .2s ease, border-color .2s ease;
+    }
     .button::after { content: "\2192"; font-size: 17px; font-weight: 400; }
-    .button:hover { background: var(--blue); border-color: var(--blue); }
+    .button:hover { background: var(--steel); border-color: var(--steel); }
     .button.accent { background: var(--accent); border-color: var(--accent); box-shadow: 0 12px 26px rgba(201, 79, 50, .2); }
     .button.accent:hover { background: var(--accent-dark); border-color: var(--accent-dark); }
-    .button.ghost { background: transparent; border-color: rgba(21, 27, 32, .22); color: var(--ink); }
-    .button.ghost:hover { background: var(--white); border-color: var(--blue); }
-    .nav { background: linear-gradient(135deg, rgba(17, 38, 56, .97), rgba(31, 58, 77, .96) 52%, rgba(12, 31, 47, .98)); border-bottom: 1px solid rgba(255, 255, 255, .16); color: var(--white); position: sticky; top: 0; z-index: 20; backdrop-filter: blur(14px); }
-    .nav-inner { align-items: center; display: flex; gap: 22px; height: 76px; justify-content: space-between; }
-    .brand { align-items: center; display: inline-flex; gap: 13px; font-size: 13px; font-weight: 800; letter-spacing: .12em; line-height: 1.25; text-transform: uppercase; white-space: nowrap; }
-    .brand-logo { background: var(--white); display: block; height: 40px; object-fit: contain; padding: 5px 7px; width: 112px; box-shadow: 0 0 0 1px rgba(255, 255, 255, .16); }
-    .nav-links { align-items: center; display: flex; gap: clamp(14px, 2vw, 24px); list-style: none; margin: 0; padding: 0; color: #e6e1d8; font-size: 14px; }
+    .button.ghost { background: transparent; border-color: rgba(255, 255, 255, .44); color: var(--white); }
+    .button.ghost:hover { background: rgba(255, 255, 255, .1); border-color: var(--white); }
+
+    .nav {
+      background: linear-gradient(135deg, rgba(17, 38, 56, .98), rgba(31, 58, 77, .97) 52%, rgba(12, 31, 47, .98));
+      border-bottom: 1px solid rgba(255, 255, 255, .16);
+      color: var(--white);
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(14px);
+    }
+    .nav-inner {
+      align-items: center;
+      display: flex;
+      gap: 22px;
+      height: 76px;
+      justify-content: space-between;
+    }
+    .brand {
+      align-items: center;
+      display: inline-flex;
+      gap: 13px;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: .12em;
+      line-height: 1.25;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .brand-logo {
+      background: var(--white);
+      display: block;
+      height: 40px;
+      object-fit: contain;
+      padding: 5px 7px;
+      width: 112px;
+      box-shadow: 0 0 0 1px rgba(255, 255, 255, .16);
+    }
+    .nav-links {
+      align-items: center;
+      display: flex;
+      gap: clamp(14px, 2vw, 24px);
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      color: #e6e1d8;
+      font-size: 14px;
+    }
     .nav-links a:not(.button):hover { color: #ffffff; }
-    .menu-toggle { align-items: center; background: rgba(255, 255, 255, .08); border: 1px solid rgba(255, 255, 255, .22); color: var(--white); cursor: pointer; display: none; font: inherit; font-size: 12px; font-weight: 800; gap: 10px; letter-spacing: .12em; min-height: 44px; padding: 0 14px; text-transform: uppercase; }
+    .menu-toggle {
+      align-items: center;
+      background: rgba(255, 255, 255, .08);
+      border: 1px solid rgba(255, 255, 255, .22);
+      color: var(--white);
+      cursor: pointer;
+      display: none;
+      font: inherit;
+      font-size: 12px;
+      font-weight: 800;
+      gap: 10px;
+      letter-spacing: .12em;
+      min-height: 44px;
+      padding: 0 14px;
+      text-transform: uppercase;
+    }
     .menu-icon { display: inline-grid; gap: 4px; width: 18px; }
     .menu-icon span { background: currentColor; display: block; height: 2px; width: 100%; }
-    .mobile-menu { background: linear-gradient(135deg, rgba(17, 38, 56, .99), rgba(31, 58, 77, .98)); border-top: 1px solid rgba(255, 255, 255, .14); box-shadow: 0 20px 38px rgba(12, 31, 47, .3); display: none; }
+    .mobile-menu {
+      background: linear-gradient(135deg, rgba(17, 38, 56, .99), rgba(31, 58, 77, .98));
+      border-top: 1px solid rgba(255, 255, 255, .14);
+      box-shadow: 0 20px 38px rgba(12, 31, 47, .3);
+      display: none;
+    }
     .mobile-menu[hidden] { display: none; }
     .mobile-menu-inner { display: grid; gap: 1px; padding: 12px clamp(22px, 4vw, 46px) 20px; }
-    .mobile-menu a { border-bottom: 1px solid rgba(255, 255, 255, .12); color: #e6e1d8; display: flex; justify-content: space-between; padding: 15px 0; }
+    .mobile-menu a {
+      border-bottom: 1px solid rgba(255, 255, 255, .12);
+      color: #e6e1d8;
+      display: flex;
+      justify-content: space-between;
+      padding: 15px 0;
+    }
     .mobile-menu a:not(.button)::after { color: #d5d3cb; content: "\2192"; }
     .mobile-menu .button { margin-top: 14px; width: 100%; }
-    .hero { background: radial-gradient(circle at 82% 18%, rgba(158, 187, 199, .42), transparent 36%), linear-gradient(135deg, #24495f 0%, #315f76 48%, #1f4058 100%); color: var(--white); border-bottom: 1px solid rgba(255, 255, 255, .18); }
+
+    .hero {
+      background: radial-gradient(circle at 82% 18%, rgba(158, 187, 199, .42), transparent 36%), linear-gradient(135deg, #24495f 0%, #315f76 48%, #1f4058 100%);
+      color: var(--white);
+      border-bottom: 1px solid rgba(255, 255, 255, .18);
+    }
     .hero .eyebrow { color: #d5e0e5; }
-    .hero-inner { display: grid; gap: clamp(34px, 7vw, 84px); grid-template-columns: minmax(0, 1.1fr) minmax(280px, .58fr); padding-top: clamp(66px, 8vw, 112px); padding-bottom: clamp(54px, 7vw, 86px); }
-    .hero-lead { color: #eef3f5; font-size: clamp(18px, 2vw, 22px); line-height: 1.62; margin-top: 26px; max-width: 760px; }
-    .hero .button.ghost { border-color: rgba(255, 255, 255, .44); color: var(--white); }
-    .hero .button.ghost:hover { background: rgba(255, 255, 255, .1); border-color: var(--white); }
+    .hero-inner {
+      display: grid;
+      gap: clamp(34px, 7vw, 84px);
+      grid-template-columns: minmax(0, 1.08fr) minmax(280px, .58fr);
+      padding-top: clamp(66px, 8vw, 112px);
+      padding-bottom: clamp(54px, 7vw, 86px);
+    }
+    .hero-lead {
+      color: #eef3f5;
+      font-size: clamp(18px, 2vw, 22px);
+      line-height: 1.62;
+      margin-top: 26px;
+      max-width: 760px;
+    }
     .hero-actions { display: flex; flex-wrap: wrap; gap: 13px; margin-top: 34px; }
-    .hero-card { align-self: end; background: linear-gradient(145deg, rgba(76, 112, 132, .96), rgba(45, 80, 101, .96)); border: 1px solid rgba(220, 233, 239, .36); color: var(--white); padding: clamp(26px, 4vw, 38px); box-shadow: inset 0 1px 0 rgba(255, 255, 255, .14), 0 18px 42px rgba(6, 20, 32, .18); }
+    .hero-card {
+      align-self: end;
+      background: linear-gradient(145deg, rgba(76, 112, 132, .96), rgba(45, 80, 101, .96));
+      border: 1px solid rgba(220, 233, 239, .36);
+      color: var(--white);
+      padding: clamp(26px, 4vw, 38px);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, .14), 0 18px 42px rgba(6, 20, 32, .18);
+    }
     .hero-card p { color: #eef3f5; font-size: 18px; line-height: 1.56; }
-    .hero-card strong { color: var(--white); display: block; font-family: "Iowan Old Style", Georgia, serif; font-size: clamp(25px, 3vw, 34px); font-weight: 400; letter-spacing: -.035em; line-height: 1.15; margin-bottom: 15px; }
+    .hero-card strong {
+      color: var(--white);
+      display: block;
+      font-family: "Iowan Old Style", Georgia, serif;
+      font-size: clamp(25px, 3vw, 34px);
+      font-weight: 400;
+      letter-spacing: -.035em;
+      line-height: 1.15;
+      margin-bottom: 15px;
+    }
+
     section { border-bottom: 1px solid var(--line); }
-    .section-pad { padding-top: clamp(66px, 8vw, 96px); padding-bottom: clamp(66px, 8vw, 96px); }
-    .section-heading { display: grid; gap: clamp(22px, 5vw, 60px); grid-template-columns: minmax(0, .9fr) minmax(280px, .65fr); margin-bottom: clamp(32px, 5vw, 54px); }
+    .section-pad { padding-top: clamp(58px, 7vw, 86px); padding-bottom: clamp(58px, 7vw, 86px); }
+    .section-heading {
+      display: grid;
+      gap: clamp(22px, 5vw, 60px);
+      grid-template-columns: minmax(0, .9fr) minmax(280px, .65fr);
+      margin-bottom: clamp(28px, 4vw, 42px);
+    }
     .section-heading p { color: var(--ink-soft); font-size: 18px; line-height: 1.66; padding-top: 34px; }
-    .fix-grid { display: grid; gap: 1px; grid-template-columns: repeat(3, 1fr); background: var(--line); border: 1px solid var(--line); }
-    .fix-card { background: var(--white); min-height: 228px; padding: clamp(24px, 3vw, 34px); }
-    .fix-card span { color: var(--blue); display: block; font-size: 12px; font-weight: 800; letter-spacing: .18em; margin-bottom: 28px; text-transform: uppercase; }
-    .fix-card p { font-size: 15px; line-height: 1.62; }
-    .services { background: var(--paper); }
-    .service-grid { display: grid; gap: 1px; grid-template-columns: repeat(4, 1fr); background: var(--line); border: 1px solid var(--line); }
-    .service-card { background: var(--white); min-height: 210px; padding: clamp(24px, 3vw, 32px); }
-    .service-card p { font-size: 15px; line-height: 1.62; }
-    .brief { background: radial-gradient(circle at 88% 8%, rgba(93, 127, 145, .24), transparent 30%), linear-gradient(135deg, #0f2233, #1b3a52 58%, #0b1d2d); color: var(--white); }
+    .services { background: var(--white); }
+    .service-grid, .fit-grid {
+      display: grid;
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+    }
+    .service-grid { grid-template-columns: repeat(4, 1fr); }
+    .fit-grid { grid-template-columns: repeat(3, 1fr); }
+    .service-card, .fit-card {
+      background: var(--white);
+      min-height: 190px;
+      padding: clamp(24px, 3vw, 32px);
+    }
+    .service-card p, .fit-card p { font-size: 15px; line-height: 1.62; }
+    .fit { background: var(--paper); }
+    .fit-note {
+      border-left: 2px solid var(--steel);
+      color: var(--ink);
+      font-family: "Iowan Old Style", Georgia, serif;
+      font-size: clamp(24px, 3vw, 34px);
+      letter-spacing: -.035em;
+      line-height: 1.25;
+      margin-top: 34px;
+      padding-left: 22px;
+    }
+    .brief {
+      background: radial-gradient(circle at 88% 8%, rgba(93, 127, 145, .24), transparent 30%), linear-gradient(135deg, #0f2233, #1b3a52 58%, #0b1d2d);
+      color: var(--white);
+    }
     .brief .eyebrow { color: #b7c8d2; }
     .brief h2 { max-width: 760px; }
     .brief p { color: #d8dce0; font-size: 18px; line-height: 1.7; max-width: 780px; }
-    .brief-box { align-items: center; border: 1px solid rgba(255, 255, 255, .2); display: grid; gap: 24px; grid-template-columns: minmax(0, 1fr) auto; margin-top: 34px; padding: clamp(24px, 4vw, 36px); background: rgba(255, 255, 255, .035); }
-    .brief-box strong { color: var(--white); display: block; font-size: 13px; letter-spacing: .16em; margin-bottom: 8px; text-transform: uppercase; }
+    .brief-box {
+      align-items: center;
+      border: 1px solid rgba(255, 255, 255, .2);
+      display: grid;
+      gap: 24px;
+      grid-template-columns: minmax(0, 1fr) auto;
+      margin-top: 34px;
+      padding: clamp(24px, 4vw, 36px);
+      background: rgba(255, 255, 255, .035);
+    }
+    .brief-box strong {
+      color: var(--white);
+      display: block;
+      font-size: 13px;
+      letter-spacing: .16em;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+    }
     .areas { background: var(--white); }
-    .area-list { display: grid; gap: 14px; grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: 30px; }
-    .area-list span { border: 1px solid rgba(52, 83, 100, .18); color: var(--ink-soft); font-size: 13px; font-weight: 700; letter-spacing: .08em; line-height: 1.35; padding: 12px 10px; text-align: center; text-transform: uppercase; }
-    .experience-strip { border-top: 1px solid var(--line); display: grid; gap: 1px; grid-template-columns: repeat(4, 1fr); margin-top: 44px; }
-    .experience-strip div { border-right: 1px solid var(--line); padding: 22px 18px 0 0; }
-    .experience-strip div:last-child { border-right: 0; }
-    .experience-strip strong { display: block; font-family: "Iowan Old Style", Georgia, serif; font-size: 25px; font-weight: 400; letter-spacing: -.035em; line-height: 1.16; margin-bottom: 8px; }
-    .experience-strip p { font-size: 14px; line-height: 1.5; }
+    .area-list {
+      display: grid;
+      gap: 14px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      margin-top: 30px;
+    }
+    .area-list span {
+      border: 1px solid rgba(52, 83, 100, .18);
+      color: var(--ink-soft);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      line-height: 1.35;
+      padding: 12px 10px;
+      text-align: center;
+      text-transform: uppercase;
+    }
     .about-cta { background: var(--paper); }
-    .about-grid { align-items: center; display: grid; gap: clamp(30px, 6vw, 72px); grid-template-columns: minmax(220px, .42fr) minmax(0, .9fr); }
+    .about-grid {
+      align-items: center;
+      display: grid;
+      gap: clamp(30px, 6vw, 72px);
+      grid-template-columns: minmax(220px, .42fr) minmax(0, .9fr);
+    }
     .about-photo { background: var(--white); border: 1px solid var(--line); margin: 0; padding: 12px; }
     .about-photo img { aspect-ratio: 1 / 1; display: block; object-fit: cover; object-position: center 18%; width: 100%; }
     .about-copy p { color: var(--ink-soft); font-size: 18px; line-height: 1.68; margin-top: 18px; }
-    .diagnosis { background: radial-gradient(circle at 18% 12%, rgba(93, 127, 145, .26), transparent 32%), linear-gradient(135deg, #0f2233, #1b3a52 58%, #0b1d2d); color: var(--white); text-align: center; }
+    .diagnosis {
+      background: radial-gradient(circle at 18% 12%, rgba(93, 127, 145, .26), transparent 32%), linear-gradient(135deg, #0f2233, #1b3a52 58%, #0b1d2d);
+      color: var(--white);
+      text-align: center;
+    }
     .diagnosis .shell { max-width: 880px; }
     .diagnosis .eyebrow { color: #b7c8d2; }
-    .diagnosis p { color: #d8dce0; font-size: 19px; line-height: 1.65; margin: 22px auto 30px; max-width: 700px; }
-    .call-list { display: grid; gap: 1px; grid-template-columns: repeat(2, 1fr); margin: 0 auto 32px; max-width: 760px; text-align: left; }
-    .call-list div { border-bottom: 1px solid rgba(255, 255, 255, .2); color: #eef1f3; padding: 14px 16px; }
-    .call-list div:nth-child(odd) { border-right: 1px solid rgba(255, 255, 255, .2); }
-    footer { background: linear-gradient(135deg, #0b1d2d, #163247 58%, #081725); color: #cfd6da; font-size: 13px; padding: 36px 0; }
-    .footer-inner { align-items: flex-start; display: flex; flex-wrap: wrap; gap: 20px 30px; justify-content: space-between; }
+    .diagnosis p {
+      color: #d8dce0;
+      font-size: 19px;
+      line-height: 1.65;
+      margin: 22px auto 30px;
+      max-width: 700px;
+    }
+    footer {
+      background: linear-gradient(135deg, #0b1d2d, #163247 58%, #081725);
+      color: #cfd6da;
+      font-size: 13px;
+      padding: 36px 0;
+    }
+    .footer-inner {
+      align-items: flex-start;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px 30px;
+      justify-content: space-between;
+    }
     .footer-links { display: flex; flex-wrap: wrap; gap: 12px 22px; justify-content: flex-end; }
     .footer-links a:hover { color: #ffffff; }
     .footer-rights { flex-basis: 100%; margin: 0; color: #aebbc2; }
     .js .reveal { opacity: 0; transform: translateY(14px); transition: opacity .48s ease, transform .48s ease; }
     .js .reveal.visible { opacity: 1; transform: none; }
+
     @media (max-width: 1100px) {
       .nav-links { display: none; }
       .menu-toggle { display: inline-flex; }
@@ -121,11 +352,8 @@
     @media (max-width: 960px) {
       .hero-inner, .section-heading, .about-grid { grid-template-columns: 1fr; }
       .section-heading p { padding-top: 0; }
-      .fix-grid, .service-grid { grid-template-columns: 1fr; }
+      .service-grid, .fit-grid { grid-template-columns: 1fr; }
       .brief-box { grid-template-columns: 1fr; }
-      .experience-strip { grid-template-columns: repeat(2, 1fr); }
-      .experience-strip div:nth-child(2) { border-right: 0; }
-      .experience-strip div:nth-child(n+3) { border-top: 1px solid var(--line); }
     }
     @media (max-width: 620px) {
       body { font-size: 17px; }
@@ -133,14 +361,11 @@
       .brand { font-size: 12px; letter-spacing: .09em; }
       .brand-logo { height: 36px; width: 104px; }
       .menu-toggle { font-size: 0; gap: 0; padding: 0 13px; }
-      h1 { font-size: clamp(39px, 12vw, 50px); }
-      h2 { font-size: clamp(36px, 11vw, 48px); }
+      h1 { font-size: clamp(38px, 11vw, 50px); }
+      h2 { font-size: clamp(34px, 10vw, 46px); }
       .hero-lead, .section-heading p, .brief p, .about-copy p, .diagnosis p { font-size: 18px; }
       .button { width: 100%; }
-      .area-list, .call-list, .experience-strip { grid-template-columns: 1fr; }
-      .call-list div:nth-child(odd), .experience-strip div { border-right: 0; }
-      .experience-strip div { border-top: 1px solid var(--line); }
-      .experience-strip div:first-child { border-top: 0; }
+      .area-list { grid-template-columns: 1fr; }
       .footer-inner { flex-direction: column; }
       .footer-links { flex-direction: column; gap: 12px; }
     }
@@ -158,10 +383,10 @@
         <span>Bullard<br>Business Execution</span>
       </a>
       <ul class="nav-links">
-        <li><a href="#fix">What I Fix</a></li>
         <li><a href="#services">Services</a></li>
+        <li><a href="#fit">Fit</a></li>
         <li><a href="#brief">Execution Brief</a></li>
-        <li><a href="#areas">Experience</a></li>
+        <li><a href="#experience">Experience</a></li>
         <li><a class="button accent" href="#diagnosis">Diagnosis Call</a></li>
       </ul>
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu">
@@ -171,10 +396,10 @@
     </div>
     <div class="mobile-menu" id="mobile-menu" hidden>
       <div class="mobile-menu-inner">
-        <a href="#fix">What I Fix</a>
         <a href="#services">Services</a>
+        <a href="#fit">Fit</a>
         <a href="#brief">Execution Brief</a>
-        <a href="#areas">Experience</a>
+        <a href="#experience">Experience</a>
         <a class="button accent" href="#diagnosis">Diagnosis Call</a>
       </div>
     </div>
@@ -184,92 +409,75 @@
     <div class="shell hero-inner">
       <div class="reveal">
         <span class="eyebrow">Bullard Business Execution</span>
-        <h1>Fix the execution drag slowing the business down.</h1>
-        <p class="hero-lead">I help leaders clarify ownership, authority, and accountability so priorities move without constant senior-team push.</p>
+        <h1>I help leadership teams translate strategy into execution.</h1>
+        <p class="hero-lead">I improve visibility, ownership, accountability, and follow-through so work keeps moving without constant senior-team push.</p>
         <div class="hero-actions">
           <a class="button accent" href="https://bbe.ninjapipe.app/book/bbe/edc">Book a Diagnosis Call</a>
-          <a class="button ghost" href="#fix">See What I Fix</a>
+          <a class="button ghost" href="#services">See Services</a>
         </div>
       </div>
-      <aside class="hero-card reveal" aria-label="Core outcome">
-        <strong>Clearer ownership. Faster decisions. Stronger follow-through.</strong>
-        <p>Less work stuck between meetings. Less escalation. More capacity for leaders to lead.</p>
+      <aside class="hero-card reveal" aria-label="Best fit">
+        <strong>Best fit when the issue is coordination, not technical production.</strong>
+        <p>Clearer work. Cleaner decisions. Stronger follow-through.</p>
       </aside>
     </div>
   </header>
 
   <main>
-    <section class="section-pad" id="fix" aria-labelledby="fix-title">
-      <div class="shell">
-        <div class="section-heading reveal">
-          <div>
-            <span class="eyebrow">What I Fix</span>
-            <h2 id="fix-title">Execution breaks when ownership, authority, and follow-through are unclear.</h2>
-          </div>
-          <p>Most leaders do not need a more complicated website, framework, or binder. They need the work to move: cleaner decisions, clearer handoffs, stronger managers, and fewer moments where senior leaders have to rescue the process.</p>
-        </div>
-        <div class="fix-grid" aria-label="Execution issues Bullard Business Execution helps fix">
-          <article class="fix-card reveal">
-            <span>01</span>
-            <h3>Priorities stall after meetings</h3>
-            <p>The team agrees in the room, but ownership, authority, and next actions are not clear enough to create movement.</p>
-          </article>
-          <article class="fix-card reveal">
-            <span>02</span>
-            <h3>Leaders carry too much</h3>
-            <p>Executives and owners do too much thinking, deciding, reminding, and following up for the people closest to the work.</p>
-          </article>
-          <article class="fix-card reveal">
-            <span>03</span>
-            <h3>Growth exposes weak habits</h3>
-            <p>What worked at one size starts to strain under more people, more complexity, and higher expectations.</p>
-          </article>
-          <article class="fix-card reveal">
-            <span>04</span>
-            <h3>Managers need a stronger rhythm</h3>
-            <p>Delegation, coaching, standards, and accountability need to become more consistent inside real work.</p>
-          </article>
-          <article class="fix-card reveal">
-            <span>05</span>
-            <h3>AI is speeding up the wrong system</h3>
-            <p>AI can accelerate work, but it cannot fix unclear ownership, poor decisions, or weak operating habits. It amplifies what is already present.</p>
-          </article>
-          <article class="fix-card reveal">
-            <span>06</span>
-            <h3>The business needs a simpler way to execute</h3>
-            <p>I help leaders diagnose the drag, clarify what must change, and practice better rhythms in the work that already matters.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
     <section class="services section-pad" id="services" aria-labelledby="services-title">
       <div class="shell">
         <div class="section-heading reveal">
           <div>
             <span class="eyebrow">Services</span>
-            <h2 id="services-title">Practical support for leaders and teams.</h2>
+            <h2 id="services-title">Practical support that moves work forward.</h2>
           </div>
-          <p>Engagements are shaped around the execution problem in front of you: individual leadership growth, team alignment, operating rhythm, or a specific priority that is not moving.</p>
+          <p>I build the systems, cadence, and accountability that help teams execute the priorities already on the table.</p>
         </div>
         <div class="service-grid" aria-label="Services provided by Bullard Business Execution">
           <article class="service-card reveal">
             <h3>Executive Coaching</h3>
-            <p>One-on-one support for leaders who need to sharpen judgment, increase influence, delegate more effectively, and lead with clearer ownership.</p>
+            <p>One-on-one support to sharpen judgment, influence, delegation, and leadership follow-through.</p>
           </article>
           <article class="service-card reveal">
             <h3>Consulting</h3>
-            <p>Focused work with owners and leadership teams to diagnose execution drag, clarify decision rights, and improve accountability around real priorities.</p>
+            <p>Focused work to clarify ownership, decision rights, operating cadence, and accountability.</p>
           </article>
           <article class="service-card reveal">
             <h3>Workshop Facilitation</h3>
-            <p>Structured working sessions that help teams align on the problem, make decisions, clarify handoffs, and leave with practical next steps.</p>
+            <p>Working sessions that align leaders, make decisions, clarify handoffs, and set next steps.</p>
           </article>
           <article class="service-card reveal">
             <h3>Leadership Team Alignment</h3>
-            <p>Support for teams that need clearer roles, cleaner expectations, and a better rhythm for decisions, communication, and follow-through.</p>
+            <p>Support for clearer roles, cleaner expectations, and better follow-through across the team.</p>
           </article>
         </div>
+      </div>
+    </section>
+
+    <section class="fit section-pad" id="fit" aria-labelledby="fit-title">
+      <div class="shell">
+        <div class="section-heading reveal">
+          <div>
+            <span class="eyebrow">Fit</span>
+            <h2 id="fit-title">Useful when execution depends too much on senior leaders.</h2>
+          </div>
+          <p>The work is solution-focused: make the operating rhythm clearer, make ownership visible, and help leaders stop carrying work their teams should own.</p>
+        </div>
+        <div class="fit-grid" aria-label="When this work fits">
+          <article class="fit-card reveal">
+            <h3>Priorities stall</h3>
+            <p>Work leaves meetings without enough ownership, authority, or next-step clarity.</p>
+          </article>
+          <article class="fit-card reveal">
+            <h3>Leaders carry too much</h3>
+            <p>Executives keep thinking, deciding, reminding, and following up for the team.</p>
+          </article>
+          <article class="fit-card reveal">
+            <h3>Accountability is unclear</h3>
+            <p>Handoffs, decisions, and follow-through depend on workarounds instead of rhythm.</p>
+          </article>
+        </div>
+        <p class="fit-note reveal">The goal: clearer execution with less senior-team drag.</p>
       </div>
     </section>
 
@@ -277,25 +485,25 @@
       <div class="shell reveal">
         <span class="eyebrow">The Execution Brief</span>
         <h2 id="brief-title">Short notes on what makes work move.</h2>
-        <p>The Execution Brief is a regular note on execution, accountability, leadership behavior, and the organizational habits that shape performance.</p>
+        <p>A regular note on execution, accountability, leadership behavior, and organizational habits.</p>
         <div class="brief-box">
           <div>
             <strong>Begins July 10</strong>
-            <p>Built for owners, executives, and leadership teams who want practical thinking they can use immediately.</p>
+            <p>Built for owners, executives, and leadership teams.</p>
           </div>
           <a class="button accent" href="#diagnosis">Ask About The Brief</a>
         </div>
       </div>
     </section>
 
-    <section class="areas section-pad" id="areas" aria-labelledby="areas-title">
+    <section class="areas section-pad" id="experience" aria-labelledby="experience-title">
       <div class="shell">
         <div class="section-heading reveal">
           <div>
             <span class="eyebrow">Experience</span>
-            <h2 id="areas-title">Experience across practical, complex operating environments.</h2>
+            <h2 id="experience-title">Work across practical, complex operating environments.</h2>
           </div>
-          <p>My work has supported leaders and teams across business, public-sector, nonprofit, education, and service environments. Some work was delivered through prior or partner organizations.</p>
+          <p>Some work was delivered through prior or partner organizations.</p>
         </div>
         <div class="area-list reveal" aria-label="Sectors and environments Kevin has worked in">
           <span>Manufacturing</span>
@@ -308,24 +516,6 @@
           <span>Leadership Development</span>
           <span>Executive Coaching</span>
         </div>
-        <div class="experience-strip reveal" aria-label="Relevant experience proof points">
-          <div>
-            <strong>20+ years</strong>
-            <p>Consulting, leadership development, executive advising, and operational leadership.</p>
-          </div>
-          <div>
-            <strong>2,400 employees</strong>
-            <p>Experience inside a large municipal organization with complex execution needs.</p>
-          </div>
-          <div>
-            <strong>Leaders and teams</strong>
-            <p>Work with owners, executives, managers, and leadership groups.</p>
-          </div>
-          <div>
-            <strong>Real work</strong>
-            <p>Diagnosis, alignment, practice, and follow-through inside the business priorities already underway.</p>
-          </div>
-        </div>
       </div>
     </section>
 
@@ -337,8 +527,8 @@
         <div class="about-copy reveal">
           <span class="eyebrow">About Kevin Bullard</span>
           <h2 id="about-title">I help leaders make execution simpler, clearer, and easier to sustain.</h2>
-          <p>That means clearer priorities, stronger managers, better decisions, and less senior-team rescue work.</p>
-          <p>Kevin brings 20+ years of experience as a transformational management consultant, chief leadership officer, business owner, and executive advisor. He has led leadership development and execution work inside complex organizations, including a 2,400-employee municipality and large public-company environments.</p>
+          <p>Kevin brings 20+ years of experience as a transformational management consultant, chief leadership officer, business owner, and executive advisor.</p>
+          <p>He has led leadership development and execution work inside complex organizations, including a 2,400-employee municipality and large public-company environments.</p>
         </div>
       </div>
     </section>
@@ -346,14 +536,8 @@
     <section class="diagnosis section-pad" id="diagnosis" aria-labelledby="diagnosis-title">
       <div class="shell reveal">
         <span class="eyebrow">Diagnosis Call</span>
-        <h2 id="diagnosis-title">Let&rsquo;s find where execution is getting stuck.</h2>
-        <p>In a diagnosis call, we will look at where work slows down, what it may be costing the business, and whether there is a practical case for working together.</p>
-        <div class="call-list" aria-label="What the diagnosis call clarifies">
-          <div>Where execution is slowing down</div>
-          <div>What the slowdown may be costing</div>
-          <div>What needs to change first</div>
-          <div>Whether working together makes sense</div>
-        </div>
+        <h2 id="diagnosis-title">Let’s find where execution is getting stuck.</h2>
+        <p>We’ll clarify what is slowing work down, what needs to change first, and whether working together makes sense.</p>
         <a class="button accent" href="https://bbe.ninjapipe.app/book/bbe/edc">Book a Diagnosis Call</a>
       </div>
     </section>
@@ -366,10 +550,10 @@
         <span>Bullard Business Execution</span>
       </span>
       <div class="footer-links" aria-label="Footer navigation">
-        <a href="#fix">What I Fix</a>
         <a href="#services">Services</a>
+        <a href="#fit">Fit</a>
         <a href="#brief">Execution Brief</a>
-        <a href="#areas">Experience</a>
+        <a href="#experience">Experience</a>
         <a href="#diagnosis">Diagnosis Call</a>
         <a href="privacy.html">Privacy</a>
         <a href="terms.html">Terms</a>
