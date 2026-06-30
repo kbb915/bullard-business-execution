@@ -209,20 +209,22 @@
       margin-bottom: clamp(28px, 4vw, 42px);
     }
     .section-heading p { color: var(--ink-soft); font-size: 18px; line-height: 1.66; padding-top: 34px; }
+    .problem { background: var(--paper); }
     .services { background: var(--white); }
-    .service-grid {
+    .problem-grid, .service-grid {
       display: grid;
       gap: 1px;
       background: var(--line);
       border: 1px solid var(--line);
-      grid-template-columns: repeat(4, 1fr);
     }
-    .service-card {
+    .problem-grid { grid-template-columns: repeat(3, 1fr); }
+    .service-grid { grid-template-columns: repeat(4, 1fr); }
+    .problem-card, .service-card {
       background: var(--white);
       min-height: 190px;
       padding: clamp(24px, 3vw, 32px);
     }
-    .service-card p { font-size: 15px; line-height: 1.62; }
+    .problem-card p, .service-card p { font-size: 15px; line-height: 1.62; }
     .brief {
       background: radial-gradient(circle at 88% 8%, rgba(93, 127, 145, .24), transparent 30%), linear-gradient(135deg, #0f2233, #1b3a52 58%, #0b1d2d);
       color: var(--white);
@@ -317,7 +319,7 @@
     @media (max-width: 960px) {
       .section-heading, .about-grid { grid-template-columns: 1fr; }
       .section-heading p { padding-top: 0; }
-      .service-grid { grid-template-columns: 1fr; }
+      .problem-grid, .service-grid { grid-template-columns: 1fr; }
       .brief-box { grid-template-columns: 1fr; }
     }
     @media (max-width: 620px) {
@@ -348,6 +350,7 @@
         <span>Bullard<br>Business Execution</span>
       </a>
       <ul class="nav-links">
+        <li><a href="#problem">The Problem</a></li>
         <li><a href="#services">Services</a></li>
         <li><a href="#brief">Execution Brief</a></li>
         <li><a href="#experience">Experience</a></li>
@@ -360,6 +363,7 @@
     </div>
     <div class="mobile-menu" id="mobile-menu" hidden>
       <div class="mobile-menu-inner">
+        <a href="#problem">The Problem</a>
         <a href="#services">Services</a>
         <a href="#brief">Execution Brief</a>
         <a href="#experience">Experience</a>
@@ -376,13 +380,39 @@
         <p class="hero-lead">When priorities are clear but results still stall, the problem is usually not effort — it is execution. We help leadership teams create the clarity, accountability, and follow-through needed to move the business forward.</p>
         <div class="hero-actions">
           <a class="button accent" href="https://bbe.ninjapipe.app/book/bbe/edc">Book a Diagnosis Call</a>
-          <a class="button ghost" href="#services">See Services</a>
+          <a class="button ghost" href="#problem">See The Problem</a>
         </div>
       </div>
     </div>
   </header>
 
   <main>
+    <section class="problem section-pad" id="problem" aria-labelledby="problem-title">
+      <div class="shell">
+        <div class="section-heading reveal">
+          <div>
+            <span class="eyebrow">The Problem</span>
+            <h2 id="problem-title">Execution gets heavy when ownership is unclear.</h2>
+          </div>
+          <p>Priorities can be clear and still stall when decisions, handoffs, follow-up, and accountability depend too much on senior leaders.</p>
+        </div>
+        <div class="problem-grid" aria-label="Common execution problems">
+          <article class="problem-card reveal">
+            <h3>Priorities stall</h3>
+            <p>Work leaves meetings without enough ownership, authority, or next-step clarity.</p>
+          </article>
+          <article class="problem-card reveal">
+            <h3>Leaders carry too much</h3>
+            <p>Executives keep thinking, deciding, reminding, and following up for the team.</p>
+          </article>
+          <article class="problem-card reveal">
+            <h3>Follow-through drifts</h3>
+            <p>Handoffs, decisions, and reporting depend on memory, meetings, and workarounds.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <section class="services section-pad" id="services" aria-labelledby="services-title">
       <div class="shell">
         <div class="section-heading reveal">
@@ -482,6 +512,7 @@
         <span>Bullard Business Execution</span>
       </span>
       <div class="footer-links" aria-label="Footer navigation">
+        <a href="#problem">The Problem</a>
         <a href="#services">Services</a>
         <a href="#brief">Execution Brief</a>
         <a href="#experience">Experience</a>
