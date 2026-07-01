@@ -252,6 +252,34 @@
     .problem { background: var(--paper); }
     .problem.section-pad { padding-top: clamp(34px, 4vw, 52px); }
     .results { background: var(--white); }
+    .results-layout {
+      align-items: stretch;
+      display: grid;
+      gap: clamp(24px, 4vw, 44px);
+      grid-template-columns: minmax(0, .72fr) minmax(260px, .38fr);
+    }
+    .results-visual {
+      background: var(--navy);
+      border: 1px solid rgba(52, 83, 100, .2);
+      margin: 0;
+      min-height: 360px;
+      overflow: hidden;
+      position: relative;
+    }
+    .results-visual::after {
+      background: linear-gradient(135deg, rgba(15, 34, 51, .58), rgba(15, 34, 51, .18));
+      content: "";
+      inset: 0;
+      position: absolute;
+    }
+    .results-visual img {
+      display: block;
+      filter: saturate(.72) brightness(.68) contrast(1.05);
+      height: 100%;
+      object-fit: cover;
+      object-position: 58% 52%;
+      width: 100%;
+    }
     .problem-checklist, .result-checklist {
       border-bottom: 1px solid var(--line);
       border-top: 1px solid var(--line);
@@ -375,8 +403,9 @@
       .mobile-menu.is-open { display: block; }
     }
     @media (max-width: 960px) {
-      .brief-panel, .section-heading { grid-template-columns: 1fr; }
+      .brief-panel, .section-heading, .results-layout { grid-template-columns: 1fr; }
       .section-heading p { padding-top: 0; }
+      .results-visual { min-height: 260px; order: -1; }
       .service-grid { grid-template-columns: 1fr; }
       .service-card { min-height: 0; padding: 24px; }
     }
@@ -391,6 +420,7 @@
       .hero-lead, .section-heading p, .about-copy p, .diagnosis p { font-size: 18px; }
       .button { width: 100%; }
       .brief-form { height: 560px; }
+      .results-visual { min-height: 220px; }
       .service-card { padding: 20px; }
       .area-list { grid-template-columns: 1fr; }
       .footer-inner { flex-direction: column; }
@@ -516,23 +546,28 @@
             <h2 id="results-title">This happens when execution works:</h2>
           </div>
         </div>
-        <ul class="result-checklist reveal" aria-label="Results from working with Bullard Business Execution">
-          <li>
-            <span><strong>Priorities leave meetings with owners.</strong>People know who owns the work, what authority they have, and what happens next.</span>
-          </li>
-          <li>
-            <span><strong>Managers operate with clear authority.</strong>Managers can act without waiting for every answer to come from the senior team.</span>
-          </li>
-          <li>
-            <span><strong>Problems are identified before they become emergencies.</strong>Teams see risk earlier and can address issues before they consume leadership attention.</span>
-          </li>
-          <li>
-            <span><strong>Senior leaders spend less time chasing follow-up.</strong>Leaders gain confidence in their people and have more capacity for their own work.</span>
-          </li>
-          <li>
-            <span><strong>Growth moves with more consistent execution.</strong>Cleaner execution gives financial growth a stronger operating foundation.</span>
-          </li>
-        </ul>
+        <div class="results-layout reveal">
+          <ul class="result-checklist" aria-label="Results from working with Bullard Business Execution">
+            <li>
+              <span><strong>Priorities leave meetings with owners.</strong>People know who owns the work, what authority they have, and what happens next.</span>
+            </li>
+            <li>
+              <span><strong>Managers operate with clear authority.</strong>Managers can act without waiting for every answer to come from the senior team.</span>
+            </li>
+            <li>
+              <span><strong>Problems are identified before they become emergencies.</strong>Teams see risk earlier and can address issues before they consume leadership attention.</span>
+            </li>
+            <li>
+              <span><strong>Senior leaders spend less time chasing follow-up.</strong>Leaders gain confidence in their people and have more capacity for their own work.</span>
+            </li>
+            <li>
+              <span><strong>Growth moves with more consistent execution.</strong>Cleaner execution gives financial growth a stronger operating foundation.</span>
+            </li>
+          </ul>
+          <figure class="results-visual" aria-hidden="true">
+            <img src="https://images.pexels.com/photos/20768737/pexels-photo-20768737.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=900" alt="">
+          </figure>
+        </div>
       </div>
     </section>
 
