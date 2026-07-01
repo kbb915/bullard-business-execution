@@ -252,6 +252,50 @@
     .problem { background: var(--paper); }
     .problem.section-pad { padding-top: clamp(34px, 4vw, 52px); }
     .results { background: var(--white); }
+    .endorsements { background: var(--paper); }
+    .endorsement-panel {
+      border-bottom: 1px solid var(--line);
+      border-top: 1px solid var(--line);
+      min-height: 310px;
+      padding: clamp(24px, 5vw, 42px) 0;
+      position: relative;
+    }
+    .endorsement-slide { display: none; }
+    .endorsement-slide.is-active { display: block; }
+    .endorsement-slide blockquote { margin: 0; }
+    .endorsement-slide p {
+      color: var(--ink);
+      font-family: "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+      font-size: clamp(24px, 3vw, 34px);
+      letter-spacing: -.035em;
+      line-height: 1.24;
+      max-width: 920px;
+    }
+    .endorsement-credit {
+      color: var(--ink-soft);
+      font-size: 15px;
+      margin-top: 24px;
+    }
+    .endorsement-credit strong {
+      color: var(--ink);
+      display: block;
+      font-size: 16px;
+      letter-spacing: .02em;
+    }
+    .endorsement-controls {
+      display: flex;
+      gap: 10px;
+      margin-top: 24px;
+    }
+    .endorsement-dot {
+      background: transparent;
+      border: 1px solid rgba(49, 95, 118, .45);
+      cursor: pointer;
+      height: 12px;
+      padding: 0;
+      width: 32px;
+    }
+    .endorsement-dot.is-active { background: var(--accent); border-color: var(--accent); }
     .problem-checklist, .result-checklist {
       border-bottom: 1px solid var(--line);
       border-top: 1px solid var(--line);
@@ -391,6 +435,7 @@
       .hero-lead, .section-heading p, .about-copy p, .diagnosis p { font-size: 18px; }
       .button { width: 100%; }
       .brief-form { height: 560px; }
+      .endorsement-panel { min-height: 390px; }
       .service-card { padding: 20px; }
       .area-list { grid-template-columns: 1fr; }
       .footer-inner { flex-direction: column; }
@@ -536,6 +581,31 @@
       </div>
     </section>
 
+    <section class="endorsements section-pad" id="endorsements" aria-labelledby="endorsements-title">
+      <div class="shell">
+        <span class="eyebrow reveal">Endorsements</span>
+        <div class="endorsement-panel reveal">
+          <h2 id="endorsements-title" hidden>Endorsements</h2>
+          <article class="endorsement-slide is-active">
+            <blockquote>
+              <p>Sometimes all I need for a more expansive, possibility-driven mindset is thirty minutes with Kevin Bullard. And it's not just about positive affirmations or self-talk. Kevin's consulting is grounded in proven methods practically applied to unleash potential. We all get stuck now and then when we realize what got us here may not be getting us where we want to go. So if you or your team are in that place and ready for a massive dose of renewed opportunity, Kevin is your man.</p>
+              <footer class="endorsement-credit"><strong>Mark Modesti</strong>Marketing &amp; Business Development, Harmonic Data</footer>
+            </blockquote>
+          </article>
+          <article class="endorsement-slide">
+            <blockquote>
+              <p>Kevin Bullard is an exceptional executive coach and trusted advisor. He has a unique ability to connect with senior leaders, quickly identify the real challenges limiting their effectiveness, and provide practical guidance tailored to their individual leadership style. Kevin translates leadership concepts into meaningful action, helping leaders grow while driving measurable results for their organizations.</p>
+              <footer class="endorsement-credit"><strong>Jud Rex</strong>Incoming Town Manager, Warrenton, VA</footer>
+            </blockquote>
+          </article>
+          <div class="endorsement-controls" aria-label="Endorsement controls">
+            <button class="endorsement-dot is-active" type="button" aria-label="Show endorsement from Mark Modesti"></button>
+            <button class="endorsement-dot" type="button" aria-label="Show endorsement from Jud Rex"></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="about-cta section-pad" id="experience" aria-labelledby="about-title">
       <div class="shell about-grid">
         <div class="about-copy reveal">
@@ -602,6 +672,20 @@
       revealItems.forEach((item) => observer.observe(item));
     } else {
       revealItems.forEach((item) => item.classList.add("visible"));
+    }
+    const endorsementSlides = document.querySelectorAll(".endorsement-slide");
+    const endorsementDots = document.querySelectorAll(".endorsement-dot");
+    if (endorsementSlides.length > 1 && endorsementDots.length === endorsementSlides.length) {
+      let activeEndorsement = 0;
+      const showEndorsement = (index) => {
+        activeEndorsement = index;
+        endorsementSlides.forEach((slide, slideIndex) => slide.classList.toggle("is-active", slideIndex === index));
+        endorsementDots.forEach((dot, dotIndex) => dot.classList.toggle("is-active", dotIndex === index));
+      };
+      endorsementDots.forEach((dot, index) => dot.addEventListener("click", () => showEndorsement(index)));
+      if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        window.setInterval(() => showEndorsement((activeEndorsement + 1) % endorsementSlides.length), 8000);
+      }
     }
     const menuToggle = document.querySelector(".menu-toggle");
     const mobileMenu = document.querySelector("#mobile-menu");
