@@ -323,12 +323,9 @@
     }
     .about-cta { background: var(--paper); }
     .about-grid {
-      align-items: start;
-      display: grid;
-      gap: clamp(30px, 6vw, 72px);
-      grid-template-columns: minmax(220px, .42fr) minmax(0, .9fr);
+      max-width: 880px;
     }
-    .about-photo { background: var(--white); border: 1px solid var(--line); margin: 0; padding: 12px; }
+    .about-photo { background: var(--white); border: 1px solid var(--line); margin: 24px 0 0; max-width: 360px; padding: 12px; }
     .about-photo img { aspect-ratio: 1 / 1; display: block; filter: brightness(1.12) contrast(1.03); object-fit: cover; object-position: center 18%; width: 100%; }
     .about-copy p { color: var(--ink-soft); font-size: 18px; line-height: 1.68; margin-top: 18px; }
     .diagnosis {
@@ -370,7 +367,7 @@
       .mobile-menu.is-open { display: block; }
     }
     @media (max-width: 960px) {
-      .brief-panel, .section-heading, .about-grid { grid-template-columns: 1fr; }
+      .brief-panel, .section-heading { grid-template-columns: 1fr; }
       .section-heading p { padding-top: 0; }
       .service-grid { grid-template-columns: 1fr; }
     }
@@ -506,7 +503,7 @@
         <div class="section-heading reveal">
           <div>
             <span class="eyebrow">Results</span>
-            <h2 id="results-title">What moves when execution works:</h2>
+            <h2 id="results-title">This happens when execution works:</h2>
           </div>
         </div>
         <ul class="result-checklist reveal" aria-label="Results from working with Bullard Business Execution">
@@ -531,12 +528,12 @@
 
     <section class="about-cta section-pad" id="experience" aria-labelledby="about-title">
       <div class="shell about-grid">
-        <figure class="about-photo reveal">
-          <img src="assets/kbb-headshot.png" alt="Kevin Bullard, founder of Bullard Business Execution.">
-        </figure>
         <div class="about-copy reveal">
           <span class="eyebrow">About Kevin Bullard</span>
           <h2 id="about-title">I help leaders make execution simpler, clearer, and easier to sustain.</h2>
+          <figure class="about-photo">
+            <img src="assets/kbb-headshot.png" alt="Kevin Bullard, founder of Bullard Business Execution.">
+          </figure>
           <p>Kevin brings 20+ years of experience as a transformational management consultant, chief leadership officer, business owner, and executive advisor.</p>
           <p>He has led leadership development and execution work inside complex organizations, including a 2,400-employee municipality and large public-company environments.</p>
           <div class="area-list" aria-label="Sectors and environments Kevin has worked in">
