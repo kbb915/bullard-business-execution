@@ -308,7 +308,7 @@
       display: grid;
       gap: 14px;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      margin-top: 30px;
+      margin-top: 14px;
     }
     .area-list span {
       border: 1px solid rgba(52, 83, 100, .18);
@@ -319,6 +319,14 @@
       line-height: 1.35;
       padding: 12px 10px;
       text-align: center;
+      text-transform: uppercase;
+    }
+    .sector-heading {
+      color: var(--ink);
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      margin-top: 30px;
       text-transform: uppercase;
     }
     .about-cta { background: var(--paper); }
@@ -536,6 +544,7 @@
           </figure>
           <p>Kevin brings 20+ years of experience as a transformational management consultant, chief leadership officer, business owner, and executive advisor.</p>
           <p>He has led leadership development and execution work inside complex organizations, including a 2,400-employee municipality and large public-company environments.</p>
+          <p class="sector-heading">I've served clients in:</p>
           <div class="area-list" aria-label="Sectors and environments Kevin has worked in">
             <span>Manufacturing</span>
             <span>Retail</span>
@@ -544,8 +553,6 @@
             <span>Nonprofit</span>
             <span>Service Organizations</span>
             <span>Real Estate</span>
-            <span>Leadership Development</span>
-            <span>Executive Coaching</span>
           </div>
         </div>
       </div>
