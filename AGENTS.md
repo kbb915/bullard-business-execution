@@ -15,6 +15,9 @@ This repo hosts static HTML pages on GitHub Pages.
 - Use lowercase and hyphens for client folder names.
 - Use relative asset paths.
 
+## Proposal template defaults
+- Set proposal hero headlines to `font-size: clamp(44px, 4.6vw, 72px)` and `line-height: 0.98` so long client-specific headlines flow cleanly across desktop and mobile layouts.
+
 ## Git workflow
 After creating or updating files, run:
 git add .
