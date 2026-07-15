@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex">
+  <title>Page Not Found | Bullard Business Execution</title>
+  <style>
+    :root {
+      --ink: #151b20;
+      --muted: #d8dce0;
+      --white: #fffefa;
+      --navy: #112638;
+      --steel: #315f76;
+      --accent: #c94f32;
+      --accent-dark: #a43c27;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    body {
+      align-items: center;
+      background: radial-gradient(circle at 78% 18%, rgba(158, 187, 199, .34), transparent 35%), linear-gradient(135deg, #0f2233, #1b3a52 58%, #0b1d2d);
+      color: var(--white);
+      display: flex;
+      font-family: "Avenir Next", "Segoe UI", Arial, sans-serif;
+      justify-content: center;
+      line-height: 1.6;
+      margin: 0;
+      min-height: 100vh;
+      padding: clamp(28px, 6vw, 72px);
+      text-align: center;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image: radial-gradient(rgba(255, 254, 250, .08) .7px, transparent .7px);
+      background-size: 5px 5px;
+      opacity: .26;
+    }
+    main {
+      max-width: 760px;
+      position: relative;
+      z-index: 1;
+    }
+    .logo {
+      background: var(--white);
+      box-shadow: 0 18px 42px rgba(6, 20, 32, .22);
+      display: inline-block;
+      margin-bottom: clamp(34px, 6vw, 54px);
+      padding: 9px 14px;
+      width: 168px;
+    }
+    .logo img {
+      display: block;
+      height: auto;
+      width: 100%;
+    }
+    .eyebrow {
+      color: #b7c8d2;
+      display: block;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .22em;
+      margin-bottom: 18px;
+      text-transform: uppercase;
+    }
+    h1 {
+      font-family: "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+      font-size: clamp(44px, 7vw, 78px);
+      font-weight: 400;
+      letter-spacing: -.045em;
+      line-height: 1.02;
+      margin: 0;
+    }
+    p {
+      color: var(--muted);
+      font-size: clamp(18px, 2.4vw, 23px);
+      margin: 24px auto 0;
+      max-width: 620px;
+    }
+    .button {
+      align-items: center;
+      background: var(--accent);
+      border: 1px solid var(--accent);
+      box-shadow: 0 12px 26px rgba(201, 79, 50, .24);
+      color: var(--white);
+      display: inline-flex;
+      font-size: 13px;
+      font-weight: 800;
+      gap: 14px;
+      justify-content: center;
+      letter-spacing: .08em;
+      margin-top: 36px;
+      min-height: 54px;
+      padding: 0 24px;
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: background .2s ease, border-color .2s ease, transform .2s ease;
+    }
+    .button::after { content: "\2192"; font-size: 17px; font-weight: 400; }
+    .button:hover {
+      background: var(--accent-dark);
+      border-color: var(--accent-dark);
+      transform: translateY(-1px);
+    }
+    .button:focus-visible { outline: 2px solid var(--white); outline-offset: 4px; }
+    @media (max-width: 620px) {
+      body { text-align: left; }
+      main { width: 100%; }
+      .button { width: 100%; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <a class="logo" href="/" aria-label="Bullard Business Execution home">
+      <img src="assets/bbe-logo.png" alt="Bullard Business Execution">
+    </a>
+    <span class="eyebrow">404</span>
+    <h1>Execution issue detected.</h1>
+    <p>The page you were looking for didn&rsquo;t follow through. Let&rsquo;s get you back on track.</p>
+    <a class="button" href="/">Get back on track</a>
+  </main>
+</body>
+</html>
