@@ -191,6 +191,12 @@
       padding-top: clamp(66px, 8vw, 112px);
       padding-bottom: clamp(54px, 7vw, 86px);
     }
+    .hero-layout {
+      align-items: center;
+      display: grid;
+      gap: clamp(34px, 6vw, 76px);
+      grid-template-columns: minmax(0, 1.15fr) minmax(280px, .68fr);
+    }
     .hero-lead {
       color: #eef3f5;
       font-size: clamp(18px, 2vw, 22px);
@@ -199,6 +205,35 @@
       max-width: 760px;
     }
     .hero-actions { display: flex; flex-wrap: wrap; gap: 13px; margin-top: 34px; }
+    .hero-card {
+      border: 1px solid rgba(255, 255, 255, .28);
+      background: rgba(15, 34, 51, .18);
+      box-shadow: 0 24px 52px rgba(6, 20, 32, .16);
+      padding: clamp(24px, 3vw, 34px);
+    }
+    .hero-card span {
+      color: #d5e0e5;
+      display: block;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .18em;
+      margin-bottom: 14px;
+      text-transform: uppercase;
+    }
+    .hero-card strong {
+      display: block;
+      font-family: "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+      font-size: clamp(28px, 3vw, 38px);
+      font-weight: 400;
+      letter-spacing: -.04em;
+      line-height: 1.08;
+    }
+    .hero-card p {
+      color: #eef3f5;
+      font-size: 16px;
+      line-height: 1.65;
+      margin-top: 22px;
+    }
     .brief-section { background: var(--paper); border-bottom: 0; }
     .brief-section.section-pad { padding-bottom: clamp(30px, 4vw, 46px); }
     .brief-panel {
@@ -375,7 +410,8 @@
       .mobile-menu.is-open { display: block; }
     }
     @media (max-width: 960px) {
-      .brief-panel, .section-heading { grid-template-columns: 1fr; }
+      .hero-layout, .brief-panel, .section-heading { grid-template-columns: 1fr; }
+      .hero-card { max-width: 560px; }
       .section-heading p { padding-top: 0; }
       .service-grid { grid-template-columns: 1fr; }
       .service-card { min-height: 0; padding: 24px; }
@@ -434,14 +470,21 @@
 
   <header class="hero" id="top">
     <div class="shell hero-inner">
-      <div class="reveal">
-        <span class="eyebrow">Bullard Business Execution</span>
-        <h1>Think Ahead.<br>Execute consistently.</h1>
-        <p class="hero-lead">We help senior leaders build teams that think ahead, own results, and execute without constant follow-up.</p>
-        <div class="hero-actions">
-          <a class="button accent" href="https://bbe.ninjapipe.app/book/bbe/edc">Book a Diagnosis Call</a>
-          <a class="button ghost" href="#problem">See How We Help</a>
+      <div class="hero-layout">
+        <div class="reveal">
+          <span class="eyebrow">Bullard Business Execution</span>
+          <h1>Think Ahead.<br>Execute consistently.</h1>
+          <p class="hero-lead">We help senior leaders build teams that think ahead, own results, and execute without constant follow-up.</p>
+          <div class="hero-actions">
+            <a class="button accent" href="https://bbe.ninjapipe.app/book/bbe/edc">Book a Diagnosis Call</a>
+            <a class="button ghost" href="#problem">See How We Help</a>
+          </div>
         </div>
+        <aside class="hero-card reveal" aria-label="Execution improvement principle">
+          <span>Execution improves when</span>
+          <strong>leaders stop reacting and start anticipating.</strong>
+          <p>Clear ownership. Faster decisions. Less constant follow-up.</p>
+        </aside>
       </div>
     </div>
   </header>
