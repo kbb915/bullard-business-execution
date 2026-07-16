@@ -1,3 +1,4 @@
 User-agent: *
 Disallow: /coaching/
 Disallow: /admin/
+Disallow: /tools/
