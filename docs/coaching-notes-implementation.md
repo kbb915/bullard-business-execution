@@ -467,7 +467,7 @@ Use the existing BBE visual system:
 The coaching assistant may only use:
 
 1. The authenticated client's published coaching notes
-2. Bullard Business Execution's Leadership Source Model
+2. KBB Media's Leadership Source Model
 3. Resources Kevin approved for that client
 4. Reflections submitted by that authenticated client
 
