@@ -138,13 +138,14 @@
     .nav-links {
       align-items: center;
       display: flex;
-      gap: clamp(14px, 2vw, 24px);
+      gap: clamp(12px, 1.5vw, 20px);
       list-style: none;
       margin: 0;
       padding: 0;
       color: #e6e1d8;
       font-size: 14px;
     }
+    .nav-links a { white-space: nowrap; }
     .nav-links a:not(.button):hover { color: #ffffff; }
     .menu-toggle {
       align-items: center;
@@ -325,12 +326,12 @@
         <span>Bullard<br>Business Execution</span>
       </a>
       <ul class="nav-links">
-        <li><a href="index.html#problem">Problem + Help</a></li>
-        <li><a href="index.html#results">Results</a></li>
-        <li><a href="/municipal">Municipal Leaders</a></li>
-        <li><a href="index.html#experience">Experience</a></li>
-        <li><a href="speaking.html">Speaking</a></li>
-        <li><a class="button accent" href="https://bbe.ninjapipe.app/book/bbe/edc">Book Kevin</a></li>
+        <li><a href="/">Business</a></li>
+        <li><a href="/municipal">Municipalities</a></li>
+        <li><a href="/#problem">Problem + Help</a></li>
+        <li><a href="/#results">Results</a></li>
+        <li><a href="/#experience">Experience</a></li>
+        <li><a href="/speaking.html">Speaking</a></li>
       </ul>
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu">
         <span class="menu-icon" aria-hidden="true"><span></span><span></span><span></span></span>
@@ -339,12 +340,12 @@
     </div>
     <div class="mobile-menu" id="mobile-menu" hidden>
       <div class="mobile-menu-inner">
-        <a href="index.html#problem">Problem + Help</a>
-        <a href="index.html#results">Results</a>
-        <a href="/municipal">Municipal Leaders</a>
-        <a href="index.html#experience">Experience</a>
-        <a href="speaking.html">Speaking</a>
-        <a class="button accent" href="https://bbe.ninjapipe.app/book/bbe/edc">Book Kevin</a>
+        <a href="/">Business</a>
+        <a href="/municipal">Municipalities</a>
+        <a href="/#problem">Problem + Help</a>
+        <a href="/#results">Results</a>
+        <a href="/#experience">Experience</a>
+        <a href="/speaking.html">Speaking</a>
       </div>
     </div>
   </nav>
@@ -430,9 +431,10 @@
         <span>Bullard Business Execution</span>
       </span>
       <div class="footer-links" aria-label="Footer navigation">
+        <a href="/">Business</a>
+        <a href="/municipal">Municipalities</a>
         <a href="index.html#problem">Problem + Help</a>
         <a href="index.html#results">Results</a>
-        <a href="/municipal">Municipal Leaders</a>
         <a href="index.html#experience">Experience</a>
         <a href="speaking.html">Speaking</a>
         <a href="https://bbe.ninjapipe.app/book/bbe/edc">Book Kevin</a>
