@@ -28,7 +28,8 @@ const publicPages = [
 
 for (const page of publicPages) {
   const html = await read(page);
-  check(html.includes('href="/two-minute-execution"'), `${page}: missing Two-Minute Execution navigation link`);
+  const primaryNavigation = html.match(/<nav class="nav"[\s\S]*?<\/nav>/)?.[0] || "";
+  check(!primaryNavigation.includes('href="/two-minute-execution"'), `${page}: Two-Minute Execution should be hidden from primary navigation`);
   check(html.includes("Problem + Results"), `${page}: Problem + Results label changed or missing`);
   check(html.includes(">About<"), `${page}: About label changed or missing`);
   check(html.includes('aria-label="Primary navigation"'), `${page}: primary navigation label missing`);
@@ -36,7 +37,6 @@ for (const page of publicPages) {
 }
 
 const archiveHtml = await read("two-minute-execution/index.html");
-check(archiveHtml.includes('aria-current="page"'), "Archive: active navigation state missing");
 check(archiveHtml.includes('id="message-search"'), "Archive: search control missing");
 check(archiveHtml.includes('id="category-filter"'), "Archive: category filter missing");
 check(archiveHtml.includes('id="archive-empty"'), "Archive: empty state missing");
