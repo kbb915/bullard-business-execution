@@ -54,13 +54,15 @@ check(archiveHtml.includes('id="archive-empty"'), "Archive: empty state missing"
 check(archiveHtml.includes("https://form.jotform.com/261679188283068"), "Archive: existing signup form missing");
 
 const contentDirectory = path.join(root, "content", "two-minute-execution");
-const draftFiles = (await readdir(contentDirectory)).filter((filename) => filename.endsWith(".md"));
-check(draftFiles.length === 6, `Expected 6 sample drafts, found ${draftFiles.length}`);
+const messageFiles = (await readdir(contentDirectory)).filter((filename) => filename.endsWith(".md"));
+check(messageFiles.length === 6, `Expected 6 sample messages, found ${messageFiles.length}`);
 
+const draftFiles = [];
 const draftSlugs = [];
-for (const filename of draftFiles) {
+for (const filename of messageFiles) {
   const source = await readFile(path.join(contentDirectory, filename), "utf8");
-  check(source.includes('"status": "draft"'), `${filename}: sample is not marked draft`);
+  if (!source.includes('"status": "draft"')) continue;
+  draftFiles.push(filename);
   const slug = source.match(/"slug":\s*"([^"]+)"/)?.[1];
   if (slug) draftSlugs.push(slug);
 }

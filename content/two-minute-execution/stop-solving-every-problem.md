@@ -2,7 +2,7 @@
 {
   "title": "Stop Solving Every Problem",
   "slug": "stop-solving-every-problem",
-  "publishDate": "2026-08-04",
+  "publishDate": "2026-07-23",
   "category": "Leadership Behavior",
   "summary": "When leaders supply every answer, they can unintentionally train capable people to wait instead of think.",
   "sourceType": "practice",
@@ -15,7 +15,7 @@
     "require-recommendations-not-reports",
     "clarify-ownership-before-work-begins"
   ],
-  "status": "draft",
+  "status": "published",
   "featured": true,
   "seoTitle": "Stop Solving Every Problem | Two-Minute Execution",
   "seoDescription": "A practical leadership prompt for reducing dependence and building stronger judgment across your team."
