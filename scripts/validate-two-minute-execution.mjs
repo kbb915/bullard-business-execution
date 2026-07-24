@@ -34,7 +34,8 @@ const publicPages = [
   "municipal/index.html",
   "speaking.html",
   "client-stories.html",
-  "two-minute-execution/index.html"
+  "two-minute-execution/index.html",
+  "two-minute-execution/submit/index.html"
 ];
 
 for (const page of publicPages) {
