@@ -314,7 +314,7 @@ ${related.map(card).join("\n")}
   <meta name="twitter:title" content="${escapeHtml(entry.seoTitle)}">
   <meta name="twitter:description" content="${escapeHtml(entry.seoDescription)}">
   <title>${escapeHtml(entry.seoTitle)}</title>
-  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="../styles.css?v=20260723-cta">
   <script type="application/ld+json">${escapeJsonForHtml(structuredData)}</script>
 </head>
 <body>
