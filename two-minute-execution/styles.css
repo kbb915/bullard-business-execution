@@ -399,10 +399,25 @@ iframe { border: 0; }
   color: var(--white);
 }
 .message-hero .shell { padding-bottom: clamp(62px, 8vw, 98px); padding-top: clamp(62px, 8vw, 98px); }
-.message-hero .eyebrow { color: #d5e0e5; }
+.message-hero .eyebrow { color: #d5e0e5; display: block; }
 .message-hero p { color: #eef3f5; font-size: 20px; line-height: 1.65; margin-top: 22px; max-width: 760px; }
 .message-hero h1 { font-size: clamp(44px, 6vw, 72px); }
-.back-link { color: #dce7eb; display: inline-block; font-size: 12px; font-weight: 800; letter-spacing: .12em; margin-bottom: 26px; text-transform: uppercase; }
+.back-link {
+  align-items: center;
+  background: var(--accent);
+  border: 1px solid var(--accent);
+  color: var(--white);
+  display: inline-flex;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .12em;
+  margin-bottom: 34px;
+  min-height: 48px;
+  padding: 0 20px;
+  text-transform: uppercase;
+  transition: background .2s ease, border-color .2s ease;
+}
+.back-link:hover { background: var(--accent-dark); border-color: var(--accent-dark); }
 .back-link::before { content: "\2190"; margin-right: 9px; }
 .message-body { max-width: 860px; }
 .tqa-stack { display: grid; gap: 18px; }
