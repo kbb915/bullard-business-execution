@@ -14,6 +14,8 @@ Two-Minute Execution uses Markdown source files in `content/two-minute-execution
    ```
 
 5. Change the approved entry to `"status": "published"`.
+   - If `publishDate` is today or earlier, it is eligible immediately.
+   - If `publishDate` is in the future, it remains hidden until that date.
 6. Generate production-safe pages:
 
    ```sh
@@ -27,6 +29,18 @@ Two-Minute Execution uses Markdown source files in `content/two-minute-execution
    ```
 
 Always run the generator without `--preview-drafts` before committing. Production output includes only published entries.
+
+## Scheduled publishing
+
+The scheduled publishing workflow runs every morning at 12:15 UTC, approximately 6:15 a.m. Central Standard Time or 7:15 a.m. Central Daylight Time. GitHub may occasionally start scheduled workflows a few minutes late.
+
+To schedule a message:
+
+1. Set its future `publishDate`.
+2. Set `"status": "published"` to approve it for automatic release.
+3. Commit and push the Markdown source file.
+
+The message stays out of the archive, search, related content, individual pages, and sitemap until its publication date. The workflow can also be run manually from GitHub Actions.
 
 ## Categories
 

@@ -9,6 +9,7 @@ const outputDirectory = path.join(root, "two-minute-execution");
 const manifestPath = path.join(outputDirectory, "generated-pages.json");
 const siteUrl = "https://bullardbusinessexecution.com";
 const includeDrafts = process.argv.includes("--preview-drafts");
+const buildDateOverride = process.env.TME_BUILD_DATE || "";
 
 const requiredFields = [
   "title",
@@ -43,6 +44,22 @@ const safeUrl = (value = "") => {
   return parsed.toString();
 };
 
+const dateInCentralTime = (date) => {
+  const parts = new Intl.DateTimeFormat("en-US", {
+    timeZone: "America/Chicago",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit"
+  }).formatToParts(date);
+  const values = Object.fromEntries(parts.map(({ type, value }) => [type, value]));
+  return `${values.year}-${values.month}-${values.day}`;
+};
+
+const currentPublishDate = buildDateOverride || dateInCentralTime(new Date());
+if (!/^\d{4}-\d{2}-\d{2}$/.test(currentPublishDate)) {
+  throw new Error("TME_BUILD_DATE must use YYYY-MM-DD format");
+}
+
 const markdownParagraphs = (value = "") => value
   .trim()
   .split(/\n\s*\n/)
@@ -63,6 +80,9 @@ const parseEntry = (filename, source) => {
   }
   if (!["draft", "published"].includes(metadata.status)) {
     throw new Error(`${filename}: status must be draft or published`);
+  }
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(metadata.publishDate)) {
+    throw new Error(`${filename}: publishDate must use YYYY-MM-DD format`);
   }
   if (!Array.isArray(metadata.relatedMessages)) {
     throw new Error(`${filename}: relatedMessages must be an array`);
@@ -101,8 +121,12 @@ for (const entry of entries) {
 }
 
 const published = entries
-  .filter((entry) => entry.status === "published")
+  .filter((entry) => entry.status === "published" && entry.publishDate <= currentPublishDate)
   .sort((a, b) => b.publishDate.localeCompare(a.publishDate));
+const scheduled = entries.filter((entry) => (
+  entry.status === "published" &&
+  entry.publishDate > currentPublishDate
+));
 
 const visibleEntries = (includeDrafts ? entries : published)
   .slice()
@@ -426,4 +450,4 @@ await writeFile(path.join(root, "sitemap.xml"), sitemap);
 
 console.log(includeDrafts
   ? `Built a local preview with ${entries.length} draft and published messages. Run without --preview-drafts before committing.`
-  : `Built Two-Minute Execution with ${published.length} published and ${entries.length - published.length} draft messages.`);
+  : `Built Two-Minute Execution for ${currentPublishDate} with ${published.length} live, ${scheduled.length} scheduled, and ${entries.filter((entry) => entry.status === "draft").length} draft messages.`);

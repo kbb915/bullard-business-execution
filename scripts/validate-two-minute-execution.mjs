@@ -7,6 +7,17 @@ const failures = [];
 const check = (condition, message) => {
   if (!condition) failures.push(message);
 };
+const dateInCentralTime = (date) => {
+  const parts = new Intl.DateTimeFormat("en-US", {
+    timeZone: "America/Chicago",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit"
+  }).formatToParts(date);
+  const values = Object.fromEntries(parts.map(({ type, value }) => [type, value]));
+  return `${values.year}-${values.month}-${values.day}`;
+};
+const currentPublishDate = process.env.TME_BUILD_DATE || dateInCentralTime(new Date());
 
 const read = (relativePath) => readFile(path.join(root, relativePath), "utf8");
 const exists = async (relativePath) => {
@@ -56,7 +67,13 @@ for (const filename of draftFiles) {
 
 const publicMessages = JSON.parse(await read("two-minute-execution/messages.json"));
 check(Array.isArray(publicMessages), "messages.json must contain an array");
-check(publicMessages.length === 0, "Draft sample messages leaked into messages.json");
+const publicSlugs = new Set(publicMessages.map((message) => message.slug));
+for (const slug of draftSlugs) {
+  check(!publicSlugs.has(slug), `Draft sample leaked into messages.json (${slug})`);
+}
+for (const message of publicMessages) {
+  check(message.publishDate <= currentPublishDate, `Future message leaked into production (${message.slug})`);
+}
 const categories = JSON.parse(await read("two-minute-execution/categories.json"));
 check(Array.isArray(categories), "categories.json must contain an array");
 check(categories.length === 9, `Expected 9 initial categories, found ${categories.length}`);
