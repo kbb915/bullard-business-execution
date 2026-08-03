@@ -13,3 +13,7 @@
 
 ## Next recommended task
 - Optimize the two homepage PNG images to reduce the remaining page weight.
+
+## Session closeout — 2026-08-03
+- Fixed the 404 page logo path to use `/assets/bbe-logo.png`, so the logo loads from nested missing URLs such as `/clients/kbullard`.
+- Focused verification passed: the referenced asset exists and the 404 page uses the root-relative path.
