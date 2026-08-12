@@ -202,18 +202,28 @@ Create migrations for these tables:
 - created_at
 - updated_at
 
-### commitments
+### primary_commitments
 
 - id
 - client_id foreign key
-- source_session_id nullable foreign key
+- commitment
+- client_visible boolean default true
+- created_at
+- updated_at
+
+Each client has one current Primary Commitment. It is a client-level record and must be editable from a dedicated Primary Commitment space in the admin area without creating or republishing a coaching note.
+
+### commitments
+
+- id
+- session_id foreign key
 - commitment
 - status enum: active, completed, archived
 - client_visible boolean default true
 - created_at
 - updated_at
 
-Commitments are client-level records rather than session sections. A commitment may be created from a coaching session, but its text and status must be editable independently so an administrator can update the current commitment without creating or republishing a new coaching note.
+These are the other commitments from that coaching session. They belong only to their respective coaching note and must not be promoted into or shown as the client's Primary Commitment unless entered there separately.
 
 ### client_reflections
 
@@ -245,10 +255,16 @@ Commitments are client-level records rather than session sections. A commitment 
 - description nullable
 - url nullable
 - file_path nullable
+- mime_type nullable
+- download_name nullable
 - approved_for_ai boolean default false
 - client_visible boolean default false
 - created_at
 - updated_at
+
+Resource delivery must set `Content-Disposition: inline` for approved PDF files (`application/pdf`) and images (`image/*`) so supported browsers open them in the browser. Every other file type must use `Content-Disposition: attachment` and download instead. The delivery route must derive the MIME type from the stored, validated resource metadata and continue enforcing the authenticated client's ownership and visibility checks.
+
+Administrators must be able to edit a resource's title and description after the file or media has been uploaded, without replacing the underlying file or creating a new resource.
 
 ### audit_log
 
@@ -322,6 +338,8 @@ Build first:
 - Sign out
 - Session cards
 - Dedicated session pages at `/coaching/notes/[client_slug]/[session_slug]`
+- Rename the client-facing `Commitments` card to `Primary Commitment`
+- Keep each coaching note's `Commitments` section limited to commitments from that session
 - Search within authenticated client's published notes only
 - Category filtering
 - Leadership Source Model filtering
@@ -329,8 +347,11 @@ Build first:
 - Admin login
 - Admin coaching dashboard at `/admin/coaching`
 - Admin client page at `/admin/coaching/clients/[client_slug]`
+- Dedicated Primary Commitment space at `/admin/coaching/clients/[client_slug]/primary-commitment`
+- Edit uploaded resource titles and descriptions from the admin client page
 - Create/edit/preview/publish/unpublish/archive/delete session workflow
-- Create, edit, complete, archive, and restore client commitments independently of session publishing
+- Edit the client's Primary Commitment independently of session publishing
+- Create, edit, complete, archive, and restore commitments within their respective coaching notes
 - Internal-only sections
 - Draft/published/archived status
 - Responsive styling based on the existing BBE visual system
@@ -372,7 +393,8 @@ Client pages may only read:
 - Their own client record
 - Their own published coaching sessions
 - Their own client-visible session sections
-- Their own client-visible commitments
+- Their own client-visible Primary Commitment
+- Commitments contained in their own published coaching sessions
 - Their own client-visible resources
 - Their own actions marked client-visible
 - Their own reflections
@@ -410,6 +432,9 @@ Add automated tests proving:
 - Sign out clears the session
 - Admin routes require administrator authentication
 - Admin publishing workflow hides drafts until published
+- PDF and image resources are delivered with `Content-Disposition: inline`
+- All other resource file types are delivered with `Content-Disposition: attachment`
+- Resource title and description edits preserve the existing file or media record
 
 ## Client-facing copy
 
@@ -440,7 +465,7 @@ Client page header:
 Annette Rogers
 Coaching Notes
 
-This private space contains the observations, questions, commitments, and next steps from our coaching work.
+This private space contains the Primary Commitment, observations, session commitments, and next steps from our coaching work.
 ```
 
 Search placeholder:

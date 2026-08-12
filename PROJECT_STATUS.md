@@ -21,3 +21,7 @@
 ## Session closeout — 2026-08-11
 - Documented independently editable client commitment records and the related admin/client access workflow for the private coaching application.
 - Focused verification passed: the documentation diff is limited to the commitment specification and `git diff --check` is clean.
+
+## Session closeout — 2026-08-11 (resource metadata)
+- Documented admin editing for uploaded resource titles and descriptions without replacing the underlying file or media record.
+- Focused verification passed: the requested resource metadata requirements are present and `git diff --check` is clean.
