@@ -17,3 +17,7 @@
 ## Session closeout — 2026-08-03
 - Fixed the 404 page logo path to use `/assets/bbe-logo.png`, so the logo loads from nested missing URLs such as `/clients/kbullard`.
 - Focused verification passed: the referenced asset exists and the 404 page uses the root-relative path.
+
+## Session closeout — 2026-08-11
+- Documented independently editable client commitment records and the related admin/client access workflow for the private coaching application.
+- Focused verification passed: the documentation diff is limited to the commitment specification and `git diff --check` is clean.

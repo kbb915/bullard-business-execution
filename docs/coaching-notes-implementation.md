@@ -202,6 +202,19 @@ Create migrations for these tables:
 - created_at
 - updated_at
 
+### commitments
+
+- id
+- client_id foreign key
+- source_session_id nullable foreign key
+- commitment
+- status enum: active, completed, archived
+- client_visible boolean default true
+- created_at
+- updated_at
+
+Commitments are client-level records rather than session sections. A commitment may be created from a coaching session, but its text and status must be editable independently so an administrator can update the current commitment without creating or republishing a new coaching note.
+
 ### client_reflections
 
 - id
@@ -317,6 +330,7 @@ Build first:
 - Admin coaching dashboard at `/admin/coaching`
 - Admin client page at `/admin/coaching/clients/[client_slug]`
 - Create/edit/preview/publish/unpublish/archive/delete session workflow
+- Create, edit, complete, archive, and restore client commitments independently of session publishing
 - Internal-only sections
 - Draft/published/archived status
 - Responsive styling based on the existing BBE visual system
@@ -358,6 +372,7 @@ Client pages may only read:
 - Their own client record
 - Their own published coaching sessions
 - Their own client-visible session sections
+- Their own client-visible commitments
 - Their own client-visible resources
 - Their own actions marked client-visible
 - Their own reflections
