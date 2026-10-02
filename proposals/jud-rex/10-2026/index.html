@@ -25,14 +25,23 @@
       <div class="note">Prepared October 2, 2026 · The proposal opens in a protected workspace after the password is verified.</div>
     </div>
   </header>
-  <main class="shell">
-    <div class="section-label">Proposal overview</div>
-    <section class="card"><h2>One day. Real work. A shared language.</h2><p>This offsite connects leadership development with the Town’s budget discussions, 90-day assessment, and priorities for the next 12 months. The full proposal covers the purpose, outcomes, preparation, approach, scope, fee and travel terms, and next step.</p><a class="button" href="https://warrenton-leadership-proposal.kbb915.chatgpt.site">Open the protected proposal</a></section>
+  <main class="shell" id="proposal" hidden>
+    <div class="section-label">Prepared October 2, 2026 · Proposal for Jud Rex</div>
+    <section class="card"><h2>Purpose</h2><p>One day together. Real work in front of the team. A shared way to move it forward.</p><p>Jud, I propose a one-day offsite to help your senior leadership team recognize limiting stories, shift toward commitments, and practice that shift in the work already in front of them. The day will connect leadership development with your budget discussions, 90-day assessment, and priorities for the next 12 months.</p><p><strong>Learn it. Use it that day.</strong> I will lead a focused leadership session and remain with you and the team for the rest of the day, coaching in the moment as you lead the working discussions.</p></section>
+    <section class="card"><h2>Team outcomes</h2><p>By the end of the day, participants will have practiced how to recognize limiting stories, name the commitment they want to act from, reset conversations, and apply these practices to current budget questions and the priorities in the year ahead.</p></section>
+    <section class="card"><h2>Preparation</h2><p>Before the offsite, we will align on the agenda, desired outcomes, budget topics, the 90-day assessment, year-ahead priorities, planned HR program content, and real situations for the team to work through.</p></section>
+    <section class="card"><h2>The day</h2><p><strong>Leadership session · 2–3 hours.</strong> I will introduce the limiting stories and commitments model, demonstrate its use, and guide reflection, paired practice, and team discussion.</p><p><strong>Application during Town business.</strong> For the balance of the day, I will support conversations on the budget, the 90-day assessment, the 12-month plan, and other leadership priorities. The agenda will preserve 60 to 90 minutes for planned HR program updates.</p><p><strong>Closing commitments.</strong> We will capture the team’s commitments, next steps, and owners, and agree on how to revisit them in weekly leadership meetings.</p></section>
+    <section class="card"><h2>What is included</h2><p>Preparation and tailoring; one full day of onsite leadership development, facilitation, and live coaching; practical exercises; and a record of the commitments and next steps captured during the day.</p><p>This proposal covers the single offsite. Ongoing coaching, additional offsites, and a Working Genius refresh would be considered separately.</p></section>
+    <section class="card"><h2>Professional fee and travel</h2><p>The professional fee will be provided in a subsequent proposal after we confirm the scope. Travel expenses will be in addition to the professional fee and addressed in that subsequent proposal.</p></section>
+    <section class="card"><h2>Next step</h2><p>Review the proposed scope together, make any needed adjustments, and confirm the date and agenda. I will then provide an updated proposal with the professional fee and travel details.</p><p><strong>Proposed date:</strong> October 16, 2026, subject to confirmation.<br><strong>Location:</strong> Warrenton, Virginia; venue to be confirmed.<br><strong>Participants:</strong> 12 senior leaders.</p></section>
     <footer class="footer"><span>Bullard Business Execution</span><span>Prepared for Jud Rex · October 2, 2026</span></footer>
   </main>
   <script>
     const form=document.getElementById('gate');
-    form.addEventListener('submit',event=>{event.preventDefault();const password=document.getElementById('password').value;if(password==='Commitment!'){sessionStorage.setItem('warrentonProposalUnlocked','1');location.href='https://warrenton-leadership-proposal.kbb915.chatgpt.site';}else{document.getElementById('error').hidden=false;}});
+    const proposal=document.getElementById('proposal');
+    function unlock(){document.querySelector('.hero').style.minHeight='auto';document.querySelector('.hero').style.padding='38px 0';form.hidden=true;proposal.hidden=false;window.scrollTo(0,0);}
+    if(sessionStorage.getItem('warrentonProposalUnlocked')==='1') unlock();
+    form.addEventListener('submit',event=>{event.preventDefault();const password=document.getElementById('password').value;if(password==='Commitment!'){sessionStorage.setItem('warrentonProposalUnlocked','1');unlock();}else{document.getElementById('error').hidden=false;}});
   </script>
 </body>
 </html>
