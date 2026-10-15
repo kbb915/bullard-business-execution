@@ -100,9 +100,9 @@
     .button.ghost:hover { background: rgba(255, 255, 255, .1); border-color: var(--white); }
 
     .nav {
-      background: rgba(245, 244, 240, .96);
-      border-bottom: 1px solid var(--line);
-      color: var(--ink);
+      background: linear-gradient(135deg, #0b1d2d, #163247 58%, #081725);
+      border-bottom: 1px solid rgba(255, 255, 255, .16);
+      color: var(--white);
       position: sticky;
       top: 0;
       z-index: 20;
@@ -142,8 +142,10 @@
       list-style: none;
       margin: 0;
       padding: 0;
-      color: var(--ink-soft);
+      color: #cfd6da;
       font-size: 14px;
+      font-weight: 700;
+      letter-spacing: .02em;
     }
     .nav-links a { white-space: nowrap; }
     .nav-links a:not(.button):hover { color: #ffffff; }
@@ -166,7 +168,7 @@
     .menu-icon { display: inline-grid; gap: 4px; width: 18px; }
     .menu-icon span { background: currentColor; display: block; height: 2px; width: 100%; }
     .mobile-menu {
-      background: var(--white);
+      background: #0b1d2d;
       border-top: 1px solid rgba(255, 255, 255, .14);
       box-shadow: 0 20px 38px rgba(12, 31, 47, .3);
       display: none;
@@ -175,7 +177,7 @@
     .mobile-menu-inner { display: grid; gap: 1px; padding: 12px clamp(22px, 4vw, 46px) 20px; }
     .mobile-menu a {
       border-bottom: 1px solid rgba(255, 255, 255, .12);
-      color: #e6e1d8;
+      color: #cfd6da;
       display: flex;
       justify-content: space-between;
       padding: 15px 0;
