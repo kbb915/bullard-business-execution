@@ -9,17 +9,17 @@
   <script>document.documentElement.classList.add("js");</script>
   <style>
     :root {
-      --ink: #151b20;
-      --ink-soft: #394650;
-      --muted: #65727c;
-      --paper: #f7f5f0;
-      --white: #fffefa;
-      --line: #d9d4ca;
-      --navy: #112638;
-      --steel: #315f76;
-      --steel-dark: #1b3a52;
-      --accent: #c94f32;
-      --accent-dark: #a43c27;
+      --ink: #26323b;
+      --ink-soft: #46545d;
+      --muted: #5e6870;
+      --paper: #f5f4f0;
+      --white: #ffffff;
+      --line: #d8d9d5;
+      --navy: #17344d;
+      --steel: #527363;
+      --steel-dark: #3e5e50;
+      --accent: #17344d;
+      --accent-dark: #10283b;
       --max: 1120px;
     }
     *, *::before, *::after { box-sizing: border-box; }
@@ -100,9 +100,9 @@
     .button.ghost:hover { background: rgba(255, 255, 255, .1); border-color: var(--white); }
 
     .nav {
-      background: linear-gradient(135deg, rgba(17, 38, 56, .98), rgba(31, 58, 77, .97) 52%, rgba(12, 31, 47, .98));
-      border-bottom: 1px solid rgba(255, 255, 255, .16);
-      color: var(--white);
+      background: rgba(245, 244, 240, .96);
+      border-bottom: 1px solid var(--line);
+      color: var(--ink);
       position: sticky;
       top: 0;
       z-index: 20;
@@ -142,7 +142,7 @@
       list-style: none;
       margin: 0;
       padding: 0;
-      color: #e6e1d8;
+      color: var(--ink-soft);
       font-size: 14px;
     }
     .nav-links a { white-space: nowrap; }
@@ -166,7 +166,7 @@
     .menu-icon { display: inline-grid; gap: 4px; width: 18px; }
     .menu-icon span { background: currentColor; display: block; height: 2px; width: 100%; }
     .mobile-menu {
-      background: linear-gradient(135deg, rgba(17, 38, 56, .99), rgba(31, 58, 77, .98));
+      background: var(--white);
       border-top: 1px solid rgba(255, 255, 255, .14);
       box-shadow: 0 20px 38px rgba(12, 31, 47, .3);
       display: none;
@@ -184,9 +184,9 @@
     .mobile-menu .button { margin-top: 14px; width: 100%; }
 
     .hero {
-      background: radial-gradient(circle at 82% 18%, rgba(158, 187, 199, .42), transparent 36%), linear-gradient(135deg, #24495f 0%, #315f76 48%, #1f4058 100%);
-      color: var(--white);
-      border-bottom: 1px solid rgba(255, 255, 255, .18);
+      background: var(--paper);
+      color: var(--ink);
+      border-bottom: 1px solid var(--line);
     }
     .hero .eyebrow { color: #d5e0e5; }
     .hero-inner {
@@ -431,7 +431,6 @@
       <div class="footer-links" aria-label="Footer navigation">
         <a href="/">Business</a>
         <a href="/municipal">Municipalities</a>
-        <a href="/two-minute-execution">Two-Minute Execution</a>
         <a href="/#problem">Problem + Results</a>
         <a href="/#experience">About</a>
         <a href="speaking.html">Speaking</a>
