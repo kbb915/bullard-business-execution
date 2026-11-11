@@ -296,6 +296,7 @@
       border: 1px solid var(--line);
       grid-template-columns: repeat(4, 1fr);
     }
+    .resource-grid { grid-template-columns: repeat(2, 1fr); }
     .service-card {
       background: var(--white);
       min-height: 190px;
@@ -376,7 +377,7 @@
       .hero-layout, .section-heading { grid-template-columns: 1fr; }
       .hero-card { max-width: 560px; }
       .section-heading p { padding-top: 0; }
-      .service-grid { grid-template-columns: 1fr; }
+      .service-grid, .resource-grid { grid-template-columns: 1fr; }
       .service-card { min-height: 0; padding: 24px; }
     }
     @media (max-width: 620px) {
@@ -585,8 +586,7 @@
           </div>
           <p>Explore existing resources for thinking through ownership, decisions, blind spots, and how leaders function together.</p>
         </div>
-        <div class="service-grid" aria-label="BBE resources">
-          <article class="service-card reveal"><h3>Two-Minute Execution</h3><p>Short, practical ideas for helping important work move with greater clarity and consistency.</p><a class="button ghost" href="two-minute-execution/">Explore the series</a></article>
+        <div class="service-grid resource-grid" aria-label="BBE resources">
           <article class="service-card reveal"><h3>The More Effective Leader</h3><p>An eight-week online experience for experienced leaders, with live instruction, small peer cohorts, and practical application.</p><a class="button ghost" href="https://themoreeffectiveleader.com/">Visit the program</a></article>
           <article class="service-card reveal"><h3>Speaking</h3><p>Practical ideas for leadership teams, organizations, conferences, and events.</p><a class="button ghost" href="speaking.html">View speaking</a></article>
         </div>
