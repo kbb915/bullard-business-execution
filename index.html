@@ -293,17 +293,19 @@
     .problem-checklist span, .result-checklist span { display: block; font-size: 15px; line-height: 1.55; }
     .service-grid {
       display: grid;
-      gap: 1px;
-      background: var(--line);
-      border: 1px solid var(--line);
-      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
     }
     .resource-grid { grid-template-columns: repeat(2, 1fr); }
     .service-card {
       background: var(--white);
+      border: 1px solid var(--line);
       min-height: 190px;
       padding: clamp(24px, 3vw, 32px);
     }
+    .service-card:nth-child(-n + 3) { grid-column: span 2; }
+    .service-card:nth-child(4) { grid-column: 2 / span 2; }
+    .service-card:nth-child(5) { grid-column: 4 / span 2; }
     .service-card p { font-size: 15px; line-height: 1.62; }
     .learn-more { color: var(--navy); display: inline-flex; font-size: 12px; font-weight: 800; gap: 10px; letter-spacing: .12em; margin-top: 18px; text-transform: uppercase; }
     .learn-more::after { content: "\2192"; font-size: 17px; font-weight: 400; letter-spacing: 0; }
@@ -391,6 +393,7 @@
       .section-heading p { padding-top: 0; }
       .service-grid, .resource-grid, .purpose-grid, .core-values-list { grid-template-columns: 1fr; }
       .service-card { min-height: 0; padding: 24px; }
+      .service-card:nth-child(n) { grid-column: 1 / -1; }
     }
     @media (max-width: 620px) {
       body { font-size: 17px; }
