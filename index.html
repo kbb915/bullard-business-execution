@@ -307,6 +307,9 @@
     .purpose-grid .card { background: var(--white); border: 1px solid var(--line); box-shadow: 0 18px 40px rgba(23, 52, 77, .07); padding: clamp(24px, 3vw, 32px); }
     .purpose-grid .card h3 { margin-bottom: 12px; }
     .purpose-grid .card p { font-size: 15px; line-height: 1.62; }
+    .core-values-card { grid-column: 1 / -1; }
+    .core-values-list { display: grid; gap: 24px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .core-values-list h3 { font-size: 21px; margin-bottom: 8px; }
     .area-list {
       display: grid;
       gap: 14px;
@@ -381,7 +384,7 @@
       .hero-layout, .section-heading { grid-template-columns: 1fr; }
       .hero-card { max-width: 560px; }
       .section-heading p { padding-top: 0; }
-      .service-grid, .resource-grid, .purpose-grid { grid-template-columns: 1fr; }
+      .service-grid, .resource-grid, .purpose-grid, .core-values-list { grid-template-columns: 1fr; }
       .service-card { min-height: 0; padding: 24px; }
     }
     @media (max-width: 620px) {
@@ -567,11 +570,7 @@
       <div class="shell purpose-grid">
         <article class="card"><h3>Vision</h3><p>A world where leaders and organizations see beyond their blind spots, turning bold ideas into extraordinary results.</p></article>
         <article class="card"><h3>Mission</h3><p>Through tailored consulting, executive coaching, leadership programs, and speaking engagements, we help leaders and their teams uncover blind spots, shift their perspective, and take decisive action on their most important goals.</p></article>
-        <div class="core-values-label"><span class="eyebrow">Core Values</span></div>
-        <article class="card"><h3>Look</h3><p>We put certainty to the test through curiosity and exploration. We ask the right questions to uncover blind spots and see the full picture.</p></article>
-        <article class="card"><h3>Influence</h3><p>We actively shape what happens around us rather than simply reacting to it. We step out of old patterns and intentionally create the environment we want to lead.</p></article>
-        <article class="card"><h3>Contribute</h3><p>We bring our full voice, effort, and presence to what matters most, showing up fully committed to our clients' breakthroughs.</p></article>
-        <article class="card"><h3>Move Forward</h3><p>We believe insight must lead to action. We focus on clear, decisive steps that create visible, meaningful change.</p></article>
+        <article class="card core-values-card"><span class="eyebrow">Core Values</span><div class="core-values-list"><div><h3>Look</h3><p>We put certainty to the test through curiosity and exploration. We ask the right questions to uncover blind spots and see the full picture.</p></div><div><h3>Influence</h3><p>We actively shape what happens around us rather than simply reacting to it. We step out of old patterns and intentionally create the environment we want to lead.</p></div><div><h3>Contribute</h3><p>We bring our full voice, effort, and presence to what matters most, showing up fully committed to our clients' breakthroughs.</p></div><div><h3>Move Forward</h3><p>We believe insight must lead to action. We focus on clear, decisive steps that create visible, meaningful change.</p></div></div></article>
       </div>
     </section>
 
