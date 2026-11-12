@@ -210,7 +210,7 @@
       max-width: 760px;
     }
     .hero-actions { display: flex; flex-wrap: wrap; gap: 13px; margin-top: 34px; }
-    .hero-image { display: block; height: auto; width: 100%; }
+    .hero-image { display: block; height: auto; margin-top: clamp(-28px, -3vw, -12px); width: 100%; }
     .hero-card {
       border: 1px solid var(--line);
       background: var(--white);
@@ -393,6 +393,7 @@
     @media (max-width: 960px) {
       .hero-layout, .section-heading { grid-template-columns: 1fr; }
       .hero-card { max-width: 560px; }
+      .hero-image { margin-top: 0; }
       .section-heading p { padding-top: 0; }
       .service-grid, .resource-grid, .purpose-grid, .core-values-list { grid-template-columns: 1fr; }
       .service-card { min-height: 0; padding: 24px; }
@@ -463,7 +464,7 @@
             <a class="button ghost" href="#services">Explore How We Help</a>
           </div>
         </div>
-        <img class="hero-image reveal" src="assets/hero-breakthrough-centered.png" alt="A pattern of navy octagons interrupted by one larger orange octagon.">
+        <img class="hero-image reveal" src="assets/hero-breakthrough-surrounded.png" alt="A larger orange octagon surrounded by eight navy octagons.">
       </div>
     </div>
   </header>
